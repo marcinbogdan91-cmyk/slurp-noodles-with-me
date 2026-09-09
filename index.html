@@ -7,256 +7,266 @@
 <title>SLURP NOODLES WITH ME — RAMEN LAB</title>
 
 <style>
-:root{
-    --bg:#0b0b0b;
-    --card:#141414;
-    --card2:#101010;
-    --text:#f5f5f5;
-    --muted:#8f8f8f;
-    --accent:#ff6b35;
-    --accent2:#ff8a5b;
-    --border:#272727;
-    --green:#7bd88f;
-    --blue:#6cb6ff;
+
+:root {
+    --bg: #0b0b0b;
+    --card: #151515;
+    --card-dark: #101010;
+    --text: #f5f5f5;
+    --muted: #999;
+    --accent: #ff6b35;
+    --accent-light: #ff8a5b;
+    --border: #292929;
+    --green: #7bd88f;
+    --blue: #6cb6ff;
 }
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    margin:0;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
     background:
-        radial-gradient(
-            circle at top right,
-            rgba(255,107,53,.08),
-            transparent 35%
-        ),
-        var(--bg);
-    color:var(--text);
-    font-family:Arial, Helvetica, sans-serif;
-    line-height:1.5;
+        radial-gradient(circle at top right, rgba(255,107,53,.08), transparent 35%),
+        #0b0b0b;
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
 }
 
-.container{
-    width:min(1100px,92%);
-    margin:auto;
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
 }
 
-header{
-    padding:45px 0 30px;
-    border-bottom:1px solid var(--border);
+/* HEADER */
+
+header {
+    padding: 45px 0 30px;
+    border-bottom: 1px solid var(--border);
 }
 
-.brand{
-    font-size:14px;
-    letter-spacing:4px;
-    color:var(--accent);
-    font-weight:bold;
+.brand {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    font-weight: bold;
 }
 
-.version{
-    margin-top:7px;
-    font-size:12px;
-    color:var(--muted);
-    letter-spacing:2px;
+.version {
+    margin-top: 7px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
 }
 
-.hero{
-    padding:55px 0 40px;
+/* HERO */
+
+.hero {
+    padding: 60px 0 45px;
 }
 
-.hero small{
-    color:var(--accent);
-    letter-spacing:4px;
-    font-weight:bold;
+.hero small {
+    color: var(--accent);
+    letter-spacing: 4px;
+    font-weight: bold;
 }
 
-.hero h1{
-    font-size:clamp(48px,10vw,110px);
-    line-height:.85;
-    margin:18px 0 25px;
-    letter-spacing:-5px;
+.hero h1 {
+    font-size: clamp(52px, 10vw, 115px);
+    line-height: .85;
+    margin: 18px 0 25px;
+    letter-spacing: -5px;
 }
 
-.hero p{
-    max-width:650px;
-    color:var(--muted);
-    font-size:18px;
+.hero p {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: 18px;
 }
 
-.section-title{
-    margin:55px 0 20px;
-    font-size:13px;
-    letter-spacing:4px;
-    color:var(--accent);
-    font-weight:bold;
+/* SECTIONS */
+
+.section-title {
+    margin: 60px 0 20px;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    font-weight: bold;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-    gap:18px;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 18px;
 }
 
-.card{
-    background:linear-gradient(145deg,var(--card),var(--card2));
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:24px;
-    transition:.2s ease;
+/* CARDS */
+
+.card {
+    background: linear-gradient(145deg, var(--card), var(--card-dark));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: .2s ease;
 }
 
-.card:hover{
-    border-color:#3a3a3a;
-    transform:translateY(-2px);
+.card:hover {
+    border-color: #444;
+    transform: translateY(-2px);
 }
 
-.card h2{
-    margin:0 0 8px;
-    font-size:22px;
+.card h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
 }
 
-.description{
-    color:var(--muted);
-    font-size:14px;
-    margin-bottom:22px;
+.description {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
-label{
-    display:block;
-    margin:15px 0 7px;
-    font-size:12px;
-    color:#aaa;
-    letter-spacing:.5px;
+/* FORMS */
+
+label {
+    display: block;
+    margin: 15px 0 7px;
+    color: #aaa;
+    font-size: 12px;
+    letter-spacing: .5px;
 }
 
-input{
-    width:100%;
-    padding:13px 14px;
-    background:#090909;
-    color:white;
-    border:1px solid #303030;
-    border-radius:8px;
-    outline:none;
-    font-size:16px;
+input {
+    width: 100%;
+    padding: 13px 14px;
+    background: #090909;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
 }
 
-input:focus{
-    border-color:var(--accent);
+input:focus {
+    border-color: var(--accent);
 }
 
-button{
-    width:100%;
-    margin-top:20px;
-    padding:14px;
-    border:0;
-    border-radius:8px;
-    background:var(--accent);
-    color:white;
-    font-weight:bold;
-    letter-spacing:1px;
-    cursor:pointer;
-    transition:.2s;
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .2s;
 }
 
-button:hover{
-    background:var(--accent2);
+button:hover {
+    background: var(--accent-light);
 }
 
-.secondary-button{
-    background:#222;
-    border:1px solid #333;
+.secondary-button {
+    background: #242424;
+    border: 1px solid #383838;
 }
 
-.secondary-button:hover{
-    background:#2d2d2d;
+.secondary-button:hover {
+    background: #333;
 }
 
-.result{
-    margin-top:18px;
-    padding:15px;
-    background:#0a0a0a;
-    border:1px solid var(--border);
-    border-radius:8px;
-    min-height:48px;
-    color:#ddd;
+/* RESULTS */
+
+.result {
+    margin-top: 18px;
+    padding: 16px;
+    background: #090909;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    min-height: 55px;
+    color: #ddd;
 }
 
-.result strong{
-    color:white;
+.highlight {
+    color: var(--accent);
+    font-size: 22px;
+    font-weight: bold;
 }
 
-.result .highlight{
-    color:var(--accent);
-    font-size:20px;
-    font-weight:bold;
+.green {
+    color: var(--green);
+    font-weight: bold;
 }
 
-.result .green{
-    color:var(--green);
-    font-weight:bold;
+.blue {
+    color: var(--blue);
+    font-weight: bold;
 }
 
-.result .blue{
-    color:var(--blue);
-    font-weight:bold;
+.warning {
+    color: #ffb36b;
 }
 
-.warning{
-    color:#ffb36b;
+.mode-title {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
-.note{
-    margin-top:10px;
-    color:#666;
-    font-size:11px;
-    line-height:1.5;
+.note {
+    margin-top: 12px;
+    color: #666;
+    font-size: 11px;
 }
 
-.formula{
-    margin-top:12px;
-    padding:12px;
-    border-left:2px solid var(--accent);
-    background:#101010;
-    color:#888;
-    font-size:11px;
+.formula {
+    margin-top: 12px;
+    padding: 12px;
+    background: #111;
+    border-left: 2px solid var(--accent);
+    color: #888;
+    font-size: 11px;
 }
 
-.mode-title{
-    margin-top:18px;
-    padding-top:18px;
-    border-top:1px solid var(--border);
-    color:var(--accent);
-    font-size:11px;
-    font-weight:bold;
-    letter-spacing:2px;
+footer {
+    margin-top: 80px;
+    padding: 35px 0 50px;
+    border-top: 1px solid var(--border);
+    color: #666;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-align: center;
 }
 
-footer{
-    margin-top:80px;
-    padding:30px 0 50px;
-    border-top:1px solid var(--border);
-    color:#666;
-    font-size:12px;
-    letter-spacing:2px;
-    text-align:center;
-}
+@media(max-width: 600px) {
 
-@media(max-width:600px){
-
-    .hero{
-        padding-top:40px;
+    .hero {
+        padding-top: 40px;
     }
 
-    .hero h1{
-        letter-spacing:-3px;
+    .hero h1 {
+        letter-spacing: -3px;
     }
 
-    .card{
-        padding:20px;
+    .card {
+        padding: 20px;
     }
+
 }
+
 </style>
 </head>
 
@@ -265,9 +275,17 @@ footer{
 <div class="container">
 
 <header>
-    <div class="brand">SLURP NOODLES WITH ME</div>
-    <div class="version">RAMEN LAB · V1.2</div>
+
+    <div class="brand">
+        SLURP NOODLES WITH ME
+    </div>
+
+    <div class="version">
+        RAMEN LAB · V1.2
+    </div>
+
 </header>
+
 
 <section class="hero">
 
@@ -279,123 +297,77 @@ footer{
     </h1>
 
     <p>
-        Calculators for ramen chefs.
+        Professional calculators for ramen chefs.
         Broth, tare, noodles, kansui, salt,
-        recipes and food cost — all in one place.
+        recipe scaling and food cost.
     </p>
 
 </section>
 
 
-<!-- ========================= -->
-<!-- 01 RAMEN -->
-<!-- ========================= -->
+<!-- RAMEN -->
 
-<div class="section-title">01 · RAMEN</div>
+<div class="section-title">
+    01 · RAMEN
+</div>
 
 <div class="grid">
 
 
-<!-- RAMEN CALCULATOR -->
-
 <div class="card">
 
-    <h2>🍜 Ramen Calculator</h2>
+<h2>🍜 Ramen Calculator</h2>
 
-    <div class="description">
-        Calculate portions, tare, aromatic oil and remaining broth.
-    </div>
+<div class="description">
+Calculate portions and total tare and oil requirements.
+</div>
 
-    <label>Broth — liters</label>
-    <input
-        id="brothLiters"
-        type="number"
-        step="0.01"
-        min="0"
-        value="10"
-    >
+<label>Broth — liters</label>
+<input id="brothLiters" type="number" value="10" step="0.1">
 
-    <label>Broth / portion — ml</label>
-    <input
-        id="brothPerPortion"
-        type="number"
-        step="1"
-        min="1"
-        value="354"
-    >
+<label>Broth per portion — ml</label>
+<input id="brothPerPortion" type="number" value="354">
 
-    <label>Tare / portion — ml</label>
-    <input
-        id="tarePerPortion"
-        type="number"
-        step="0.1"
-        min="0"
-        value="50"
-    >
+<label>Tare per portion — ml</label>
+<input id="tarePerPortion" type="number" value="50">
 
-    <label>Aromatic oil / portion — ml</label>
-    <input
-        id="oilPerPortion"
-        type="number"
-        step="0.1"
-        min="0"
-        value="15"
-    >
+<label>Aromatic oil per portion — ml</label>
+<input id="oilPerPortion" type="number" value="15">
 
-    <button onclick="calculateRamen()">
-        CALCULATE
-    </button>
+<button onclick="calculateRamen()">
+CALCULATE
+</button>
 
-    <div class="result" id="ramenResult">
-        Results will appear here.
-    </div>
+<div class="result" id="ramenResult">
+Enter values and calculate.
+</div>
 
 </div>
 
 
-<!-- SALT CALCULATOR -->
+<!-- SALT -->
 
 <div class="card">
 
-    <h2>🧂 Salt Calculator</h2>
+<h2>🧂 Salt Calculator</h2>
 
-    <div class="description">
-        Calculate the amount of salt from liquid weight
-        and desired salt concentration.
-    </div>
+<div class="description">
+Calculate the required amount of salt.
+</div>
 
-    <label>Liquid / broth — g</label>
+<label>Liquid weight — g</label>
+<input id="saltLiquid" type="number" value="1000">
 
-    <input
-        id="saltLiquid"
-        type="number"
-        step="0.1"
-        min="0"
-        value="1000"
-    >
+<label>Desired salt — %</label>
+<input id="saltPercent" type="number" value="1.6" step="0.01">
 
-    <label>Desired salt — %</label>
+<button onclick="calculateSalt()">
+CALCULATE
+</button>
 
-    <input
-        id="saltPercent"
-        type="number"
-        step="0.01"
-        min="0"
-        value="1.6"
-    >
-
-    <button onclick="calculateSalt()">
-        CALCULATE
-    </button>
-
-    <div class="result" id="saltResult">
-        Results will appear here.
-    </div>
-
-    <div class="note">
-        Weight-based calculation:
-        salt (g) ÷ liquid mass (g) × 100.
-    </div>
+<div class="result" id="saltResult">
+Enter values and calculate.
+</div>
 
 </div>
 
@@ -404,485 +376,245 @@ footer{
 
 <div class="card">
 
-    <h2>🥣 Tare Calculator</h2>
+<h2>🥣 Tare Calculator</h2>
 
-    <div class="description">
-        Calculate how much tare is needed to reach
-        your target salt concentration — or check an existing bowl.
-    </div>
-
-
-    <!-- TARGET MODE -->
-
-    <div class="mode-title">
-        TARGET SALT
-    </div>
-
-    <label>Broth — ml</label>
-
-    <input
-        id="targetBroth"
-        type="number"
-        step="0.1"
-        min="0"
-        value="354"
-    >
-
-    <label>Broth salt — %</label>
-
-    <input
-        id="targetBrothSalt"
-        type="number"
-        step="0.01"
-        min="0"
-        value="0"
-    >
-
-    <label>Tare salt — %</label>
-
-    <input
-        id="targetTareSalt"
-        type="number"
-        step="0.01"
-        min="0"
-        value="12.8"
-    >
-
-    <label>Desired final salt — %</label>
-
-    <input
-        id="targetFinalSalt"
-        type="number"
-        step="0.01"
-        min="0"
-        value="1.60"
-    >
-
-    <button onclick="calculateTargetTare()">
-        CALCULATE TARE
-    </button>
-
-    <div class="result" id="targetTareResult">
-        Results will appear here.
-    </div>
-
-    <div class="formula">
-        Calculates final salt concentration using
-        broth + tare as the total mixture.
-    </div>
-
-
-    <!-- CHECK MODE -->
-
-    <div class="mode-title">
-        CHECK BOWL
-    </div>
-
-    <label>Broth — ml</label>
-
-    <input
-        id="checkBroth"
-        type="number"
-        step="0.1"
-        min="0"
-        value="354"
-    >
-
-    <label>Broth salt — %</label>
-
-    <input
-        id="checkBrothSalt"
-        type="number"
-        step="0.01"
-        min="0"
-        value="0"
-    >
-
-    <label>Tare — ml</label>
-
-    <input
-        id="checkTare"
-        type="number"
-        step="0.1"
-        min="0"
-        value="60"
-    >
-
-    <label>Tare salt — %</label>
-
-    <input
-        id="checkTareSalt"
-        type="number"
-        step="0.01"
-        min="0"
-        value="12.8"
-    >
-
-    <button
-        class="secondary-button"
-        onclick="calculateCheckBowl()"
-    >
-        CHECK BOWL
-    </button>
-
-    <div class="result" id="checkBowlResult">
-        Results will appear here.
-    </div>
-
-    <div class="note">
-        Assumes density ≈ 1.00 g/ml.
-        For precise production work, use measured tare weight.
-    </div>
-
+<div class="description">
+Calculate tare for a specific amount of broth and desired final salt level.
 </div>
 
 
-<!-- FINAL BOWL SALT -->
+<div class="mode-title">
+TARGET TARE
+</div>
 
-<div class="card">
+<label>Broth — ml</label>
+<input id="targetBroth" type="number" value="354" step="0.1">
 
-    <h2>🍜 Final Bowl Salt</h2>
+<label>Broth salt — %</label>
+<input id="targetBrothSalt" type="number" value="0" step="0.01">
 
-    <div class="description">
-        Detailed weight-based calculation of final bowl salt.
-    </div>
+<label>Tare salt — %</label>
+<input id="targetTareSalt" type="number" value="12.8" step="0.01">
 
-    <label>Broth — g</label>
+<label>Desired final bowl salt — %</label>
+<input id="targetFinalSalt" type="number" value="1.60" step="0.01">
 
-    <input
-        id="finalBroth"
-        type="number"
-        step="0.1"
-        min="0"
-        value="354"
-    >
+<button onclick="calculateTargetTare()">
+CALCULATE TARE
+</button>
 
-    <label>Broth salt — %</label>
+<div class="result" id="targetTareResult">
+Enter values and calculate.
+</div>
 
-    <input
-        id="finalBrothSalt"
-        type="number"
-        step="0.01"
-        min="0"
-        value="0"
-    >
+<div class="formula">
+Calculates the actual salt concentration of broth + tare together.
+</div>
 
-    <label>Tare — g</label>
 
-    <input
-        id="finalTare"
-        type="number"
-        step="0.1"
-        min="0"
-        value="50.57"
-    >
+<div class="mode-title">
+CHECK BOWL
+</div>
 
-    <label>Tare salt — %</label>
+<label>Broth — ml</label>
+<input id="checkBroth" type="number" value="354">
 
-    <input
-        id="finalTareSalt"
-        type="number"
-        step="0.01"
-        min="0"
-        value="12.8"
-    >
+<label>Broth salt — %</label>
+<input id="checkBrothSalt" type="number" value="0" step="0.01">
 
-    <label>Other liquid — g</label>
+<label>Tare — ml</label>
+<input id="checkTare" type="number" value="60">
 
-    <input
-        id="finalOther"
-        type="number"
-        step="0.1"
-        min="0"
-        value="0"
-    >
+<label>Tare salt — %</label>
+<input id="checkTareSalt" type="number" value="12.8" step="0.01">
 
-    <button onclick="calculateFinalBowlSalt()">
-        CALCULATE
-    </button>
+<button class="secondary-button" onclick="calculateCheckBowl()">
+CHECK BOWL
+</button>
 
-    <div class="result" id="finalBowlResult">
-        Results will appear here.
-    </div>
+<div class="result" id="checkBowlResult">
+Enter values and calculate.
+</div>
 
-    <div class="note">
-        Final salt % =
-        total NaCl ÷ total mixture mass × 100.
-    </div>
-
+<div class="note">
+Assumes tare density approximately equal to water: 1 ml ≈ 1 g.
 </div>
 
 </div>
 
 
-<!-- ========================= -->
-<!-- 02 NOODLES -->
-<!-- ========================= -->
+<!-- NOODLES -->
 
-<div class="section-title">02 · NOODLES</div>
+<div class="section-title">
+02 · NOODLES
+</div>
 
 <div class="grid">
 
 
-<!-- HYDRATION -->
+<div class="card">
+
+<h2>🍜 Noodle Hydration</h2>
+
+<div class="description">
+Calculate noodle dough hydration.
+</div>
+
+<label>Flour — g</label>
+<input id="flour" type="number">
+
+<label>Water — g</label>
+<input id="water" type="number">
+
+<button onclick="calculateHydration()">
+CALCULATE
+</button>
+
+<div class="result" id="hydrationResult">
+Enter values and calculate.
+</div>
+
+</div>
+
 
 <div class="card">
 
-    <h2>🍜 Noodle Hydration</h2>
+<h2>⚗️ Kansui Calculator</h2>
 
-    <div class="description">
-        Calculate water percentage in noodle dough.
-    </div>
+<div class="description">
+Calculate kansui amount based on flour weight.
+</div>
 
-    <label>Flour — g</label>
+<label>Flour — g</label>
+<input id="kansuiFlour" type="number">
 
-    <input
-        id="flour"
-        type="number"
-        step="0.1"
-        min="0"
-    >
+<label>Kansui — %</label>
+<input id="kansuiPercent" type="number" step="0.01">
 
-    <label>Water — g</label>
+<button onclick="calculateKansui()">
+CALCULATE
+</button>
 
-    <input
-        id="water"
-        type="number"
-        step="0.1"
-        min="0"
-    >
-
-    <button onclick="calculateHydration()">
-        CALCULATE
-    </button>
-
-    <div class="result" id="hydrationResult">
-        Results will appear here.
-    </div>
+<div class="result" id="kansuiResult">
+Enter values and calculate.
+</div>
 
 </div>
 
-
-<!-- KANSUI -->
 
 <div class="card">
 
-    <h2>⚗️ Kansui Calculator</h2>
+<h2>⚖️ Recipe Scaler</h2>
 
-    <div class="description">
-        Calculate kansui quantity relative to flour.
-    </div>
-
-    <label>Flour — g</label>
-
-    <input
-        id="kansuiFlour"
-        type="number"
-        step="0.1"
-        min="0"
-    >
-
-    <label>Kansui — %</label>
-
-    <input
-        id="kansuiPercent"
-        type="number"
-        step="0.01"
-        min="0"
-    >
-
-    <button onclick="calculateKansui()">
-        CALCULATE
-    </button>
-
-    <div class="result" id="kansuiResult">
-        Results will appear here.
-    </div>
-
+<div class="description">
+Scale any ingredient to a new batch size.
 </div>
 
+<label>Original recipe size — g</label>
+<input id="originalRecipe" type="number">
 
-<!-- RECIPE SCALER -->
+<label>New recipe size — g</label>
+<input id="newRecipe" type="number">
 
-<div class="card">
+<label>Ingredient amount — g</label>
+<input id="ingredientAmount" type="number">
 
-    <h2>⚖️ Recipe Scaler</h2>
+<button onclick="calculateScaler()">
+CALCULATE
+</button>
 
-    <div class="description">
-        Scale any ingredient to a new batch size.
-    </div>
-
-    <label>Original recipe amount — g</label>
-
-    <input
-        id="originalRecipe"
-        type="number"
-        step="0.1"
-        min="0"
-    >
-
-    <label>New recipe amount — g</label>
-
-    <input
-        id="newRecipe"
-        type="number"
-        step="0.1"
-        min="0"
-    >
-
-    <label>Ingredient — g</label>
-
-    <input
-        id="ingredientAmount"
-        type="number"
-        step="0.1"
-        min="0"
-    >
-
-    <button onclick="calculateScaler()">
-        CALCULATE
-    </button>
-
-    <div class="result" id="scalerResult">
-        Results will appear here.
-    </div>
+<div class="result" id="scalerResult">
+Enter values and calculate.
+</div>
 
 </div>
 
 </div>
 
 
-<!-- ========================= -->
-<!-- 03 BUSINESS -->
-<!-- ========================= -->
+<!-- BUSINESS -->
 
-<div class="section-title">03 · BUSINESS</div>
+<div class="section-title">
+03 · BUSINESS
+</div>
 
 <div class="grid">
 
 
-<!-- FOOD COST -->
-
 <div class="card">
 
-    <h2>💰 Food Cost</h2>
+<h2>💰 Food Cost</h2>
 
-    <div class="description">
-        Calculate bowl cost and gross margin.
-    </div>
+<div class="description">
+Calculate production cost per bowl and food cost percentage.
+</div>
 
-    <label>Total production cost — zł</label>
+<label>Total production cost — zł</label>
+<input id="productionCost" type="number" step="0.01">
 
-    <input
-        id="productionCost"
-        type="number"
-        step="0.01"
-        min="0"
-    >
+<label>Number of portions</label>
+<input id="portions" type="number">
 
-    <label>Number of portions</label>
+<label>Selling price per bowl — zł</label>
+<input id="sellingPrice" type="number" step="0.01">
 
-    <input
-        id="portions"
-        type="number"
-        step="1"
-        min="1"
-    >
+<button onclick="calculateFoodCost()">
+CALCULATE
+</button>
 
-    <label>Selling price / bowl — zł</label>
-
-    <input
-        id="sellingPrice"
-        type="number"
-        step="0.01"
-        min="0"
-    >
-
-    <button onclick="calculateFoodCost()">
-        CALCULATE
-    </button>
-
-    <div class="result" id="foodCostResult">
-        Results will appear here.
-    </div>
+<div class="result" id="foodCostResult">
+Enter values and calculate.
+</div>
 
 </div>
 
 
-<!-- BATCH -->
-
 <div class="card">
 
-    <h2>📦 Batch Calculator</h2>
+<h2>📦 Batch Calculator</h2>
 
-    <div class="description">
-        Calculate ingredient quantity for production.
-    </div>
+<div class="description">
+Calculate total ingredient quantity for production.
+</div>
 
-    <label>Ingredient per portion — g</label>
+<label>Ingredient per portion — g</label>
+<input id="batchPerPortion" type="number">
 
-    <input
-        id="batchPerPortion"
-        type="number"
-        step="0.1"
-        min="0"
-    >
+<label>Number of portions</label>
+<input id="batchPortions" type="number">
 
-    <label>Number of portions</label>
+<button onclick="calculateBatch()">
+CALCULATE
+</button>
 
-    <input
-        id="batchPortions"
-        type="number"
-        step="1"
-        min="1"
-    >
-
-    <button onclick="calculateBatch()">
-        CALCULATE
-    </button>
-
-    <div class="result" id="batchResult">
-        Results will appear here.
-    </div>
+<div class="result" id="batchResult">
+Enter values and calculate.
+</div>
 
 </div>
 
 
-<!-- BROTH CONVERTER -->
-
 <div class="card">
 
-    <h2>🥘 Broth Converter</h2>
+<h2>🥘 Broth Converter</h2>
 
-    <div class="description">
-        Convert broth volume into production portions.
-    </div>
+<div class="description">
+Calculate how many portions can be made from your broth.
+</div>
 
-    <label>Broth — liters</label>
+<label>Broth — liters</label>
+<input id="converterBroth" type="number">
 
-    <input
-        id="converterBroth"
-        type="number"
-        step="0.01"
-        min="0"
-    >
+<label>Serving size — ml</label>
+<input id="converterServing" type="number">
 
-    <label>Serving size — ml</label>
+<button onclick="calculateBrothConverter()">
+CALCULATE
+</button>
 
-    <input
-        id="converterServing"
-        type="number"
-        step="1"
-        min="1"
-    >
-
-    <button onclick="calculateBrothConverter()">
-        CALCULATE
-    </button>
-
-    <div class="result" id="converterResult">
-        Results will appear here.
-    </div>
+<div class="result" id="converterResult">
+Enter values and calculate.
+</div>
 
 </div>
 
@@ -891,11 +623,11 @@ footer{
 
 <footer>
 
-    SLURP NOODLES WITH ME · RAMEN LAB
+SLURP NOODLES WITH ME · RAMEN LAB
 
-    <br>
+<br><br>
 
-    <span>Built for ramen chefs.</span>
+BUILT FOR RAMEN CHEFS
 
 </footer>
 
@@ -904,254 +636,179 @@ footer{
 
 <script>
 
-/* =========================
-   HELPERS
-========================= */
+/* HELPER */
 
-function getNumber(id){
-
-    return parseFloat(
-        document.getElementById(id).value
-    );
-
+function value(id) {
+    return parseFloat(document.getElementById(id).value);
 }
 
-function valid(...values){
-
-    return values.every(
-        v => Number.isFinite(v) && v >= 0
-    );
-
+function numberFormat(number, decimals) {
+    return Number(number).toFixed(decimals);
 }
 
-function format(value, decimals = 2){
+function isValid() {
 
-    return Number(value).toFixed(decimals);
+    for (let i = 0; i < arguments.length; i++) {
 
+        if (
+            !Number.isFinite(arguments[i]) ||
+            arguments[i] < 0
+        ) {
+            return false;
+        }
+
+    }
+
+    return true;
 }
 
 
-/* =========================
-   RAMEN CALCULATOR
-========================= */
+/* RAMEN CALCULATOR */
 
-function calculateRamen(){
+function calculateRamen() {
 
-    const brothLiters =
-        getNumber("brothLiters");
+    const brothLiters = value("brothLiters");
+    const brothPerPortion = value("brothPerPortion");
+    const tarePerPortion = value("tarePerPortion");
+    const oilPerPortion = value("oilPerPortion");
 
-    const brothPerPortion =
-        getNumber("brothPerPortion");
+    const result = document.getElementById("ramenResult");
 
-    const tarePerPortion =
-        getNumber("tarePerPortion");
-
-    const oilPerPortion =
-        getNumber("oilPerPortion");
-
-    const result =
-        document.getElementById("ramenResult");
-
-    if(
-        !valid(
+    if (
+        !isValid(
             brothLiters,
             brothPerPortion,
             tarePerPortion,
             oilPerPortion
         ) ||
         brothPerPortion <= 0
-    ){
+    ) {
 
-        result.innerHTML =
-            '<span class="warning">Please enter valid values.</span>';
-
+        result.innerHTML = "Please enter valid values.";
         return;
-
     }
 
-    const brothMl =
-        brothLiters * 1000;
+    const totalBroth = brothLiters * 1000;
 
-    const portions =
-        Math.floor(
-            brothMl / brothPerPortion
-        );
+    const portions = Math.floor(
+        totalBroth / brothPerPortion
+    );
 
-    const usedBroth =
-        portions * brothPerPortion;
+    const usedBroth = portions * brothPerPortion;
 
-    const remainingBroth =
-        brothMl - usedBroth;
+    const remaining = totalBroth - usedBroth;
 
-    const totalTare =
-        portions * tarePerPortion;
+    const totalTare = portions * tarePerPortion;
 
-    const totalOil =
-        portions * oilPerPortion;
+    const totalOil = portions * oilPerPortion;
 
     result.innerHTML = `
-
         <strong>Portions:</strong>
-        <span class="highlight">
-            ${portions}
-        </span>
-
+        <span class="highlight">${portions}</span>
         <br><br>
-
-        <strong>Broth used:</strong>
-        ${format(usedBroth,0)} ml
-
-        <br>
-
-        <strong>Remaining broth:</strong>
-        <span class="blue">
-            ${format(remainingBroth,0)} ml
-        </span>
-
-        <br><br>
-
         <strong>Total tare:</strong>
-        ${format(totalTare,1)} ml
-
+        ${numberFormat(totalTare,1)} ml
         <br>
-
-        <strong>Total aromatic oil:</strong>
-        ${format(totalOil,1)} ml
-
+        <strong>Total oil:</strong>
+        ${numberFormat(totalOil,1)} ml
+        <br>
+        <strong>Remaining broth:</strong>
+        <span class="blue">${numberFormat(remaining,0)} ml</span>
     `;
 
 }
 
 
-/* =========================
-   SALT CALCULATOR
-========================= */
+/* SALT CALCULATOR */
 
-function calculateSalt(){
+function calculateSalt() {
 
-    const liquid =
-        getNumber("saltLiquid");
+    const liquid = value("saltLiquid");
+    const percent = value("saltPercent");
 
-    const saltPercent =
-        getNumber("saltPercent");
+    const result = document.getElementById("saltResult");
 
-    const result =
-        document.getElementById("saltResult");
-
-    if(
-        !valid(liquid,saltPercent) ||
+    if (
+        !isValid(liquid, percent) ||
         liquid <= 0
-    ){
+    ) {
 
-        result.innerHTML =
-            '<span class="warning">Please enter valid values.</span>';
-
+        result.innerHTML = "Please enter valid values.";
         return;
-
     }
 
-    const salt =
-        liquid * saltPercent / 100;
+    const salt = liquid * percent / 100;
 
     result.innerHTML = `
-
         <strong>Required salt:</strong>
-
+        <br>
         <span class="highlight">
-            ${format(salt,2)} g
+        ${numberFormat(salt,2)} g
         </span>
-
     `;
 
 }
 
 
-/* =========================
-   TARE TARGET CALCULATOR
-========================= */
+/* TARE TARGET CALCULATOR */
 
-function calculateTargetTare(){
+function calculateTargetTare() {
 
-    const broth =
-        getNumber("targetBroth");
-
-    const brothSalt =
-        getNumber("targetBrothSalt");
-
-    const tareSalt =
-        getNumber("targetTareSalt");
-
-    const targetSalt =
-        getNumber("targetFinalSalt");
+    const broth = value("targetBroth");
+    const brothSalt = value("targetBrothSalt");
+    const tareSalt = value("targetTareSalt");
+    const targetSalt = value("targetFinalSalt");
 
     const result =
         document.getElementById("targetTareResult");
 
-
-    if(
-        !valid(
+    if (
+        !isValid(
             broth,
             brothSalt,
             tareSalt,
             targetSalt
         ) ||
-        broth <= 0 ||
-        tareSalt <= targetSalt
-    ){
+        broth <= 0
+    ) {
 
-        result.innerHTML = `
-
-            <span class="warning">
-                Please enter valid values.
-                Tare salt must be higher than
-                target final salt.
-            </span>
-
-        `;
+        result.innerHTML =
+            "Please enter valid values.";
 
         return;
-
     }
 
+    if (tareSalt <= targetSalt) {
+
+        result.innerHTML =
+            "Tare salt must be higher than desired final salt.";
+
+        return;
+    }
+
+    if (targetSalt < brothSalt) {
+
+        result.innerHTML =
+            "Target salt cannot be lower than broth salt.";
+
+        return;
+    }
 
     /*
-       Formula:
+    Formula:
 
-       Final salt =
-       (broth × brothSalt + tare × tareSalt)
-       ÷ (broth + tare)
+    (B × Sb + T × St) / (B + T) = Sf
 
-       Solved for tare:
+    T = B × (Sf - Sb) / (St - Sf)
 
-       tare =
-       broth ×
-       (target - brothSalt)
-       ÷
-       (tareSalt - target)
+    Percent values can be used directly
+    because they cancel each other.
     */
-
 
     const tare =
         broth *
         (targetSalt - brothSalt) /
         (tareSalt - targetSalt);
-
-
-    if(tare < 0){
-
-        result.innerHTML = `
-
-            <span class="warning">
-                Target salt is already below the
-                salt level of the broth.
-            </span>
-
-        `;
-
-        return;
-
-    }
-
 
     const saltFromBroth =
         broth * brothSalt / 100;
@@ -1162,76 +819,341 @@ function calculateTargetTare(){
     const totalSalt =
         saltFromBroth + saltFromTare;
 
-    const totalMass =
+    const totalVolume =
         broth + tare;
 
     const finalSalt =
-        totalSalt / totalMass * 100;
-
+        totalSalt / totalVolume * 100;
 
     result.innerHTML = `
-
         <strong>Required tare:</strong>
-
+        <br>
         <span class="highlight">
-            ${format(tare,2)} ml
+        ${numberFormat(tare,2)} ml
         </span>
 
         <br><br>
-
-        <strong>Tare weight:</strong>
-        ${format(tare,2)} g
-
-        <br>
 
         <strong>Salt from tare:</strong>
-        ${format(saltFromTare,2)} g
+        ${numberFormat(saltFromTare,2)} g
 
         <br>
 
-        <strong>Total mixture:</strong>
-        ${format(totalMass,2)} g
+        <strong>Total bowl volume:</strong>
+        ${numberFormat(totalVolume,2)} ml
 
-        <br><br>
+        <br>
 
         <strong>Final salt:</strong>
-
         <span class="green">
-            ${format(finalSalt,2)}%
+        ${numberFormat(finalSalt,2)}%
         </span>
-
     `;
 
 }
 
 
-/* =========================
-   TARE CHECK BOWL
-========================= */
+/* CHECK BOWL */
 
-function calculateCheckBowl(){
+function calculateCheckBowl() {
 
-    const broth =
-        getNumber("checkBroth");
-
-    const brothSalt =
-        getNumber("checkBrothSalt");
-
-    const tare =
-        getNumber("checkTare");
-
-    const tareSalt =
-        getNumber("checkTareSalt");
+    const broth = value("checkBroth");
+    const brothSalt = value("checkBrothSalt");
+    const tare = value("checkTare");
+    const tareSalt = value("checkTareSalt");
 
     const result =
         document.getElementById("checkBowlResult");
 
-
-    if(
-        !valid(
+    if (
+        !isValid(
             broth,
             brothSalt,
             tare,
             tareSalt
         ) ||
-        broth + tare <
+        (broth + tare) <= 0
+    ) {
+
+        result.innerHTML =
+            "Please enter valid values.";
+
+        return;
+    }
+
+    const saltFromBroth =
+        broth * brothSalt / 100;
+
+    const saltFromTare =
+        tare * tareSalt / 100;
+
+    const totalSalt =
+        saltFromBroth + saltFromTare;
+
+    const totalVolume =
+        broth + tare;
+
+    const finalSalt =
+        totalSalt / totalVolume * 100;
+
+    result.innerHTML = `
+        <strong>Salt from broth:</strong>
+        ${numberFormat(saltFromBroth,2)} g
+
+        <br>
+
+        <strong>Salt from tare:</strong>
+        ${numberFormat(saltFromTare,2)} g
+
+        <br><br>
+
+        <strong>Total salt:</strong>
+        ${numberFormat(totalSalt,2)} g
+
+        <br>
+
+        <strong>Total bowl volume:</strong>
+        ${numberFormat(totalVolume,1)} ml
+
+        <br><br>
+
+        <strong>Final bowl salt:</strong>
+
+        <span class="highlight">
+        ${numberFormat(finalSalt,2)}%
+        </span>
+    `;
+
+}
+
+
+/* HYDRATION */
+
+function calculateHydration() {
+
+    const flour = value("flour");
+    const water = value("water");
+
+    const result =
+        document.getElementById("hydrationResult");
+
+    if (
+        !isValid(flour, water) ||
+        flour <= 0
+    ) {
+
+        result.innerHTML =
+            "Please enter valid values.";
+
+        return;
+    }
+
+    const hydration =
+        water / flour * 100;
+
+    result.innerHTML = `
+        <strong>Hydration:</strong>
+        <br>
+        <span class="highlight">
+        ${numberFormat(hydration,2)}%
+        </span>
+    `;
+
+}
+
+
+/* KANSUI */
+
+function calculateKansui() {
+
+    const flour = value("kansuiFlour");
+    const percent = value("kansuiPercent");
+
+    const result =
+        document.getElementById("kansuiResult");
+
+    if (
+        !isValid(flour, percent) ||
+        flour <= 0
+    ) {
+
+        result.innerHTML =
+            "Please enter valid values.";
+
+        return;
+    }
+
+    const kansui =
+        flour * percent / 100;
+
+    result.innerHTML = `
+        <strong>Kansui required:</strong>
+        <br>
+        <span class="highlight">
+        ${numberFormat(kansui,2)} g
+        </span>
+    `;
+
+}
+
+
+/* RECIPE SCALER */
+
+function calculateScaler() {
+
+    const original = value("originalRecipe");
+    const newRecipe = value("newRecipe");
+    const ingredient = value("ingredientAmount");
+
+    const result =
+        document.getElementById("scalerResult");
+
+    if (
+        !isValid(
+            original,
+            newRecipe,
+            ingredient
+        ) ||
+        original <= 0
+    ) {
+
+        result.innerHTML =
+            "Please enter valid values.";
+
+        return;
+    }
+
+    const multiplier =
+        newRecipe / original;
+
+    const newIngredient =
+        ingredient * multiplier;
+
+    result.innerHTML = `
+        <strong>Multiplier:</strong>
+        ${numberFormat(multiplier,3)}×
+
+        <br><br>
+
+        <strong>New ingredient amount:</strong>
+        <br>
+
+        <span class="highlight">
+        ${numberFormat(newIngredient,2)} g
+        </span>
+    `;
+
+}
+
+
+/* FOOD COST */
+
+function calculateFoodCost() {
+
+    const production = value("productionCost");
+    const portions = value("portions");
+    const selling = value("sellingPrice");
+
+    const result =
+        document.getElementById("foodCostResult");
+
+    if (
+        !isValid(
+            production,
+            portions,
+            selling
+        ) ||
+        portions <= 0 ||
+        selling <= 0
+    ) {
+
+        result.innerHTML =
+            "Please enter valid values.";
+
+        return;
+    }
+
+    const costPerBowl =
+        production / portions;
+
+    const foodCost =
+        costPerBowl / selling * 100;
+
+    const margin =
+        selling - costPerBowl;
+
+    result.innerHTML = `
+        <strong>Cost per bowl:</strong>
+        ${numberFormat(costPerBowl,2)} zł
+
+        <br>
+
+        <strong>Food cost:</strong>
+
+        <span class="highlight">
+        ${numberFormat(foodCost,2)}%
+        </span>
+
+        <br>
+
+        <strong>Gross margin:</strong>
+
+        <span class="green">
+        ${numberFormat(margin,2)} zł
+        </span>
+    `;
+
+}
+
+
+/* BATCH */
+
+function calculateBatch() {
+
+    const perPortion =
+        value("batchPerPortion");
+
+    const portions =
+        value("batchPortions");
+
+    const result =
+        document.getElementById("batchResult");
+
+    if (
+        !isValid(
+            perPortion,
+            portions
+        ) ||
+        portions <= 0
+    ) {
+
+        result.innerHTML =
+            "Please enter valid values.";
+
+        return;
+    }
+
+    const total =
+        perPortion * portions;
+
+    result.innerHTML = `
+        <strong>Total required:</strong>
+        <br>
+
+        <span class="highlight">
+        ${numberFormat(total,2)} g
+        </span>
+    `;
+
+}
+
+
+/* BROTH CONVERTER */
+
+function calculateBrothConverter() {
+
+    const liters =
+        value("converterBroth");
+
+    const serving =
+        value("converter
