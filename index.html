@@ -1,60 +1,876 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kalkulator Zasolenia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Slurp Noodles With Me — Ramen Lab</title>
+
+<style>
+:root{
+  --bg:#0d0d0d;
+  --card:#171717;
+  --card2:#202020;
+  --text:#f5f5f5;
+  --muted:#999;
+  --accent:#e63946;
+  --accent2:#ff6b35;
+  --border:#2d2d2d;
+  --green:#63d471;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at top,#292929 0,#0d0d0d 42%);
+  color:var(--text);
+}
+
+.container{
+  width:min(1100px,92%);
+  margin:auto;
+}
+
+/* HEADER */
+
+header{
+  padding:55px 0 35px;
+  text-align:center;
+}
+
+.logo{
+  font-size:clamp(34px,7vw,68px);
+  font-weight:900;
+  letter-spacing:-3px;
+  margin:0;
+}
+
+.logo span{
+  color:var(--accent);
+}
+
+.subtitle{
+  color:var(--muted);
+  margin-top:10px;
+  font-size:14px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.version{
+  display:inline-block;
+  margin-top:18px;
+  padding:7px 13px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  color:#aaa;
+  font-size:11px;
+}
+
+/* SECTIONS */
+
+.section{
+  margin:30px 0;
+}
+
+.section-title{
+  font-size:25px;
+  margin-bottom:6px;
+}
+
+.section-description{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+}
+
+/* CARD */
+
+.card{
+  background:linear-gradient(145deg,#1c1c1c,#121212);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.card h3{
+  margin:0 0 6px;
+  font-size:20px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* CALCULATOR */
+
+.calculator{
+  margin-top:20px;
+}
+
+.field{
+  margin:15px 0;
+}
+
+label{
+  display:block;
+  margin-bottom:7px;
+  font-size:13px;
+  color:#ccc;
+}
+
+input{
+  width:100%;
+  padding:14px 15px;
+  border-radius:11px;
+  border:1px solid #353535;
+  background:#0e0e0e;
+  color:white;
+  font-size:17px;
+  outline:none;
+  transition:.2s;
+}
+
+input:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 2px rgba(230,57,70,.12);
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:11px;
+  background:var(--accent);
+  color:white;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+  margin-top:5px;
+}
+
+button:hover{
+  background:#ff4b59;
+  transform:translateY(-1px);
+}
+
+.result{
+  margin-top:18px;
+  padding:18px;
+  border-radius:13px;
+  background:#101010;
+  border:1px solid #303030;
+  text-align:center;
+}
+
+.result-label{
+  color:var(--muted);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.result-value{
+  font-size:34px;
+  font-weight:900;
+  margin-top:5px;
+  color:var(--green);
+}
+
+.result-small{
+  color:#aaa;
+  font-size:12px;
+  margin-top:7px;
+}
+
+/* INFO */
+
+.info{
+  margin-top:18px;
+  padding:14px;
+  border-left:3px solid var(--accent);
+  background:#151515;
+  color:#aaa;
+  font-size:13px;
+  line-height:1.55;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:50px 0 35px;
+  color:#666;
+  font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+  header{
+    padding-top:38px;
+  }
+
+  .logo{
+    letter-spacing:-2px;
+  }
+
+  .card{
+    padding:18px;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <h3>Kalkulator Zasolenia</h3>
+<header>
+  <div class="container">
+    <h1 class="logo">
+      SLURP <span>NOODLES</span> WITH ME
+    </h1>
 
-  <div>
-    <label for="płyn">Objętość wywaru (ml / g):</label><br>
-    <input type="text" id="płyn" placeholder="np. 350" oninput="oblicz()">
-  </div><br>
+    <div class="subtitle">
+      Ramen Lab · Calculator
+    </div>
 
-  <div>
-    <label for="tare">Waga tare (g):</label><br>
-    <input type="text" id="tare" placeholder="np. 35" oninput="oblicz()">
-  </div><br>
+    <div class="version">
+      V1.2
+    </div>
+  </div>
+</header>
 
-  <div>
-    <label for="zasolenieTare">Zasolenie tare (%):</label><br>
-    <input type="text" id="zasolenieTare" placeholder="np. 12" oninput="oblicz()">
-  </div><br>
 
-  <button onclick="oblicz()">Przelicz</button>
+<main class="container">
 
-  <h4 id="wynik">Wynik: 0.00%</h4>
+  <!-- RAMEN LAB -->
 
-  <script>
-    function value(id) {
-      const el = document.getElementById(id);
-      if (!el) return 0;
-      const input = el.value.trim().replace(',', '.');
-      const val = parseFloat(input);
-      return isNaN(val) ? 0 : val;
-    }
+  <section class="section">
 
-    function oblicz() {
-      const p = value('płyn');
-      const t = value('tare');
-      const zT = value('zasolenieTare');
+    <h2 class="section-title">🥣 Ramen Lab</h2>
 
-      if (p <= 0) {
-        document.getElementById('wynik').innerText = "Wynik: 0.00%";
-        return;
-      }
+    <div class="section-description">
+      Calculators for broth, tare and final bowl salinity.
+    </div>
 
-      const sol = t * (zT / 100);
-      const lacznaMasa = p + t;
-      const wynikZasolenia = (sol / lacznaMasa) * 100;
+    <div class="grid">
 
-      document.getElementById('wynik').innerText = `Wynik: ${wynikZasolenia.toFixed(2)}%`;
-    }
-  </script>
+      <!-- TARE CALCULATOR -->
+
+      <div class="card calculator">
+
+        <h3>🥣 Tare Calculator</h3>
+
+        <p>
+          Calculate how much tare is needed to reach
+          your desired final salt level.
+        </p>
+
+        <div class="field">
+          <label for="broth">
+            Broth — ml / g
+          </label>
+
+          <input
+            id="broth"
+            type="text"
+            inputmode="decimal"
+            placeholder="354"
+            value="354"
+          >
+        </div>
+
+        <div class="field">
+          <label for="brothSalt">
+            Broth salt — %
+          </label>
+
+          <input
+            id="brothSalt"
+            type="text"
+            inputmode="decimal"
+            placeholder="0"
+            value="0"
+          >
+        </div>
+
+        <div class="field">
+          <label for="tareSalt">
+            Tare salt — %
+          </label>
+
+          <input
+            id="tareSalt"
+            type="text"
+            inputmode="decimal"
+            placeholder="12,8"
+            value="12,8"
+          >
+        </div>
+
+        <div class="field">
+          <label for="targetSalt">
+            Desired final bowl salt — %
+          </label>
+
+          <input
+            id="targetSalt"
+            type="text"
+            inputmode="decimal"
+            placeholder="1,60"
+            value="1,60"
+          >
+        </div>
+
+        <button onclick="calculateTare()">
+          CALCULATE
+        </button>
+
+        <div class="result">
+
+          <div class="result-label">
+            Required tare
+          </div>
+
+          <div
+            class="result-value"
+            id="tareResult"
+          >
+            —
+          </div>
+
+          <div
+            class="result-small"
+            id="tareDetails"
+          >
+            Enter values and calculate
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FINAL SALT CALCULATOR -->
+
+      <div class="card calculator">
+
+        <h3>🧂 Final Bowl Salt</h3>
+
+        <p>
+          Calculate the final salt percentage
+          after adding tare to broth.
+        </p>
+
+        <div class="field">
+
+          <label for="finalBroth">
+            Broth — ml / g
+          </label>
+
+          <input
+            id="finalBroth"
+            type="text"
+            inputmode="decimal"
+            placeholder="354"
+            value="354"
+          >
+
+        </div>
+
+        <div class="field">
+
+          <label for="finalBrothSalt">
+            Broth salt — %
+          </label>
+
+          <input
+            id="finalBrothSalt"
+            type="text"
+            inputmode="decimal"
+            placeholder="0"
+            value="0"
+          >
+
+        </div>
+
+        <div class="field">
+
+          <label for="finalTare">
+            Tare — g
+          </label>
+
+          <input
+            id="finalTare"
+            type="text"
+            inputmode="decimal"
+            placeholder="45"
+            value="45"
+          >
+
+        </div>
+
+        <div class="field">
+
+          <label for="finalTareSalt">
+            Tare salt — %
+          </label>
+
+          <input
+            id="finalTareSalt"
+            type="text"
+            inputmode="decimal"
+            placeholder="12,8"
+            value="12,8"
+          >
+
+        </div>
+
+        <button onclick="calculateFinalSalt()">
+          CALCULATE
+        </button>
+
+        <div class="result">
+
+          <div class="result-label">
+            Final bowl salt
+          </div>
+
+          <div
+            class="result-value"
+            id="finalSaltResult"
+          >
+            —
+          </div>
+
+          <div
+            class="result-small"
+            id="finalSaltDetails"
+          >
+            Enter values and calculate
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- TARE SALT -->
+
+      <div class="card calculator">
+
+        <h3>🧪 Tare Salt</h3>
+
+        <p>
+          Calculate how much salt is contained
+          in a given amount of tare.
+        </p>
+
+        <div class="field">
+
+          <label for="tareWeight">
+            Tare weight — g
+          </label>
+
+          <input
+            id="tareWeight"
+            type="text"
+            inputmode="decimal"
+            placeholder="45"
+            value="45"
+          >
+
+        </div>
+
+        <div class="field">
+
+          <label for="tarePercentage">
+            Tare salt — %
+          </label>
+
+          <input
+            id="tarePercentage"
+            type="text"
+            inputmode="decimal"
+            placeholder="12,8"
+            value="12,8"
+          >
+
+        </div>
+
+        <button onclick="calculateTareSalt()">
+          CALCULATE
+        </button>
+
+        <div class="result">
+
+          <div class="result-label">
+            Salt contained
+          </div>
+
+          <div
+            class="result-value"
+            id="tareSaltResult"
+          >
+            —
+          </div>
+
+          <div
+            class="result-small"
+            id="tareSaltDetails"
+          >
+            Enter values and calculate
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FORMULA -->
+
+  <section class="section">
+
+    <div class="card">
+
+      <h3>📐 How it works</h3>
+
+      <div class="info">
+
+        The Tare Calculator calculates the amount of tare
+        necessary to reach your desired final salt level.
+
+        <br><br>
+
+        Example:
+
+        <strong>
+          354 g broth + 12,8% tare → 1,60% final salt
+        </strong>
+
+        <br><br>
+
+        Decimal commas are supported:
+        <strong>12,8</strong> = <strong>12.8</strong>.
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+  SLURP NOODLES WITH ME · RAMEN LAB V1.2
+</footer>
+
+
+<script>
+
+/* ================================
+   NUMBER PARSER
+================================ */
+
+function number(id){
+
+  const element = document.getElementById(id);
+
+  if(!element){
+    return 0;
+  }
+
+  let value = element.value
+    .trim()
+    .replace(/\s/g,'')
+    .replace(',','.');
+
+  const result = parseFloat(value);
+
+  return Number.isFinite(result) ? result : 0;
+}
+
+
+/* ================================
+   TARE CALCULATOR
+================================ */
+
+function calculateTare(){
+
+  const broth = number('broth');
+  const brothSalt = number('brothSalt');
+  const tareSalt = number('tareSalt');
+  const targetSalt = number('targetSalt');
+
+  const result = document.getElementById('tareResult');
+  const details = document.getElementById('tareDetails');
+
+  if(
+    broth <= 0 ||
+    tareSalt <= 0 ||
+    targetSalt <= 0
+  ){
+
+    result.innerText = '—';
+
+    details.innerText =
+      'Check the entered values.';
+
+    return;
+  }
+
+  /*
+    Equation:
+
+    (broth × brothSalt/100 + tare × tareSalt/100)
+    /
+    (broth + tare)
+    =
+    targetSalt/100
+
+    Solving for tare:
+
+    tare =
+    broth × (target - brothSalt)
+    /
+    (tareSalt - target)
+  */
+
+  if(tareSalt <= targetSalt){
+
+    result.innerText = '—';
+
+    details.innerText =
+      'Tare salt % must be higher than target salt %.';
+
+    return;
+  }
+
+  if(targetSalt <= brothSalt){
+
+    result.innerText = '0 g';
+
+    details.innerText =
+      'Broth is already at or above the target salt level.';
+
+    return;
+  }
+
+  const tare =
+    broth *
+    (targetSalt - brothSalt) /
+    (tareSalt - targetSalt);
+
+  const finalMass = broth + tare;
+
+  const saltFromBroth =
+    broth * brothSalt / 100;
+
+  const saltFromTare =
+    tare * tareSalt / 100;
+
+  const totalSalt =
+    saltFromBroth + saltFromTare;
+
+  const finalSalt =
+    totalSalt / finalMass * 100;
+
+  result.innerText =
+    tare.toFixed(2) + ' g';
+
+  details.innerText =
+    'Final mass: ' +
+    finalMass.toFixed(2) +
+    ' g · Final salt: ' +
+    finalSalt.toFixed(2) +
+    '%';
+}
+
+
+/* ================================
+   FINAL SALT
+================================ */
+
+function calculateFinalSalt(){
+
+  const broth = number('finalBroth');
+  const brothSalt = number('finalBrothSalt');
+  const tare = number('finalTare');
+  const tareSalt = number('finalTareSalt');
+
+  const result =
+    document.getElementById('finalSaltResult');
+
+  const details =
+    document.getElementById('finalSaltDetails');
+
+  if(
+    broth <= 0 ||
+    tare < 0 ||
+    brothSalt < 0 ||
+    tareSalt < 0
+  ){
+
+    result.innerText = '—';
+
+    details.innerText =
+      'Check the entered values.';
+
+    return;
+  }
+
+  const brothSaltAmount =
+    broth * brothSalt / 100;
+
+  const tareSaltAmount =
+    tare * tareSalt / 100;
+
+  const totalSalt =
+    brothSaltAmount + tareSaltAmount;
+
+  const totalMass =
+    broth + tare;
+
+  if(totalMass <= 0){
+
+    result.innerText = '—';
+
+    details.innerText =
+      'Total mass must be greater than zero.';
+
+    return;
+  }
+
+  const finalSalt =
+    totalSalt / totalMass * 100;
+
+  result.innerText =
+    finalSalt.toFixed(2) + '%';
+
+  details.innerText =
+    'Total mass: ' +
+    totalMass.toFixed(2) +
+    ' g · Salt: ' +
+    totalSalt.toFixed(2) +
+    ' g';
+}
+
+
+/* ================================
+   TARE SALT
+================================ */
+
+function calculateTareSalt(){
+
+  const tare =
+    number('tareWeight');
+
+  const percentage =
+    number('tarePercentage');
+
+  const result =
+    document.getElementById('tareSaltResult');
+
+  const details =
+    document.getElementById('tareSaltDetails');
+
+  if(
+    tare <= 0 ||
+    percentage < 0
+  ){
+
+    result.innerText = '—';
+
+    details.innerText =
+      'Check the entered values.';
+
+    return;
+  }
+
+  const salt =
+    tare * percentage / 100;
+
+  result.innerText =
+    salt.toFixed(2) + ' g';
+
+  details.innerText =
+    percentage.toFixed(2) +
+    '% of ' +
+    tare.toFixed(2) +
+    ' g tare';
+}
+
+
+/* ================================
+   LIVE CALCULATION
+================================ */
+
+[
+  'broth',
+  'brothSalt',
+  'tareSalt',
+  'targetSalt'
+].forEach(id => {
+
+  document.getElementById(id)
+    .addEventListener('input', calculateTare);
+
+});
+
+
+[
+  'finalBroth',
+  'finalBrothSalt',
+  'finalTare',
+  'finalTareSalt'
+].forEach(id => {
+
+  document.getElementById(id)
+    .addEventListener('input', calculateFinalSalt);
+
+});
+
+
+[
+  'tareWeight',
+  'tarePercentage'
+].forEach(id => {
+
+  document.getElementById(id)
+    .addEventListener('input', calculateTareSalt);
+
+});
+
+
+/* INITIAL CALCULATION */
+
+calculateTare();
+calculateFinalSalt();
+calculateTareSalt();
+
+</script>
 
 </body>
 </html>
-
