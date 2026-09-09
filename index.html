@@ -1,1 +1,734 @@
 
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLURP NOODLES WITH ME — RAMEN LAB</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0b0b0d;
+    color: #f4f4f4;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+header {
+    border-bottom: 1px solid #29292d;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    background: rgba(11,11,13,.96);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #ff6b35;
+}
+
+.version {
+    color: #777;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px 70px;
+}
+
+.hero {
+    padding: 35px 0 45px;
+}
+
+.hero small {
+    color: #ff6b35;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 10vw, 90px);
+    line-height: .9;
+    margin: 15px 0;
+    letter-spacing: -4px;
+}
+
+.hero p {
+    color: #999;
+    max-width: 600px;
+    font-size: 16px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #141417;
+    border: 1px solid #29292d;
+    border-radius: 14px;
+    padding: 24px;
+}
+
+.card:hover {
+    border-color: #444;
+}
+
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.card .desc {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    color: #aaa;
+    font-size: 12px;
+    margin: 14px 0 6px;
+}
+
+input {
+    width: 100%;
+    background: #0d0d0f;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #ff6b35;
+}
+
+button {
+    width: 100%;
+    margin-top: 18px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #ff6b35;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: .85;
+}
+
+.result {
+    margin-top: 18px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #0d0d0f;
+    border: 1px solid #29292d;
+    color: #ddd;
+}
+
+.result strong {
+    color: #ff6b35;
+}
+
+.divider {
+    margin: 50px 0 25px;
+    border-top: 1px solid #29292d;
+}
+
+.section-title {
+    margin-bottom: 18px;
+    color: #ff6b35;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+footer {
+    border-top: 1px solid #29292d;
+    padding: 25px 20px;
+    color: #666;
+    text-align: center;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SLURP <span>NOODLES</span> WITH ME</div>
+    <div class="version">RAMEN LAB · V1.0</div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+    <small>RAMEN ENGINEERING</small>
+
+    <h1>
+        RAMEN<br>
+        LAB.
+    </h1>
+
+    <p>
+        Calculators for ramen chefs.
+        Broth, tare, noodles, kansui, salt,
+        recipes and food cost — all in one place.
+    </p>
+</section>
+
+
+<div class="section-title">
+    01 · RAMEN
+</div>
+
+<section class="grid">
+
+<div class="card">
+
+    <h2>🍜 Ramen Calculator</h2>
+
+    <div class="desc">
+        Calculate portions, tare and aromatic oil.
+    </div>
+
+    <label>Broth — liters</label>
+    <input id="broth" type="number" value="10">
+
+    <label>Broth / portion — ml</label>
+    <input id="brothPortion" type="number" value="354">
+
+    <label>Tare / portion — ml</label>
+    <input id="tarePortion" type="number" value="40">
+
+    <label>Aromatic oil / portion — ml</label>
+    <input id="oilPortion" type="number" value="15">
+
+    <button onclick="ramenCalc()">
+        CALCULATE
+    </button>
+
+    <div class="result" id="ramenResult">
+        Results will appear here.
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <h2>🧂 Salt Calculator</h2>
+
+    <div class="desc">
+        Calculate salt concentration.
+    </div>
+
+    <label>Liquid / broth — ml</label>
+    <input id="saltLiquid" type="number" value="1000">
+
+    <label>Desired salt — %</label>
+    <input id="saltPercent" type="number" value="1.2" step="0.1">
+
+    <button onclick="saltCalc()">
+        CALCULATE
+    </button>
+
+    <div class="result" id="saltResult">
+        Results will appear here.
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <h2>🥣 Tare Calculator</h2>
+
+    <div class="desc">
+        Calculate tare salt contribution.
+    </div>
+
+    <label>Tare amount — ml</label>
+    <input id="tareAmount" type="number" value="40">
+
+    <label>Tare salt — %</label>
+    <input id="tareSalt" type="number" value="12" step="0.1">
+
+    <button onclick="tareCalc()">
+        CALCULATE
+    </button>
+
+    <div class="result" id="tareResult">
+        Results will appear here.
+    </div>
+
+</div>
+
+</section>
+
+
+<div class="divider"></div>
+
+<div class="section-title">
+    02 · NOODLES
+</div>
+
+<section class="grid">
+
+<div class="card">
+
+    <h2>🍜 Noodle Hydration</h2>
+
+    <div class="desc">
+        Calculate water percentage in noodle dough.
+    </div>
+
+    <label>Flour — g</label>
+    <input id="flour" type="number" value="1000">
+
+    <label>Water — g</label>
+    <input id="water" type="number" value="350">
+
+    <button onclick="hydrationCalc()">
+        CALCULATE
+    </button>
+
+    <div class="result" id="hydrationResult">
+        Results will appear here.
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <h2>⚗️ Kansui Calculator</h2>
+
+    <div class="desc">
+        Calculate kansui quantity relative to flour.
+    </div>
+
+    <label>Flour — g</label>
+    <input id="kansuiFlour" type="number" value="1000">
+
+    <label>Kansui — %</label>
+    <input id="kansuiPercent" type="number" value="1.2" step="0.1">
+
+    <button onclick="kansuiCalc()">
+        CALCULATE
+    </button>
+
+    <div class="result" id="kansuiResult">
+        Results will appear here.
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <h2>⚖️ Recipe Scaler</h2>
+
+    <div class="desc">
+        Scale any ingredient to a new batch size.
+    </div>
+
+    <label>Original recipe amount — g</label>
+    <input id="originalAmount" type="number" value="1000">
+
+    <label>New recipe amount — g</label>
+    <input id="newAmount" type="number" value="2500">
+
+    <label>Ingredient — g</label>
+    <input id="ingredientAmount" type="number" value="120">
+
+    <button onclick="scaleCalc()">
+        CALCULATE
+    </button>
+
+    <div class="result" id="scaleResult">
+        Results will appear here.
+    </div>
+
+</div>
+
+</section>
+
+
+<div class="divider"></div>
+
+<div class="section-title">
+    03 · BUSINESS
+</div>
+
+<section class="grid">
+
+<div class="card">
+
+    <h2>💰 Food Cost</h2>
+
+    <div class="desc">
+        Calculate bowl cost and gross margin.
+    </div>
+
+    <label>Total production cost — zł</label>
+    <input id="productionCost" type="number" value="500">
+
+    <label>Number of portions</label>
+    <input id="portions" type="number" value="50">
+
+    <label>Selling price / bowl — zł</label>
+    <input id="sellingPrice" type="number" value="45">
+
+    <button onclick="foodCostCalc()">
+        CALCULATE
+    </button>
+
+    <div class="result" id="foodResult">
+        Results will appear here.
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <h2>📦 Batch Calculator</h2>
+
+    <div class="desc">
+        Calculate ingredient quantity for production.
+    </div>
+
+    <label>Ingredient per portion — g</label>
+    <input id="ingredientPerPortion" type="number" value="30">
+
+    <label>Number of portions</label>
+    <input id="batchPortions" type="number" value="100">
+
+    <button onclick="batchCalc()">
+        CALCULATE
+    </button>
+
+    <div class="result" id="batchResult">
+        Results will appear here.
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <h2>🥘 Broth Converter</h2>
+
+    <div class="desc">
+        Convert broth volume into production portions.
+    </div>
+
+    <label>Broth — liters</label>
+    <input id="convertBroth" type="number" value="60">
+
+    <label>Serving size — ml</label>
+    <input id="convertServing" type="number" value="354">
+
+    <button onclick="brothConvert()">
+        CALCULATE
+    </button>
+
+    <div class="result" id="brothResult">
+        Results will appear here.
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+    SLURP NOODLES WITH ME · RAMEN LAB
+    <br>
+    Built for ramen chefs.
+</footer>
+
+
+<script>
+
+function num(id) {
+    return parseFloat(
+        document.getElementById(id).value
+    ) || 0;
+}
+
+
+/* RAMEN CALCULATOR */
+
+function ramenCalc() {
+
+    const broth = num("broth");
+    const brothPortion = num("brothPortion");
+    const tare = num("tarePortion");
+    const oil = num("oilPortion");
+
+    const totalBroth = broth * 1000;
+
+    const portions =
+        Math.floor(totalBroth / brothPortion);
+
+    const totalTare =
+        portions * tare;
+
+    const totalOil =
+        portions * oil;
+
+    const remaining =
+        totalBroth -
+        portions * brothPortion;
+
+    document.getElementById(
+        "ramenResult"
+    ).innerHTML =
+
+        `<strong>${portions}</strong> portions<br>
+        Tare: <strong>${totalTare.toFixed(0)} ml</strong><br>
+        Oil: <strong>${totalOil.toFixed(0)} ml</strong><br>
+        Remaining broth:
+        <strong>${remaining.toFixed(0)} ml</strong>`;
+}
+
+
+/* SALT */
+
+function saltCalc() {
+
+    const liquid =
+        num("saltLiquid");
+
+    const percent =
+        num("saltPercent");
+
+    const salt =
+        liquid * percent / 100;
+
+    document.getElementById(
+        "saltResult"
+    ).innerHTML =
+
+        `Required salt:
+        <strong>${salt.toFixed(2)} g</strong>`;
+}
+
+
+/* TARE */
+
+function tareCalc() {
+
+    const amount =
+        num("tareAmount");
+
+    const percent =
+        num("tareSalt");
+
+    const salt =
+        amount * percent / 100;
+
+    document.getElementById(
+        "tareResult"
+    ).innerHTML =
+
+        `Approx. salt:
+        <strong>${salt.toFixed(2)} g</strong>`;
+}
+
+
+/* HYDRATION */
+
+function hydrationCalc() {
+
+    const flour =
+        num("flour");
+
+    const water =
+        num("water");
+
+    if (!flour) return;
+
+    const hydration =
+        water / flour * 100;
+
+    document.getElementById(
+        "hydrationResult"
+    ).innerHTML =
+
+        `Hydration:
+        <strong>${hydration.toFixed(1)}%</strong>`;
+}
+
+
+/* KANSUI */
+
+function kansuiCalc() {
+
+    const flour =
+        num("kansuiFlour");
+
+    const percent =
+        num("kansuiPercent");
+
+    const kansui =
+        flour * percent / 100;
+
+    document.getElementById(
+        "kansuiResult"
+    ).innerHTML =
+
+        `Kansui:
+        <strong>${kansui.toFixed(2)} g</strong>`;
+}
+
+
+/* RECIPE SCALER */
+
+function scaleCalc() {
+
+    const original =
+        num("originalAmount");
+
+    const newAmount =
+        num("newAmount");
+
+    const ingredient =
+        num("ingredientAmount");
+
+    if (!original) return;
+
+    const multiplier =
+        newAmount / original;
+
+    const result =
+        ingredient * multiplier;
+
+    document.getElementById(
+        "scaleResult"
+    ).innerHTML =
+
+        `Multiplier:
+        <strong>${multiplier.toFixed(2)}×</strong><br>
+
+        New ingredient amount:
+        <strong>${result.toFixed(2)} g</strong>`;
+}
+
+
+/* FOOD COST */
+
+function foodCostCalc() {
+
+    const cost =
+        num("productionCost");
+
+    const portions =
+        num("portions");
+
+    const price =
+        num("sellingPrice");
+
+    if (!portions || !price) return;
+
+    const bowlCost =
+        cost / portions;
+
+    const foodCost =
+        bowlCost / price * 100;
+
+    const margin =
+        price - bowlCost;
+
+    document.getElementById(
+        "foodResult"
+    ).innerHTML =
+
+        `Cost / bowl:
+        <strong>${bowlCost.toFixed(2)} zł</strong><br>
+
+        Food cost:
+        <strong>${foodCost.toFixed(1)}%</strong><br>
+
+        Gross margin:
+        <strong>${margin.toFixed(2)} zł</strong>`;
+}
+
+
+/* BATCH */
+
+function batchCalc() {
+
+    const ingredient =
+        num("ingredientPerPortion");
+
+    const portions =
+        num("batchPortions");
+
+    const total =
+        ingredient * portions;
+
+    document.getElementById(
+        "batchResult"
+    ).innerHTML =
+
+        `Required amount:
+        <strong>${total.toFixed(0)} g</strong>`;
+}
+
+
+/* BROTH CONVERTER */
+
+function brothConvert() {
+
+    const broth =
+        num("convertBroth");
+
+    const serving =
+        num("convertServing");
+
+    if (!serving) return;
+
+    const portions =
+        broth * 1000 / serving;
+
+    document.getElementById(
+        "brothResult"
+    ).innerHTML =
+
+        `Approx. portions:
+        <strong>${portions.toFixed(1)}</strong>`;
+}
+
+</script>
+
+</body>
+      </html>
