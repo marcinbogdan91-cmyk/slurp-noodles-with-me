@@ -3,39 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kalkulator Zasolenia V1.2.1</title>
-  <style>
-    body { font-family: sans-serif; max-width: 400px; margin: 20px auto; padding: 0 10px; }
-    .field { margin-bottom: 12px; }
-    label { display: block; margin-bottom: 4px; font-weight: bold; }
-    input { width: 100%; padding: 8px; box-sizing: border-box; font-size: 16px; }
-    button { width: 100%; padding: 10px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; }
-    button:hover { background-color: #0056b3; }
-    .result { margin-top: 15px; padding: 12px; background: #f0f0f0; border-radius: 4px; font-size: 18px; font-weight: bold; text-align: center; }
-  </style>
+  <title>Kalkulator Zasolenia</title>
 </head>
 <body>
 
   <h3>Kalkulator Zasolenia</h3>
 
-  <div class="field">
-    <label for="płyn">Objętość wywaru (ml / g):</label>
+  <div>
+    <label for="płyn">Objętość wywaru (ml / g):</label><br>
     <input type="text" id="płyn" placeholder="np. 350" oninput="oblicz()">
-  </div>
+  </div><br>
 
-  <div class="field">
-    <label for="tare">Waga tare (g):</label>
+  <div>
+    <label for="tare">Waga tare (g):</label><br>
     <input type="text" id="tare" placeholder="np. 35" oninput="oblicz()">
-  </div>
+  </div><br>
 
-  <div class="field">
-    <label for="zasolenieTare">Zasolenie tare (%):</label>
+  <div>
+    <label for="zasolenieTare">Zasolenie tare (%):</label><br>
     <input type="text" id="zasolenieTare" placeholder="np. 12" oninput="oblicz()">
-  </div>
+  </div><br>
 
   <button onclick="oblicz()">Przelicz</button>
 
-  <div class="result" id="wynik">Wynik: 0.00%</div>
+  <h4 id="wynik">Wynik: 0.00%</h4>
 
   <script>
     function value(id) {
@@ -56,7 +47,6 @@
         return;
       }
 
-      // Wzór na całkowitą zawartość soli z tare podzieloną przez łączną masę (wywar + tare)
       const sol = t * (zT / 100);
       const lacznaMasa = p + t;
       const wynikZasolenia = (sol / lacznaMasa) * 100;
@@ -67,3 +57,4 @@
 
 </body>
 </html>
+
