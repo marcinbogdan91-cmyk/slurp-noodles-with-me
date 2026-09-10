@@ -10,7 +10,7 @@
 :root{
   --bg:#0d0d0d;
   --card:#171717;
-  --card2:#1e1e1e;
+  --card2:#1f1f1f;
   --text:#f5f5f5;
   --muted:#999;
   --accent:#e63946;
@@ -31,12 +31,14 @@ body{
 .container{
   max-width:850px;
   margin:auto;
-  padding:25px 16px 50px;
+  padding:20px 15px 50px;
 }
+
+/* HEADER */
 
 header{
   text-align:center;
-  padding:20px 0 30px;
+  padding:25px 0 30px;
 }
 
 .logo{
@@ -50,11 +52,73 @@ header{
 }
 
 .subtitle{
-  color:var(--muted);
   margin-top:8px;
-  font-size:14px;
-  letter-spacing:1px;
+  color:var(--muted);
+  font-size:13px;
+  letter-spacing:2px;
 }
+
+/* MENU */
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:25px;
+}
+
+.menu-button{
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:14px;
+  padding:17px 12px;
+  cursor:pointer;
+  text-align:left;
+  transition:.2s;
+}
+
+.menu-button:hover{
+  border-color:var(--accent);
+}
+
+.menu-button.active{
+  background:var(--accent);
+  border-color:var(--accent);
+}
+
+.menu-icon{
+  font-size:22px;
+  display:block;
+  margin-bottom:7px;
+}
+
+.menu-title{
+  font-weight:800;
+  font-size:15px;
+}
+
+.menu-description{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:4px;
+}
+
+.menu-button.active .menu-description{
+  color:#fff;
+}
+
+/* SECTIONS */
+
+.page-section{
+  display:none;
+}
+
+.page-section.active{
+  display:block;
+}
+
+/* CARDS */
 
 .card{
   background:var(--card);
@@ -62,7 +126,6 @@ header{
   border-radius:18px;
   padding:22px;
   margin-bottom:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
 .card h2{
@@ -70,18 +133,20 @@ header{
   font-size:23px;
 }
 
-.card-description{
+.description{
   color:var(--muted);
   font-size:14px;
   line-height:1.5;
   margin-bottom:22px;
 }
 
+/* CALCULATOR */
+
 .section-title{
-  font-size:13px;
+  color:var(--muted);
+  font-size:12px;
   text-transform:uppercase;
   letter-spacing:1.5px;
-  color:var(--muted);
   margin-bottom:10px;
 }
 
@@ -90,24 +155,24 @@ header{
   border:1px solid var(--border);
   border-radius:12px;
   padding:15px;
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 
 .input-box label{
   display:block;
-  font-size:13px;
   color:var(--muted);
+  font-size:12px;
   margin-bottom:8px;
 }
 
 .input-box input{
   width:100%;
-  border:none;
-  outline:none;
+  border:0;
+  outline:0;
   background:transparent;
   color:white;
   font-size:25px;
-  font-weight:700;
+  font-weight:800;
 }
 
 .recipe{
@@ -120,83 +185,102 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px 15px;
   background:var(--card2);
-  border-radius:10px;
   border:1px solid #292929;
+  border-radius:10px;
+  padding:13px 15px;
 }
 
 .ingredient-name{
-  font-weight:600;
+  font-weight:700;
 }
 
 .ingredient-base{
   color:var(--muted);
-  font-size:12px;
+  font-size:11px;
   margin-top:3px;
 }
 
 .ingredient-value{
-  font-size:18px;
+  font-size:17px;
   font-weight:800;
-  white-space:nowrap;
 }
 
 .highlight{
-  border:1px solid var(--accent);
-  background:rgba(230,57,70,.08);
+  border-color:var(--accent);
 }
 
 .total{
-  margin-top:20px;
+  margin-top:18px;
   padding:18px;
-  background:var(--accent);
   border-radius:12px;
+  background:var(--accent);
   display:flex;
   justify-content:space-between;
   align-items:center;
   font-weight:800;
 }
 
-.total span:last-child{
-  font-size:22px;
+.total-value{
+  font-size:21px;
 }
 
 .note{
-  margin-top:18px;
   color:var(--muted);
   font-size:12px;
   line-height:1.5;
+  margin-top:15px;
 }
+
+/* COMING SOON */
+
+.coming-soon{
+  text-align:center;
+  padding:35px 15px;
+  color:var(--muted);
+}
+
+.coming-soon-icon{
+  font-size:40px;
+  margin-bottom:12px;
+}
+
+.coming-soon h3{
+  color:white;
+  margin:0 0 8px;
+}
+
+/* FOOTER */
 
 footer{
   text-align:center;
-  color:#666;
-  font-size:12px;
+  color:#555;
+  font-size:11px;
   margin-top:35px;
 }
+
+/* MOBILE */
 
 @media(max-width:600px){
 
   .container{
-    padding:18px 12px 40px;
+    padding:15px 12px 40px;
   }
 
   .logo{
     font-size:27px;
   }
 
+  .menu{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .menu-button{
+    padding:14px 11px;
+  }
+
   .card{
     padding:17px;
-    border-radius:15px;
-  }
-
-  .ingredient{
-    padding:13px;
-  }
-
-  .ingredient-value{
-    font-size:16px;
   }
 }
 </style>
@@ -207,141 +291,465 @@ footer{
 <div class="container">
 
 <header>
-  <div class="logo">SLURP <span>NOODLES</span> WITH ME</div>
-  <div class="subtitle">RAMEN LAB · TARE CALCULATOR</div>
+  <div class="logo">
+    SLURP <span>NOODLES</span> WITH ME
+  </div>
+
+  <div class="subtitle">
+    RAMEN LAB
+  </div>
 </header>
 
-<section class="card">
 
-  <h2>🍋 Yuzu Kosho Tare</h2>
+<!-- =========================
+     MAIN MENU
+========================= -->
 
-  <div class="card-description">
-    Przelicz recepturę Yuzu Kosho Tare według ilości
-    <strong>Tsuyu</strong>. Zmień tylko ilość Tsuyu,
-    a wszystkie pozostałe składniki zostaną automatycznie
-    przeliczone według receptury bazowej.
-  </div>
+<nav class="menu">
 
-  <div class="section-title">
-    Ilość bazowego Tsuyu
-  </div>
+  <button
+    class="menu-button active"
+    onclick="showSection('home',this)"
+  >
+    <span class="menu-icon">🍜</span>
+    <div class="menu-title">Ramen Lab</div>
+    <div class="menu-description">Home</div>
+  </button>
 
-  <div class="input-box">
-    <label for="tsuyuInput">Tsuyu — gram</label>
 
-    <input
-      id="tsuyuInput"
-      type="number"
-      inputmode="decimal"
-      value="508"
-      min="0"
-      step="1"
-      oninput="calculateTare()"
-    >
-  </div>
+  <button
+    class="menu-button"
+    onclick="showSection('shio',this)"
+  >
+    <span class="menu-icon">🧂</span>
+    <div class="menu-title">Shio Tare</div>
+    <div class="menu-description">Calculator</div>
+  </button>
 
-  <div class="section-title">
-    Przeliczona receptura
-  </div>
 
-  <div class="recipe">
+  <button
+    class="menu-button"
+    onclick="showSection('yuzu',this)"
+  >
+    <span class="menu-icon">🍋</span>
+    <div class="menu-title">Yuzu Kosho</div>
+    <div class="menu-description">Tare Calculator</div>
+  </button>
 
-    <div class="ingredient highlight">
-      <div>
-        <div class="ingredient-name">Tsuyu</div>
-        <div class="ingredient-base">bazowo 508 g</div>
-      </div>
-      <div class="ingredient-value">
-        <span id="tsuyuResult">508</span> g
-      </div>
+
+  <button
+    class="menu-button"
+    onclick="showSection('shoyu',this)"
+  >
+    <span class="menu-icon">🍶</span>
+    <div class="menu-title">Shoyu Tare</div>
+    <div class="menu-description">Coming soon</div>
+  </button>
+
+
+  <button
+    class="menu-button"
+    onclick="showSection('miso',this)"
+  >
+    <span class="menu-icon">🥢</span>
+    <div class="menu-title">Miso Tare</div>
+    <div class="menu-description">Coming soon</div>
+  </button>
+
+</nav>
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section id="home" class="page-section active">
+
+  <div class="card">
+
+    <h2>🍜 Ramen Lab</h2>
+
+    <div class="description">
+      Kalkulatory, receptury i eksperymenty stworzone
+      dla ludzi, którzy traktują ramen jak rzemiosło.
     </div>
 
-    <div class="ingredient">
+    <div class="coming-soon">
+
+      <div class="coming-soon-icon">🥣</div>
+
+      <h3>Choose your calculator</h3>
+
       <div>
-        <div class="ingredient-name">Shoyu</div>
-        <div class="ingredient-base">bazowo 1525 g</div>
+        Wybierz kalkulator z menu powyżej.
       </div>
-      <div class="ingredient-value">
-        <span id="shoyuResult">1525</span> g
-      </div>
+
     </div>
 
-    <div class="ingredient">
-      <div>
-        <div class="ingredient-name">Ponzu Yuzu</div>
-        <div class="ingredient-base">bazowo 508 g</div>
-      </div>
-      <div class="ingredient-value">
-        <span id="ponzuResult">508</span> g
-      </div>
-    </div>
-
-    <div class="ingredient">
-      <div>
-        <div class="ingredient-name">Cukier</div>
-        <div class="ingredient-base">bazowo 254 g</div>
-      </div>
-      <div class="ingredient-value">
-        <span id="sugarResult">254</span> g
-      </div>
-    </div>
-
-    <div class="ingredient">
-      <div>
-        <div class="ingredient-name">Ocet czarny</div>
-        <div class="ingredient-base">bazowo 81 g</div>
-      </div>
-      <div class="ingredient-value">
-        <span id="vinegarResult">81</span> g
-      </div>
-    </div>
-
-    <div class="ingredient">
-      <div>
-        <div class="ingredient-name">Yuzu Kosho</div>
-        <div class="ingredient-base">bazowo 71 g</div>
-      </div>
-      <div class="ingredient-value">
-        <span id="yuzuResult">71</span> g
-      </div>
-    </div>
-
-    <div class="ingredient">
-      <div>
-        <div class="ingredient-name">MSG</div>
-        <div class="ingredient-base">bazowo 51 g</div>
-      </div>
-      <div class="ingredient-value">
-        <span id="msgResult">51</span> g
-      </div>
-    </div>
-
-  </div>
-
-  <div class="total">
-    <span>Łączna masa tare</span>
-    <span><span id="totalResult">2998</span> g</span>
-  </div>
-
-  <div class="note">
-    Receptura bazowa: 508 g Tsuyu.
-    Wszystkie składniki są skalowane proporcjonalnie do wybranej
-    ilości Tsuyu.
   </div>
 
 </section>
 
-<section class="card">
 
-  <h2>⚗️ Ramen Lab</h2>
+<!-- =========================
+     SHIO TARE
+========================= -->
 
-  <div class="card-description">
-    Ten kalkulator jest częścią projektu
-    <strong>Slurp Noodles With Me</strong>.
-    Kolejne kalkulatory tare mogą zostać dodane w tej samej aplikacji.
+<section id="shio" class="page-section">
+
+  <div class="card">
+
+    <h2>🧂 Shio Tare Calculator</h2>
+
+    <div class="description">
+      Kalkulator Shio Tare według ilości bulionu
+      i docelowego poziomu soli w misce.
+    </div>
+
+    <div class="section-title">
+      Parametry
+    </div>
+
+    <div class="input-box">
+
+      <label>
+        Broth — ml
+      </label>
+
+      <input
+        id="shioBroth"
+        type="number"
+        value="354"
+        step="1"
+        oninput="calculateShio()"
+      >
+
+    </div>
+
+
+    <div class="input-box">
+
+      <label>
+        Broth salt — %
+      </label>
+
+      <input
+        id="shioBrothSalt"
+        type="number"
+        value="0"
+        step="0.01"
+        oninput="calculateShio()"
+      >
+
+    </div>
+
+
+    <div class="input-box">
+
+      <label>
+        Tare salt — %
+      </label>
+
+      <input
+        id="shioTareSalt"
+        type="number"
+        value="12.8"
+        step="0.1"
+        oninput="calculateShio()"
+      >
+
+    </div>
+
+
+    <div class="input-box">
+
+      <label>
+        Desired final bowl salt — %
+      </label>
+
+      <input
+        id="shioFinalSalt"
+        type="number"
+        value="1.6"
+        step="0.01"
+        oninput="calculateShio()"
+      >
+
+    </div>
+
+
+    <div class="total">
+
+      <span>
+        Tare needed
+      </span>
+
+      <span class="total-value">
+        <span id="shioResult">46.8</span> g
+      </span>
+
+    </div>
+
   </div>
 
 </section>
+
+
+<!-- =========================
+     YUZU KOSHO TARE
+========================= -->
+
+<section id="yuzu" class="page-section">
+
+  <div class="card">
+
+    <h2>🍋 Yuzu Kosho Tare</h2>
+
+    <div class="description">
+      Przelicz recepturę Yuzu Kosho Tare według ilości
+      Tsuyu. Zmień ilość Tsuyu, a wszystkie pozostałe
+      składniki zostaną automatycznie przeliczone.
+    </div>
+
+
+    <div class="section-title">
+      Ilość bazowego Tsuyu
+    </div>
+
+
+    <div class="input-box">
+
+      <label>
+        Tsuyu — g
+      </label>
+
+      <input
+        id="yuzuTsuyu"
+        type="number"
+        value="508"
+        min="0"
+        step="1"
+        oninput="calculateYuzu()"
+      >
+
+    </div>
+
+
+    <div class="section-title">
+      Przeliczona receptura
+    </div>
+
+
+    <div class="recipe">
+
+
+      <div class="ingredient highlight">
+
+        <div>
+          <div class="ingredient-name">
+            Tsuyu
+          </div>
+
+          <div class="ingredient-base">
+            bazowo 508 g
+          </div>
+        </div>
+
+        <div class="ingredient-value">
+          <span id="yuzuTsuyuResult">508</span> g
+        </div>
+
+      </div>
+
+
+      <div class="ingredient">
+
+        <div>
+          <div class="ingredient-name">
+            Shoyu
+          </div>
+
+          <div class="ingredient-base">
+            bazowo 1525 g
+          </div>
+        </div>
+
+        <div class="ingredient-value">
+          <span id="yuzuShoyuResult">1525</span> g
+        </div>
+
+      </div>
+
+
+      <div class="ingredient">
+
+        <div>
+          <div class="ingredient-name">
+            Ponzu Yuzu
+          </div>
+
+          <div class="ingredient-base">
+            bazowo 508 g
+          </div>
+        </div>
+
+        <div class="ingredient-value">
+          <span id="yuzuPonzuResult">508</span> g
+        </div>
+
+      </div>
+
+
+      <div class="ingredient">
+
+        <div>
+          <div class="ingredient-name">
+            Cukier
+          </div>
+
+          <div class="ingredient-base">
+            bazowo 254 g
+          </div>
+        </div>
+
+        <div class="ingredient-value">
+          <span id="yuzuSugarResult">254</span> g
+        </div>
+
+      </div>
+
+
+      <div class="ingredient">
+
+        <div>
+          <div class="ingredient-name">
+            Ocet czarny
+          </div>
+
+          <div class="ingredient-base">
+            bazowo 81 g
+          </div>
+        </div>
+
+        <div class="ingredient-value">
+          <span id="yuzuVinegarResult">81</span> g
+        </div>
+
+      </div>
+
+
+      <div class="ingredient">
+
+        <div>
+          <div class="ingredient-name">
+            Yuzu Kosho
+          </div>
+
+          <div class="ingredient-base">
+            bazowo 71 g
+          </div>
+        </div>
+
+        <div class="ingredient-value">
+          <span id="yuzuKoshoResult">71</span> g
+        </div>
+
+      </div>
+
+
+      <div class="ingredient">
+
+        <div>
+          <div class="ingredient-name">
+            MSG
+          </div>
+
+          <div class="ingredient-base">
+            bazowo 51 g
+          </div>
+        </div>
+
+        <div class="ingredient-value">
+          <span id="yuzuMsgResult">51</span> g
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="total">
+
+      <span>
+        Łączna masa tare
+      </span>
+
+      <span class="total-value">
+        <span id="yuzuTotalResult">2998</span> g
+      </span>
+
+    </div>
+
+
+    <div class="note">
+      Receptura bazowa: 508 g Tsuyu.
+      Wszystkie składniki są skalowane proporcjonalnie.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SHOYU
+========================= -->
+
+<section id="shoyu" class="page-section">
+
+  <div class="card">
+
+    <div class="coming-soon">
+
+      <div class="coming-soon-icon">
+        🍶
+      </div>
+
+      <h3>Shoyu Tare</h3>
+
+      Kalkulator zostanie dodany w kolejnej wersji.
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MISO
+========================= -->
+
+<section id="miso" class="page-section">
+
+  <div class="card">
+
+    <div class="coming-soon">
+
+      <div class="coming-soon-icon">
+        🥢
+      </div>
+
+      <h3>Miso Tare</h3>
+
+      Kalkulator zostanie dodany w kolejnej wersji.
+
+    </div>
+
+  </div>
+
+</section>
+
 
 <footer>
   SLURP NOODLES WITH ME · RAMEN LAB
@@ -349,44 +757,87 @@ footer{
 
 </div>
 
+
 <script>
 
-function roundNumber(value){
-  return Math.round(value * 10) / 10;
+/* =========================
+   MENU
+========================= */
+
+function showSection(sectionId, button){
+
+  const sections =
+    document.querySelectorAll(".page-section");
+
+  sections.forEach(section => {
+    section.classList.remove("active");
+  });
+
+  document
+    .getElementById(sectionId)
+    .classList.add("active");
+
+
+  const buttons =
+    document.querySelectorAll(".menu-button");
+
+  buttons.forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
 }
 
-function calculateTare(){
 
-  let tsuyu = parseFloat(
-    document.getElementById("tsuyuInput").value
-  );
+/* =========================
+   YUZU KOSHO TARE
+========================= */
+
+function roundNumber(value){
+
+  return Math.round(value * 10) / 10;
+
+}
+
+
+function calculateYuzu(){
+
+  let tsuyu =
+    parseFloat(
+      document.getElementById("yuzuTsuyu").value
+    );
+
 
   if(isNaN(tsuyu) || tsuyu < 0){
     tsuyu = 0;
   }
 
-  /*
-    RECEPTURA BAZOWA
-
-    Tsuyu       508 g
-    Shoyu       1525 g
-    Ponzu Yuzu  508 g
-    Cukier      254 g
-    Ocet        81 g
-    Yuzu Kosho  71 g
-    MSG         51 g
-  */
 
   const baseTsuyu = 508;
 
-  const scale = tsuyu / baseTsuyu;
+  const scale =
+    tsuyu / baseTsuyu;
 
-  const shoyu = 1525 * scale;
-  const ponzu = 508 * scale;
-  const sugar = 254 * scale;
-  const vinegar = 81 * scale;
-  const yuzu = 71 * scale;
-  const msg = 51 * scale;
+
+  const shoyu =
+    1525 * scale;
+
+  const ponzu =
+    508 * scale;
+
+  const sugar =
+    254 * scale;
+
+  const vinegar =
+    81 * scale;
+
+  const yuzuKosho =
+    71 * scale;
+
+  const msg =
+    51 * scale;
+
 
   const total =
     tsuyu +
@@ -394,35 +845,110 @@ function calculateTare(){
     ponzu +
     sugar +
     vinegar +
-    yuzu +
+    yuzuKosho +
     msg;
 
-  document.getElementById("tsuyuResult").textContent =
-    roundNumber(tsuyu);
 
-  document.getElementById("shoyuResult").textContent =
-    roundNumber(shoyu);
+  document.getElementById("yuzuTsuyuResult")
+    .textContent = roundNumber(tsuyu);
 
-  document.getElementById("ponzuResult").textContent =
-    roundNumber(ponzu);
+  document.getElementById("yuzuShoyuResult")
+    .textContent = roundNumber(shoyu);
 
-  document.getElementById("sugarResult").textContent =
-    roundNumber(sugar);
+  document.getElementById("yuzuPonzuResult")
+    .textContent = roundNumber(ponzu);
 
-  document.getElementById("vinegarResult").textContent =
-    roundNumber(vinegar);
+  document.getElementById("yuzuSugarResult")
+    .textContent = roundNumber(sugar);
 
-  document.getElementById("yuzuResult").textContent =
-    roundNumber(yuzu);
+  document.getElementById("yuzuVinegarResult")
+    .textContent = roundNumber(vinegar);
 
-  document.getElementById("msgResult").textContent =
-    roundNumber(msg);
+  document.getElementById("yuzuKoshoResult")
+    .textContent = roundNumber(yuzuKosho);
 
-  document.getElementById("totalResult").textContent =
-    roundNumber(total);
+  document.getElementById("yuzuMsgResult")
+    .textContent = roundNumber(msg);
+
+  document.getElementById("yuzuTotalResult")
+    .textContent = roundNumber(total);
+
 }
 
-calculateTare();
+
+/* =========================
+   SHIO TARE
+========================= */
+
+function calculateShio(){
+
+  const broth =
+    parseFloat(
+      document.getElementById("shioBroth").value
+    ) || 0;
+
+
+  const brothSalt =
+    parseFloat(
+      document.getElementById("shioBrothSalt").value
+    ) || 0;
+
+
+  const tareSalt =
+    parseFloat(
+      document.getElementById("shioTareSalt").value
+    ) || 0;
+
+
+  const finalSalt =
+    parseFloat(
+      document.getElementById("shioFinalSalt").value
+    ) || 0;
+
+
+  /*
+    Obliczenie ilości tare potrzebnej,
+    aby osiągnąć docelowe zasolenie.
+
+    X = (broth × finalSalt - broth × brothSalt)
+        / (tareSalt - finalSalt)
+  */
+
+  let tare = 0;
+
+
+  if(tareSalt > finalSalt){
+
+    tare =
+      (
+        broth *
+        (finalSalt - brothSalt)
+      ) /
+      (
+        tareSalt - finalSalt
+      );
+
+  }
+
+
+  if(tare < 0 || !isFinite(tare)){
+    tare = 0;
+  }
+
+
+  document.getElementById("shioResult")
+    .textContent =
+    roundNumber(tare);
+
+}
+
+
+/* =========================
+   INITIAL CALCULATIONS
+========================= */
+
+calculateYuzu();
+calculateShio();
 
 </script>
 
