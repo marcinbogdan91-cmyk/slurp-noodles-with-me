@@ -333,6 +333,7 @@ footer{
 }
 
 @media(max-width:650px){
+
   .grid,
   .home-grid{
     grid-template-columns:1fr;
@@ -366,23 +367,65 @@ footer{
 <body>
 
 <header>
-  <div class="logo">🥣 Slurp <span>Noodles</span> With Me</div>
-  <div class="subtitle">Ramen Lab — Tare Calculators & Recipes</div>
+
+  <div class="logo">
+    🥣 Slurp <span>Noodles</span> With Me
+  </div>
+
+  <div class="subtitle">
+    Ramen Lab — Tare Calculators & Recipes
+  </div>
+
 </header>
 
+
 <nav>
-  <button class="nav-btn active" onclick="showPage('home',this)">🏠 Start</button>
-  <button class="nav-btn" onclick="showPage('shio',this)">🧂 Shio</button>
-  <button class="nav-btn" onclick="showPage('orenji',this)">🍊 Shio Orenji</button>
-  <button class="nav-btn" onclick="showPage('shoyu',this)">🍶 Shoyu</button>
-  <button class="nav-btn" onclick="showPage('miso',this)">🥢 Miso</button>
-  <button class="nav-btn" onclick="showPage('yuzu',this)">🍋 Yuzu Kosho</button>
-  <button class="nav-btn" onclick="showPage('recipes',this)">📚 Przepisy</button>
+
+  <button class="nav-btn active"
+    onclick="showPage('home',this)">
+    🏠 Start
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('shio',this)">
+    🧂 Shio
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('orenji',this)">
+    🍊 Shio Orenji
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('yuzu',this)">
+    🍋 Yuzu Kosho
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('shoyu',this)">
+    🍶 Shoyu
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('miso',this)">
+    🥢 Miso
+  </button>
+
+  <button class="nav-btn"
+    onclick="showPage('recipes',this)">
+    📚 Przepisy
+  </button>
+
 </nav>
+
 
 <main>
 
-<!-- START -->
+
+<!-- =========================
+     START
+========================= -->
+
 <section id="home" class="page active">
 
   <h1>Ramen Lab</h1>
@@ -392,128 +435,257 @@ footer{
     Wybierz moduł, który chcesz otworzyć.
   </p>
 
+
   <div class="home-grid">
 
-    <div class="menu-card" onclick="openPage('shio')">
+    <div class="menu-card"
+      onclick="openPage('shio')">
+
       <div class="icon">🧂</div>
+
       <h3>Shio Tare</h3>
-      <p>Przelicznik receptury klasycznego Shio.</p>
+
+      <p>
+        Kalkulator zasolenia miski.
+      </p>
+
     </div>
 
-    <div class="menu-card" onclick="openPage('orenji')">
+
+    <div class="menu-card"
+      onclick="openPage('orenji')">
+
       <div class="icon">🍊</div>
+
       <h3>Shio Orenji</h3>
-      <p>Tare Orange Shio 2.0 — przelicznik receptury.</p>
+
+      <p>
+        Tare Orange Shio 2.0 — przelicznik receptury.
+      </p>
+
     </div>
 
-    <div class="menu-card" onclick="openPage('shoyu')">
-      <div class="icon">🍶</div>
-      <h3>Shoyu Tare</h3>
-      <p>Osobny moduł pod receptury shoyu.</p>
-    </div>
 
-    <div class="menu-card" onclick="openPage('miso')">
-      <div class="icon">🥢</div>
-      <h3>Miso Tare</h3>
-      <p>Osobny moduł pod receptury miso.</p>
-    </div>
+    <div class="menu-card"
+      onclick="openPage('yuzu')">
 
-    <div class="menu-card" onclick="openPage('yuzu')">
       <div class="icon">🍋</div>
+
       <h3>Yuzu Kosho Tare</h3>
-      <p>Osobny moduł pod recepturę yuzu kosho.</p>
+
+      <p>
+        Przelicznik receptury na bazie Tsuyu.
+      </p>
+
     </div>
 
-    <div class="menu-card" onclick="openPage('recipes')">
+
+    <div class="menu-card"
+      onclick="openPage('shoyu')">
+
+      <div class="icon">🍶</div>
+
+      <h3>Shoyu Tare</h3>
+
+      <p>
+        Osobny moduł pod receptury Shoyu.
+      </p>
+
+    </div>
+
+
+    <div class="menu-card"
+      onclick="openPage('miso')">
+
+      <div class="icon">🥢</div>
+
+      <h3>Miso Tare</h3>
+
+      <p>
+        Osobny moduł pod receptury Miso.
+      </p>
+
+    </div>
+
+
+    <div class="menu-card"
+      onclick="openPage('recipes')">
+
       <div class="icon">📚</div>
+
       <h3>Przepisy</h3>
-      <p>Receptury tare, dashi, olejów i dodatków.</p>
+
+      <p>
+        Receptury tare, dashi, olejów i dodatków.
+      </p>
+
     </div>
 
   </div>
+
 
   <div class="card" style="margin-top:25px;">
+
     <h2>🧪 Ramen Lab</h2>
+
     <p class="description">
-      Każda receptura ma własny przelicznik.
-      Wpisujesz ilość bazowego dashi, a wszystkie składniki
-      skalują się automatycznie.
+
+      Każda receptura może mieć własny przelicznik.
+      Wpisujesz ilość bazowego składnika,
+      a pozostałe składniki skalują się automatycznie.
+
     </p>
+
   </div>
 
 </section>
 
 
-<!-- SHIO -->
+<!-- =========================
+     SHIO
+========================= -->
+
 <section id="shio" class="page">
 
-  <span class="badge">🧂 SHIO TARE</span>
+  <span class="badge">
+    🧂 SHIO TARE
+  </span>
 
-  <h1>Shio Tare — Przelicznik Receptury</h1>
+  <h1>
+    Shio Tare — Kalkulator
+  </h1>
 
   <p class="description">
-    Przelicz recepturę Shio na dowolną ilość dashi.
+    Oblicz ilość Shio Tare potrzebną do osiągnięcia
+    wybranego poziomu soli w misce.
   </p>
 
+
   <div class="card">
 
     <div class="card-title">
-      <h2>⚖️ Ilość bazowego dashi</h2>
+      <h2>⚖️ Parametry miski</h2>
     </div>
 
-    <div class="field">
-      <label>Ilość dashi — ml</label>
-      <input
-        type="text"
-        id="shioDashi"
-        value="3500"
-        inputmode="decimal"
-        oninput="calculateShio()"
-      >
+
+    <div class="grid">
+
+      <div class="field">
+
+        <label>
+          Ilość bulionu — ml
+        </label>
+
+        <input
+          type="text"
+          id="shioBroth"
+          value="354"
+          inputmode="decimal"
+          oninput="calculateShio()"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Sól w bulionie — %
+        </label>
+
+        <input
+          type="text"
+          id="shioBrothSalt"
+          value="0"
+          inputmode="decimal"
+          oninput="calculateShio()"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Sól w tare — %
+        </label>
+
+        <input
+          type="text"
+          id="shioTareSalt"
+          value="12.8"
+          inputmode="decimal"
+          oninput="calculateShio()"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Docelowa sól w misce — %
+        </label>
+
+        <input
+          type="text"
+          id="shioFinalSalt"
+          value="1.6"
+          inputmode="decimal"
+          oninput="calculateShio()"
+        >
+
+      </div>
+
     </div>
 
-    <button class="calculate" onclick="calculateShio()">
-      Przelicz recepturę
+
+    <button class="calculate"
+      onclick="calculateShio()">
+
+      Przelicz
+
     </button>
 
+
     <div id="shioResult" class="result">
-      <div class="result-title">Wynik</div>
-      <div class="result-value">—</div>
+
+      <div class="result-title">
+        Tare potrzebne
+      </div>
+
+      <div class="result-value">
+        —
+      </div>
+
     </div>
 
-  </div>
-
-  <div class="card">
-    <div class="card-title">
-      <h2>📋 Receptura Shio</h2>
-    </div>
-
-    <table class="recipe-table">
-      <thead>
-        <tr>
-          <th>Składnik</th>
-          <th>Ilość</th>
-          <th>Jednostka</th>
-        </tr>
-      </thead>
-      <tbody id="shioTable"></tbody>
-    </table>
   </div>
 
 </section>
 
 
-<!-- SHIO ORENJI -->
+<!-- =========================
+     SHIO ORENJI
+========================= -->
+
 <section id="orenji" class="page">
 
-  <span class="badge">🍊 TARE ORANGE SHIO 2.0</span>
+  <span class="badge">
+    🍊 TARE ORANGE SHIO 2.0
+  </span>
 
-  <h1>Shio Orenji — Przelicznik Receptury</h1>
+  <h1>
+    Shio Orenji — Przelicznik Receptury
+  </h1>
 
   <p class="description">
-    Twoja receptura Tare Orange Shio 2.0.
-    Zmień ilość katsoubushi dashi, aby automatycznie przeliczyć wszystkie składniki.
+
+    Zmień ilość bazowego Katsoubushi Dashi,
+    aby automatycznie przeliczyć całą recepturę.
+
   </p>
+
 
   <div class="card">
 
@@ -521,8 +693,13 @@ footer{
       <h2>⚖️ Ilość bazowego dashi</h2>
     </div>
 
+
     <div class="field">
-      <label>Ilość dashi — ml</label>
+
+      <label>
+        Ilość dashi — ml
+      </label>
+
       <input
         type="text"
         id="orenjiDashi"
@@ -530,24 +707,43 @@ footer{
         inputmode="decimal"
         oninput="calculateOrenji()"
       >
+
     </div>
 
-    <button class="calculate" onclick="calculateOrenji()">
+
+    <button class="calculate"
+      onclick="calculateOrenji()">
+
       Przelicz recepturę
+
     </button>
 
+
     <div id="orenjiResult" class="result">
-      <div class="result-title">Wynik</div>
-      <div class="result-value">—</div>
+
+      <div class="result-title">
+        Wynik
+      </div>
+
+      <div class="result-value">
+        —
+      </div>
+
     </div>
 
+
     <div class="note">
-      Bazowa receptura pochodzi z arkusza
-      <strong>Tare Orange Shio 2.0_przelicznik</strong>.
-      Współczynniki są obliczane na podstawie dokładnych ilości bazowych.
+
+      Bazowa receptura:
+      <strong>Tare Orange Shio 2.0</strong>.
+
+      Współczynnik skali liczony jest względem
+      3500 ml bazowego dashi.
+
     </div>
 
   </div>
+
 
   <div class="card">
 
@@ -555,15 +751,21 @@ footer{
       <h2>📋 Tare Orange Shio 2.0</h2>
     </div>
 
+
     <table class="recipe-table">
+
       <thead>
+
         <tr>
           <th>Składnik</th>
           <th>Ilość</th>
           <th>Jednostka</th>
         </tr>
+
       </thead>
+
       <tbody id="orenjiTable"></tbody>
+
     </table>
 
   </div>
@@ -571,94 +773,256 @@ footer{
 </section>
 
 
-<!-- SHOYU -->
+<!-- =========================
+     YUZU KOSHO
+========================= -->
+
+<section id="yuzu" class="page">
+
+  <span class="badge">
+    🍋 YUZU KOSHO TARE
+  </span>
+
+
+  <h1>
+    Yuzu Kosho Tare — Przelicznik
+  </h1>
+
+
+  <p class="description">
+
+    Przelicz recepturę Yuzu Kosho Tare
+    według ilości bazowego Tsuyu.
+
+  </p>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h2>⚖️ Ilość bazowego Tsuyu</h2>
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Tsuyu — g
+      </label>
+
+      <input
+        type="text"
+        id="yuzuTsuyu"
+        value="508"
+        inputmode="decimal"
+        oninput="calculateYuzu()"
+      >
+
+    </div>
+
+
+    <button class="calculate"
+      onclick="calculateYuzu()">
+
+      Przelicz recepturę
+
+    </button>
+
+
+    <div id="yuzuResult" class="result">
+
+      <div class="result-title">
+        Przeliczona receptura
+      </div>
+
+      <div class="result-value">
+        2998 g
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h2>📋 Receptura Yuzu Kosho Tare</h2>
+    </div>
+
+
+    <table class="recipe-table">
+
+      <thead>
+
+        <tr>
+          <th>Składnik</th>
+          <th>Ilość</th>
+          <th>Jednostka</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="yuzuTable"></tbody>
+
+    </table>
+
+
+    <div class="note">
+
+      Receptura bazowa:
+      <strong>508 g Tsuyu</strong>.
+
+      Wszystkie składniki są skalowane proporcjonalnie.
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SHOYU
+========================= -->
+
 <section id="shoyu" class="page">
 
-  <h1>🍶 Shoyu Tare</h1>
+  <h1>
+    🍶 Shoyu Tare
+  </h1>
 
   <p class="description">
     Osobny moduł pod receptury Shoyu.
   </p>
 
+
   <div class="empty">
+
     <h2>🍶 Shoyu Tare</h2>
-    <p>Tu dodamy Twój przelicznik receptury Shoyu.</p>
+
+    <p>
+      Tu dodamy Twój przelicznik receptury Shoyu.
+    </p>
+
   </div>
 
 </section>
 
 
-<!-- MISO -->
+<!-- =========================
+     MISO
+========================= -->
+
 <section id="miso" class="page">
 
-  <h1>🥢 Miso Tare</h1>
+  <h1>
+    🥢 Miso Tare
+  </h1>
 
   <p class="description">
     Osobny moduł pod receptury Miso.
   </p>
 
+
   <div class="empty">
+
     <h2>🥢 Miso Tare</h2>
-    <p>Tu dodamy Twój przelicznik receptury Miso.</p>
+
+    <p>
+      Tu dodamy Twój przelicznik receptury Miso.
+    </p>
+
   </div>
 
 </section>
 
 
-<!-- YUZU -->
-<section id="yuzu" class="page">
+<!-- =========================
+     RECIPES
+========================= -->
 
-  <h1>🍋 Yuzu Kosho Tare</h1>
-
-  <p class="description">
-    Osobny moduł pod recepturę Yuzu Kosho.
-  </p>
-
-  <div class="empty">
-    <h2>🍋 Yuzu Kosho Tare</h2>
-    <p>Tu dodamy Twój przelicznik receptury Yuzu Kosho.</p>
-  </div>
-
-</section>
-
-
-<!-- PRZEPISY -->
 <section id="recipes" class="page">
 
-  <h1>📚 Przepisy</h1>
+  <h1>
+    📚 Przepisy
+  </h1>
 
   <p class="description">
     Receptury tare, dashi, olejów i innych elementów ramen.
   </p>
 
-  <div class="card">
-    <h2>🍊 Tare Orange Shio 2.0</h2>
-    <p class="description">
-      Katsoubushi dashi · cukier · yuzu ponzu · shiro shoyu ·
-      sól pomarańczowa · MSG
-    </p>
-  </div>
 
   <div class="card">
+
+    <h2>🍋 Yuzu Kosho Tare</h2>
+
+    <p class="description">
+
+      Tsuyu · Shoyu · Ponzu Yuzu · Cukier ·
+      Ocet czarny · Yuzu Kosho · MSG
+
+    </p>
+
+    <p>
+      Baza receptury:
+      <strong>508 g Tsuyu → 2998 g tare</strong>
+    </p>
+
+  </div>
+
+
+  <div class="card">
+
     <h2>🧂 Shio Tare</h2>
+
     <p class="description">
-      Przelicznik receptury dostępny w zakładce Shio.
+
+      Kalkulator zasolenia dostępny
+      w zakładce Shio.
+
     </p>
+
   </div>
 
+
   <div class="card">
-    <h2>🍶 Shoyu · 🥢 Miso · 🍋 Yuzu Kosho</h2>
+
+    <h2>🍊 Shio Orenji 2.0</h2>
+
     <p class="description">
-      Kolejne receptury dodamy tutaj w następnych wersjach.
+
+      Katsoubushi dashi · cukier · yuzu ponzu ·
+      shiro shoyu · sól pomarańczowa · MSG
+
     </p>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>🍶 Shoyu · 🥢 Miso</h2>
+
+    <p class="description">
+
+      Kolejne receptury zostaną dodane
+      w następnych wersjach.
+
+    </p>
+
   </div>
 
 </section>
 
+
 </main>
 
+
 <footer>
+
   Slurp Noodles With Me — Ramen Lab
+
 </footer>
 
 
@@ -670,40 +1034,68 @@ footer{
 
 function showPage(pageId, button){
 
-  document.querySelectorAll('.page').forEach(function(page){
-    page.classList.remove('active');
-  });
+  document.querySelectorAll('.page')
+    .forEach(function(page){
 
-  document.getElementById(pageId).classList.add('active');
+      page.classList.remove('active');
 
-  if(button){
-    document.querySelectorAll('.nav-btn').forEach(function(btn){
-      btn.classList.remove('active');
     });
 
+
+  document.getElementById(pageId)
+    .classList.add('active');
+
+
+  if(button){
+
+    document.querySelectorAll('.nav-btn')
+      .forEach(function(btn){
+
+        btn.classList.remove('active');
+
+      });
+
+
     button.classList.add('active');
+
   }
+
 
   window.scrollTo({
     top:0,
     behavior:'smooth'
   });
+
 }
+
 
 function openPage(pageId){
 
-  const buttons = document.querySelectorAll('.nav-btn');
+  const buttons =
+    document.querySelectorAll('.nav-btn');
+
 
   let targetButton = null;
 
+
   buttons.forEach(function(button){
-    if(button.getAttribute('onclick') &&
-       button.getAttribute('onclick').includes("'" + pageId + "'")){
+
+    const onclick =
+      button.getAttribute('onclick');
+
+
+    if(onclick &&
+       onclick.includes("'" + pageId + "'")){
+
       targetButton = button;
+
     }
+
   });
 
-  showPage(pageId, targetButton);
+
+  showPage(pageId,targetButton);
+
 }
 
 
@@ -713,191 +1105,30 @@ function openPage(pageId){
 
 function parseNumber(value){
 
-  if(value === undefined || value === null){
+  if(value === undefined ||
+     value === null){
+
     return 0;
+
   }
+
 
   return Number(
     String(value)
       .replace(/\s/g,'')
       .replace(',','.')
   );
+
 }
 
-function formatNumber(value, decimals=2){
+
+function formatNumber(value,decimals=1){
 
   return value.toLocaleString('pl-PL',{
     minimumFractionDigits:decimals,
     maximumFractionDigits:decimals
   });
-}
 
-
-/* =========================
-   RECEPTURA SHIO
-========================= */
-
-/*
-  W tej chwili baza jest przygotowana
-  pod Twoją recepturę Shio.
-
-  Jeśli podasz dokładny arkusz klasycznego
-  Shio, podmienimy poniższe składniki.
-*/
-
-const shioRecipe = [
-  {
-    name:'Katsoubushi dashi',
-    base:3500,
-    unit:'ml'
-  },
-  {
-    name:'Cukier',
-    base:297.6,
-    unit:'g'
-  },
-  {
-    name:'Ocet yuzu ponzu (żółty cytrus)',
-    base:116.5,
-    unit:'ml'
-  },
-  {
-    name:'Shiro shoyu (sos pszeniczny)',
-    base:232.2,
-    unit:'ml'
-  },
-  {
-    name:'Sól pomarańczowa',
-    base:561.8,
-    unit:'g'
-  },
-  {
-    name:'MSG',
-    base:70.1,
-    unit:'g'
-  }
-];
-
-
-/* =========================
-   RECEPTURA SHIO ORENJI
-========================= */
-
-const orenjiRecipe = [
-  {
-    name:'Katsoubushi dashi',
-    base:3500,
-    unit:'ml'
-  },
-  {
-    name:'Cukier',
-    base:297.6,
-    unit:'g'
-  },
-  {
-    name:'Ocet yuzu ponzu (żółty cytrus)',
-    base:116.5,
-    unit:'ml'
-  },
-  {
-    name:'Shiro shoyu (sos pszeniczny)',
-    base:232.2,
-    unit:'ml'
-  },
-  {
-    name:'Sól pomarańczowa',
-    base:561.8,
-    unit:'g'
-  },
-  {
-    name:'MSG',
-    base:70.1,
-    unit:'g'
-  }
-];
-
-
-/* =========================
-   GENEROWANIE TABELI
-========================= */
-
-function renderRecipeTable(tableId, recipe, dashiAmount){
-
-  const table = document.getElementById(tableId);
-
-  table.innerHTML = '';
-
-  let total = 0;
-
-  recipe.forEach(function(item){
-
-    const coefficient = item.base / 3500;
-    const amount = dashiAmount * coefficient;
-
-    total += amount;
-
-    const row = document.createElement('tr');
-
-    row.innerHTML = `
-      <td>${item.name}</td>
-      <td>${formatNumber(amount,1)}</td>
-      <td>${item.unit}</td>
-    `;
-
-    table.appendChild(row);
-
-  });
-
-  const totalRow = document.createElement('tr');
-
-  totalRow.className = 'total-row';
-
-  totalRow.innerHTML = `
-    <td>Łączna masa / objętość składników</td>
-    <td>${formatNumber(total,1)}</td>
-    <td>g / ml</td>
-  `;
-
-  table.appendChild(totalRow);
-}
-
-
-/* =========================
-   WYNIK
-========================= */
-
-function renderResult(elementId, recipe, dashiAmount){
-
-  const box = document.getElementById(elementId);
-
-  let total = 0;
-
-  recipe.forEach(function(item){
-    total += dashiAmount * (item.base / 3500);
-  });
-
-  box.innerHTML = `
-    <div class="result-title">Przeliczona receptura</div>
-
-    <div class="result-value">
-      ${formatNumber(dashiAmount,1)} ml dashi
-    </div>
-
-    <div class="result-line">
-      <span>Liczba składników</span>
-      <span>${recipe.length}</span>
-    </div>
-
-    <div class="result-line">
-      <span>Łączna masa / objętość</span>
-      <span>${formatNumber(total,1)} g / ml</span>
-    </div>
-
-    <div class="result-line">
-      <span>Współczynnik skali</span>
-      <span>${formatNumber(dashiAmount / 3500,4)}×</span>
-    </div>
-  `;
 }
 
 
@@ -907,21 +1138,83 @@ function renderResult(elementId, recipe, dashiAmount){
 
 function calculateShio(){
 
-  const dashi = parseNumber(
-    document.getElementById('shioDashi').value
-  );
+  const broth =
+    parseNumber(
+      document.getElementById('shioBroth').value
+    );
 
-  if(!dashi || dashi <= 0){
-    document.getElementById('shioResult').innerHTML = `
-      <div style="color:#e63946;">
-        Wpisz poprawną ilość dashi.
-      </div>
-    `;
-    return;
+
+  const brothSalt =
+    parseNumber(
+      document.getElementById('shioBrothSalt').value
+    );
+
+
+  const tareSalt =
+    parseNumber(
+      document.getElementById('shioTareSalt').value
+    );
+
+
+  const finalSalt =
+    parseNumber(
+      document.getElementById('shioFinalSalt').value
+    );
+
+
+  let tare = 0;
+
+
+  if(
+    broth > 0 &&
+    tareSalt > finalSalt
+  ){
+
+    tare =
+      (
+        broth *
+        (finalSalt - brothSalt)
+      ) /
+      (
+        tareSalt - finalSalt
+      );
+
   }
 
-  renderRecipeTable('shioTable', shioRecipe, dashi);
-  renderResult('shioResult', shioRecipe, dashi);
+
+  if(
+    tare < 0 ||
+    !isFinite(tare)
+  ){
+
+    tare = 0;
+
+  }
+
+
+  document.getElementById('shioResult')
+    .innerHTML = `
+
+      <div class="result-title">
+        Tare potrzebne
+      </div>
+
+      <div class="result-value">
+        ${formatNumber(tare,1)} g
+      </div>
+
+      <div class="result-line">
+        <span>Bulion</span>
+        <span>${formatNumber(broth,1)} ml</span>
+      </div>
+
+      <div class="result-line">
+        <span>Docelowa sól</span>
+        <span>${formatNumber(finalSalt,2)} %</span>
+      </div>
+
+    `;
+
 }
 
 
@@ -929,38 +1222,268 @@ function calculateShio(){
    SHIO ORENJI
 ========================= */
 
-function calculateOrenji(){
+const orenjiRecipe = [
 
-  const dashi = parseNumber(
-    document.getElementById('orenjiDashi').value
-  );
+  {
+    name:'Katsoubushi dashi',
+    base:3500,
+    unit:'ml'
+  },
 
-  if(!dashi || dashi <= 0){
-    document.getElementById('orenjiResult').innerHTML = `
-      <div style="color:#e63946;">
-        Wpisz poprawną ilość dashi.
-      </div>
-    `;
-    return;
+  {
+    name:'Cukier',
+    base:297.6,
+    unit:'g'
+  },
+
+  {
+    name:'Ocet yuzu ponzu (żółty cytrus)',
+    base:116.5,
+    unit:'ml'
+  },
+
+  {
+    name:'Shiro shoyu (sos pszeniczny)',
+    base:232.2,
+    unit:'ml'
+  },
+
+  {
+    name:'Sól pomarańczowa',
+    base:561.8,
+    unit:'g'
+  },
+
+  {
+    name:'MSG',
+    base:70.1,
+    unit:'g'
   }
 
-  renderRecipeTable('orenjiTable', orenjiRecipe, dashi);
-  renderResult('orenjiResult', orenjiRecipe, dashi);
+];
+
+
+function calculateOrenji(){
+
+  const dashi =
+    parseNumber(
+      document.getElementById('orenjiDashi').value
+    );
+
+
+  if(!dashi || dashi <= 0){
+
+    document.getElementById('orenjiResult')
+      .innerHTML = `
+        <div style="color:#e63946;">
+          Wpisz poprawną ilość dashi.
+        </div>
+      `;
+
+    return;
+
+  }
+
+
+  renderRecipeTable(
+    'orenjiTable',
+    orenjiRecipe,
+    dashi
+  );
+
+
+  renderResult(
+    'orenjiResult',
+    orenjiRecipe,
+    dashi
+  );
+
 }
 
 
 /* =========================
-   START
+   YUZU KOSHO
 ========================= */
 
-document.addEventListener('DOMContentLoaded', function(){
+const yuzuRecipe = [
 
-  calculateShio();
-  calculateOrenji();
+  {
+    name:'Tsuyu',
+    base:508,
+    unit:'g'
+  },
 
-});
+  {
+    name:'Shoyu',
+    base:1525,
+    unit:'g'
+  },
 
-</script>
+  {
+    name:'Ponzu Yuzu',
+    base:508,
+    unit:'g'
+  },
 
-</body>
-</html>
+  {
+    name:'Cukier',
+    base:254,
+    unit:'g'
+  },
+
+  {
+    name:'Ocet czarny',
+    base:81,
+    unit:'g'
+  },
+
+  {
+    name:'Yuzu Kosho',
+    base:71,
+    unit:'g'
+  },
+
+  {
+    name:'MSG',
+    base:51,
+    unit:'g'
+  }
+
+];
+
+
+function calculateYuzu(){
+
+  const tsuyu =
+    parseNumber(
+      document.getElementById('yuzuTsuyu').value
+    );
+
+
+  if(!tsuyu || tsuyu <= 0){
+
+    document.getElementById('yuzuResult')
+      .innerHTML = `
+        <div style="color:#e63946;">
+          Wpisz poprawną ilość Tsuyu.
+        </div>
+      `;
+
+    document.getElementById('yuzuTable')
+      .innerHTML = '';
+
+    return;
+
+  }
+
+
+  renderRecipeTable(
+    'yuzuTable',
+    yuzuRecipe,
+    tsuyu
+  );
+
+
+  renderResult(
+    'yuzuResult',
+    yuzuRecipe,
+    tsuyu
+  );
+
+}
+
+
+/* =========================
+   TABELA RECEPTURY
+========================= */
+
+function renderRecipeTable(
+  tableId,
+  recipe,
+  baseAmount
+){
+
+  const table =
+    document.getElementById(tableId);
+
+
+  table.innerHTML = '';
+
+
+  let total = 0;
+
+
+  recipe.forEach(function(item){
+
+    const coefficient =
+      item.base / recipe[0].base;
+
+
+    const amount =
+      baseAmount * coefficient;
+
+
+    total += amount;
+
+
+    const row =
+      document.createElement('tr');
+
+
+    row.innerHTML = `
+
+      <td>
+        ${item.name}
+      </td>
+
+      <td>
+        ${formatNumber(amount,1)}
+      </td>
+
+      <td>
+        ${item.unit}
+      </td>
+
+    `;
+
+
+    table.appendChild(row);
+
+  });
+
+
+  const totalRow =
+    document.createElement('tr');
+
+
+  totalRow.className =
+    'total-row';
+
+
+  totalRow.innerHTML = `
+
+    <td>
+      Łączna masa / objętość
+    </td>
+
+    <td>
+      ${formatNumber(total,1)}
+    </td>
+
+    <td>
+      g / ml
+    </td>
+
+  `;
+
+
+  table.appendChild(totalRow);
+
+}
+
+
+/* =========================
+   WYNIK RECEPTURY
+========================= */
+
+function renderResul
