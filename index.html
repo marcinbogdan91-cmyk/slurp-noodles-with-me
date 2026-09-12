@@ -1,17 +1,1382 @@
-<div class="menu-card" onclick="openPage('shio')">
-  <div class="icon">🧂</div>
-  <h3>Shio Tare</h3>
-  <p>Kalkulator zasolenia miski.</p>
-</div>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="menu-card" onclick="openPage('orenji')">
-  <div class="icon">🍊</div>
-  <h3>Shio Orenji</h3>
-  <p>Tare Orange Shio 2.0 — przelicznik receptury.</p>
-</div>
+<title>Slurp Noodles With Me — Ramen Lab</title>
 
-<div class="menu-card" onclick="openPage('yuzu')">
-  <div class="icon">🍋</div>
-  <h3>Yuzu Kosho Tare</h3>
-  <p>Przelicznik receptury na bazie Tsuyu.</p>
-</div>
+<style>
+
+:root{
+  --bg:#0d0d0d;
+  --card:#171717;
+  --card2:#202020;
+  --text:#f5f5f5;
+  --muted:#999;
+  --accent:#e63946;
+  --accent2:#ff6b35;
+  --border:#303030;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+header{
+  text-align:center;
+  padding:35px 20px 25px;
+  border-bottom:1px solid var(--border);
+}
+
+.logo{
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.subtitle{
+  color:var(--muted);
+  margin-top:8px;
+  font-size:14px;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(13,13,13,.96);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding:10px;
+  overflow-x:auto;
+}
+
+.nav-btn{
+  background:#181818;
+  color:#ddd;
+  border:1px solid #303030;
+  border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+  white-space:nowrap;
+  font-size:14px;
+  transition:.2s;
+}
+
+.nav-btn:hover{
+  border-color:var(--accent);
+  color:white;
+}
+
+.nav-btn.active{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:white;
+}
+
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:25px 18px 60px;
+}
+
+.page{
+  display:none;
+  animation:fadeIn .25s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+h1{
+  font-size:30px;
+  margin-top:10px;
+}
+
+h2{
+  margin-top:0;
+}
+
+h3{
+  margin-top:0;
+}
+
+.intro{
+  color:var(--muted);
+  line-height:1.6;
+  max-width:800px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+  margin-top:25px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent);
+}
+
+.card-icon{
+  font-size:38px;
+  margin-bottom:12px;
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.5;
+  font-size:14px;
+}
+
+.lab-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+  margin-top:20px;
+}
+
+.calculator{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field label{
+  color:#ccc;
+  font-size:14px;
+}
+
+.field input{
+  width:100%;
+  background:#0b0b0b;
+  color:white;
+  border:1px solid #383838;
+  border-radius:10px;
+  padding:13px;
+  font-size:16px;
+  outline:none;
+}
+
+.field input:focus{
+  border-color:var(--accent);
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+button.calculate{
+  background:var(--accent);
+  color:white;
+  border:0;
+  border-radius:10px;
+  padding:14px 20px;
+  font-weight:bold;
+  font-size:15px;
+  cursor:pointer;
+  margin-top:5px;
+}
+
+button.calculate:hover{
+  background:#ff4d5a;
+}
+
+.result{
+  margin-top:20px;
+  background:#0a0a0a;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+}
+
+.result-value{
+  font-size:34px;
+  font-weight:900;
+  color:#fff;
+}
+
+.result-label{
+  color:var(--muted);
+  margin-bottom:6px;
+}
+
+.recipe-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+.recipe-table th,
+.recipe-table td{
+  padding:12px 10px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+}
+
+.recipe-table th{
+  color:#aaa;
+  font-size:13px;
+}
+
+.recipe-table td:last-child,
+.recipe-table th:last-child{
+  text-align:right;
+}
+
+.recipe-total{
+  font-weight:bold;
+  color:var(--accent2);
+}
+
+.scale-box{
+  display:flex;
+  gap:12px;
+  align-items:end;
+  margin-bottom:20px;
+}
+
+.scale-box .field{
+  max-width:300px;
+}
+
+.info{
+  background:#141414;
+  border-left:4px solid var(--accent);
+  padding:14px 16px;
+  border-radius:8px;
+  margin:20px 0;
+  color:#ccc;
+  line-height:1.6;
+}
+
+.placeholder{
+  text-align:center;
+  padding:50px 20px;
+  background:var(--card);
+  border:1px dashed #444;
+  border-radius:16px;
+  color:var(--muted);
+}
+
+footer{
+  text-align:center;
+  border-top:1px solid var(--border);
+  padding:30px 20px;
+  color:#666;
+  font-size:13px;
+}
+
+@media(max-width:700px){
+
+  .logo{
+    font-size:25px;
+  }
+
+  .calculator{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .scale-box{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .scale-box .field{
+    max-width:none;
+  }
+
+  .recipe-table{
+    font-size:14px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    🍜 SLURP NOODLES WITH ME
+  </div>
+
+  <div class="subtitle">
+    RAMEN LAB — TARE • RECIPES • CALCULATORS
+  </div>
+
+</header>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<nav>
+
+  <button type="button"
+          class="nav-btn active"
+          data-page="home">
+    🏠 Start
+  </button>
+
+  <button type="button"
+          class="nav-btn"
+          data-page="shio">
+    🧂 Shio
+  </button>
+
+  <button type="button"
+          class="nav-btn"
+          data-page="orenji">
+    🍊 Shio Orenji
+  </button>
+
+  <button type="button"
+          class="nav-btn"
+          data-page="yuzu">
+    🍋 Yuzu Kosho
+  </button>
+
+  <button type="button"
+          class="nav-btn"
+          data-page="shoyu">
+    🍶 Shoyu
+  </button>
+
+  <button type="button"
+          class="nav-btn"
+          data-page="miso">
+    🥢 Miso
+  </button>
+
+  <button type="button"
+          class="nav-btn"
+          data-page="recipes">
+    📚 Przepisy
+  </button>
+
+</nav>
+
+
+<main>
+
+
+<!-- =========================
+     START
+========================= -->
+
+<section id="home" class="page active">
+
+  <h1>Ramen Lab</h1>
+
+  <p class="intro">
+    Moje miejsce do pracy nad ramenem.
+    Kalkulatory tare, receptury i narzędzia do skalowania.
+  </p>
+
+
+  <div class="grid">
+
+
+    <div class="card" data-page="shio">
+
+      <div class="card-icon">🧂</div>
+
+      <h3>Shio Calculator</h3>
+
+      <p>
+        Oblicz ilość tare potrzebną do osiągnięcia
+        określonego poziomu soli w misce.
+      </p>
+
+    </div>
+
+
+    <div class="card" data-page="orenji">
+
+      <div class="card-icon">🍊</div>
+
+      <h3>Shio Orenji</h3>
+
+      <p>
+        Tare Shio Orenji — przelicznik receptury
+        według ilości Katsoubushi dashi.
+      </p>
+
+    </div>
+
+
+    <div class="card" data-page="yuzu">
+
+      <div class="card-icon">🍋</div>
+
+      <h3>Yuzu Kosho</h3>
+
+      <p>
+        Yuzu Kosho Tare — pełna receptura
+        z możliwością skalowania.
+      </p>
+
+    </div>
+
+
+    <div class="card" data-page="shoyu">
+
+      <div class="card-icon">🍶</div>
+
+      <h3>Shoyu</h3>
+
+      <p>
+        Kalkulator i receptury tare Shoyu.
+      </p>
+
+    </div>
+
+
+    <div class="card" data-page="miso">
+
+      <div class="card-icon">🥢</div>
+
+      <h3>Miso</h3>
+
+      <p>
+        Kalkulator i receptury tare Miso.
+      </p>
+
+    </div>
+
+
+    <div class="card" data-page="recipes">
+
+      <div class="card-icon">📚</div>
+
+      <h3>Przepisy</h3>
+
+      <p>
+        Ramen, tare, oleje i inne elementy
+        mojego Ramen Lab.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     SHIO
+========================= -->
+
+<section id="shio" class="page">
+
+  <h1>🧂 Shio Tare Calculator</h1>
+
+  <p class="intro">
+    Oblicz ilość tare potrzebną do osiągnięcia
+    wybranego poziomu soli w gotowej misce ramen.
+  </p>
+
+
+  <div class="lab-card">
+
+    <div class="calculator">
+
+
+      <div class="field">
+
+        <label for="broth">
+          Broth — ml
+        </label>
+
+        <input
+          id="broth"
+          type="text"
+          inputmode="decimal"
+          value="354"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="brothSalt">
+          Broth salt — %
+        </label>
+
+        <input
+          id="brothSalt"
+          type="text"
+          inputmode="decimal"
+          value="0"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="tareSalt">
+          Tare salt — %
+        </label>
+
+        <input
+          id="tareSalt"
+          type="text"
+          inputmode="decimal"
+          value="12,8"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="finalSalt">
+          Desired final bowl salt — %
+        </label>
+
+        <input
+          id="finalSalt"
+          type="text"
+          inputmode="decimal"
+          value="1,60"
+        >
+
+      </div>
+
+
+      <div class="full">
+
+        <button
+          type="button"
+          class="calculate"
+          id="calculateShio">
+          CALCULATE TARE
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="result">
+
+      <div class="result-label">
+        Required tare
+      </div>
+
+      <div
+        id="shioResult"
+        class="result-value">
+        46.8 g
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="info">
+
+    <strong>Wzór:</strong><br>
+
+    Tare =
+    broth × (final salt − broth salt)
+    ÷ (tare salt − final salt)
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     SHIO ORENJI
+========================= -->
+
+<section id="orenji" class="page">
+
+  <h1>🍊 Shio Orenji</h1>
+
+  <p class="intro">
+    Tare Shio Orenji 2.0.
+    Receptura bazowa oparta na 3500 ml Katsoubushi dashi.
+  </p>
+
+
+  <div class="lab-card">
+
+    <h2>Skalowanie receptury</h2>
+
+    <div class="scale-box">
+
+      <div class="field">
+
+        <label for="orenjiDashi">
+          Katsoubushi dashi — ml
+        </label>
+
+        <input
+          id="orenjiDashi"
+          type="text"
+          inputmode="decimal"
+          value="3500"
+        >
+
+      </div>
+
+      <button
+        type="button"
+        class="calculate"
+        id="calculateOrenji">
+        PRZELICZ
+      </button>
+
+    </div>
+
+
+    <div id="orenjiTable"></div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     YUZU KOSHO
+========================= -->
+
+<section id="yuzu" class="page">
+
+  <h1>🍋 Yuzu Kosho Tare</h1>
+
+  <p class="intro">
+    Tare Yuzu Kosho — skalowanie według ilości Tsuyu.
+  </p>
+
+
+  <div class="lab-card">
+
+    <h2>Skalowanie receptury</h2>
+
+    <div class="scale-box">
+
+      <div class="field">
+
+        <label for="yuzuTsuyu">
+          Tsuyu — g
+        </label>
+
+        <input
+          id="yuzuTsuyu"
+          type="text"
+          inputmode="decimal"
+          value="508"
+        >
+
+      </div>
+
+      <button
+        type="button"
+        class="calculate"
+        id="calculateYuzu">
+        PRZELICZ
+      </button>
+
+    </div>
+
+
+    <div id="yuzuTable"></div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     SHOYU
+========================= -->
+
+<section id="shoyu" class="page">
+
+  <h1>🍶 Shoyu</h1>
+
+  <div class="placeholder">
+
+    <h2>Shoyu Tare</h2>
+
+    <p>
+      Kalkulator Shoyu pojawi się tutaj.
+    </p>
+
+    <p>
+      Następny etap Ramen Lab.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     MISO
+========================= -->
+
+<section id="miso" class="page">
+
+  <h1>🥢 Miso</h1>
+
+  <div class="placeholder">
+
+    <h2>Miso Tare</h2>
+
+    <p>
+      Kalkulator Miso pojawi się tutaj.
+    </p>
+
+    <p>
+      Następny etap Ramen Lab.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     RECIPES
+========================= -->
+
+<section id="recipes" class="page">
+
+  <h1>📚 Przepisy</h1>
+
+  <p class="intro">
+    Receptury i eksperymenty z Ramen Lab.
+  </p>
+
+
+  <div class="grid">
+
+
+    <div class="card">
+
+      <div class="card-icon">🍜</div>
+
+      <h3>Ramen</h3>
+
+      <p>
+        Kolejne receptury ramen będą dodawane
+        tutaj.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-icon">🧂</div>
+
+      <h3>Tare</h3>
+
+      <p>
+        Shio, Shoyu, Miso oraz specjalne tare.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-icon">🛢️</div>
+
+      <h3>Aroma Oil</h3>
+
+      <p>
+        Mayu, rayu, oleje aromatyczne i inne.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-icon">🍜</div>
+
+      <h3>Noodles</h3>
+
+      <p>
+        Makaron ramen, alkaliczność,
+        kansui i parametry ciasta.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+  SLURP NOODLES WITH ME — RAMEN LAB<br>
+  © 2026 Marcin Bogdan
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function numberValue(id){
+
+  const element = document.getElementById(id);
+
+  if(!element){
+    return 0;
+  }
+
+  return parseFloat(
+    element.value
+      .toString()
+      .replace(',', '.')
+  ) || 0;
+}
+
+
+
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
+
+function showPage(pageId){
+
+  const pages =
+    document.querySelectorAll('.page');
+
+  pages.forEach(function(page){
+
+    page.classList.remove('active');
+
+  });
+
+
+  const target =
+    document.getElementById(pageId);
+
+  if(!target){
+
+    console.error(
+      'Nie znaleziono strony:',
+      pageId
+    );
+
+    return;
+  }
+
+
+  target.classList.add('active');
+
+
+  document
+    .querySelectorAll('.nav-btn')
+    .forEach(function(button){
+
+      button.classList.toggle(
+        'active',
+        button.dataset.page === pageId
+      );
+
+    });
+
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+}
+
+
+
+/* =====================================================
+   MENU + START CARDS
+===================================================== */
+
+document
+  .querySelectorAll('[data-page]')
+  .forEach(function(element){
+
+    element.addEventListener(
+      'click',
+      function(){
+
+        showPage(
+          element.dataset.page
+        );
+
+      }
+    );
+
+  });
+
+
+
+/* =====================================================
+   SHIO CALCULATOR
+===================================================== */
+
+function calculateShio(){
+
+  const broth =
+    numberValue('broth');
+
+  const brothSalt =
+    numberValue('brothSalt');
+
+  const tareSalt =
+    numberValue('tareSalt');
+
+  const finalSalt =
+    numberValue('finalSalt');
+
+
+  if(
+    broth <= 0 ||
+    tareSalt <= finalSalt
+  ){
+
+    document.getElementById(
+      'shioResult'
+    ).textContent = 'Sprawdź wartości';
+
+    return;
+  }
+
+
+  const tare =
+
+    broth *
+    (finalSalt - brothSalt) /
+    (tareSalt - finalSalt);
+
+
+  if(
+    !isFinite(tare) ||
+    tare < 0
+  ){
+
+    document.getElementById(
+      'shioResult'
+    ).textContent = 'Błąd obliczenia';
+
+    return;
+  }
+
+
+  document.getElementById(
+    'shioResult'
+  ).textContent =
+    tare.toFixed(1) + ' g';
+
+}
+
+
+document
+  .getElementById('calculateShio')
+  .addEventListener(
+    'click',
+    calculateShio
+  );
+
+
+/* Automatyczne liczenie po zmianie */
+
+[
+  'broth',
+  'brothSalt',
+  'tareSalt',
+  'finalSalt'
+].forEach(function(id){
+
+  document
+    .getElementById(id)
+    .addEventListener(
+      'input',
+      calculateShio
+    );
+
+});
+
+
+/* =====================================================
+   SHIO ORENJI RECIPE
+===================================================== */
+
+const orenjiRecipe = [
+
+  {
+    name:'Katsoubushi dashi',
+    base:3500,
+    unit:'ml'
+  },
+
+  {
+    name:'Cukier',
+    base:297.6,
+    unit:'g'
+  },
+
+  {
+    name:'Ocet yuzu ponzu (żółty cytrus)',
+    base:116.5,
+    unit:'ml'
+  },
+
+  {
+    name:'Shiro shoyu (sos pszeniczny)',
+    base:232.2,
+    unit:'ml'
+  },
+
+  {
+    name:'Sól pomarańczowa',
+    base:561.8,
+    unit:'g'
+  },
+
+  {
+    name:'MSG',
+    base:70.1,
+    unit:'g'
+  }
+
+];
+
+
+
+function renderRecipeTable(
+  containerId,
+  recipe,
+  baseAmount
+){
+
+  const container =
+    document.getElementById(
+      containerId
+    );
+
+
+  const coefficient =
+    baseAmount / recipe[0].base;
+
+
+  let total = 0;
+
+
+  let html = `
+
+    <table class="recipe-table">
+
+      <thead>
+
+        <tr>
+
+          <th>Składnik</th>
+
+          <th>Ilość</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+  `;
+
+
+  recipe.forEach(function(item){
+
+    const amount =
+      item.base * coefficient;
+
+
+    total += amount;
+
+
+    html += `
+
+      <tr>
+
+        <td>
+          ${item.name}
+        </td>
+
+        <td>
+          ${amount.toFixed(1)}
+          ${item.unit}
+        </td>
+
+      </tr>
+
+    `;
+
+  });
+
+
+  html += `
+
+      </tbody>
+
+      <tfoot>
+
+        <tr>
+
+          <td class="recipe-total">
+            Łącznie
+          </td>
+
+          <td class="recipe-total">
+            ${total.toFixed(1)}
+          </td>
+
+        </tr>
+
+      </tfoot>
+
+    </table>
+
+  `;
+
+
+  container.innerHTML = html;
+
+}
+
+
+
+function calculateOrenji(){
+
+  const dashi =
+    numberValue('orenjiDashi');
+
+
+  if(dashi <= 0){
+
+    document.getElementById(
+      'orenjiTable'
+    ).innerHTML =
+      '<p>Podaj ilość dashi.</p>';
+
+    return;
+
+  }
+
+
+  renderRecipeTable(
+    'orenjiTable',
+    orenjiRecipe,
+    dashi
+  );
+
+}
+
+
+document
+  .getElementById('calculateOrenji')
+  .addEventListener(
+    'click',
+    calculateOrenji
+  );
+
+
+document
+  .getElementById('orenjiDashi')
+  .addEventListener(
+    'input',
+    calculateOrenji
+  );
+
+
+
+/* =====================================================
+   YUZU KOSHO RECIPE
+===================================================== */
+
+const yuzuRecipe = [
+
+  {
+    name:'Tsuyu',
+    base:508,
+    unit:'g'
+  },
+
+  {
+    name:'Shoyu',
+    base:1525,
+    unit:'g'
+  },
+
+  {
+    name:'Ponzu Yuzu',
+    base:508,
+    unit:'g'
+  },
+
+  {
+    name:'Cukier',
+    base:254,
+    unit:'g'
+  },
+
+  {
+    name:'Ocet czarny',
+    base:81,
+    unit:'g'
+  },
+
+  {
+    name:'Yuzu Kosho',
+    base:71,
+    unit:'g'
+  },
+
+  {
+    name:'MSG',
+    base:51,
+    unit:'g'
+  }
+
+];
+
+
+
+function calculateYuzu(){
+
+  const tsuyu =
+    numberValue('yuzuTsuyu');
+
+
+  if(tsuyu <= 0){
+
+    document.getElementById(
+      'yuzuTable'
+    ).innerHTML =
+      '<p>Podaj ilość Tsuyu.</p>';
+
+    return;
+
+  }
+
+
+  renderRecipeTable(
+    'yuzuTable',
+    yuzuRecipe,
+    tsuyu
+  );
+
+}
+
+
+document
+  .getElementById('calculateYuzu')
+  .addEventListener(
+    'click',
+    calculateYuzu
+  );
+
+
+document
+  .getElementById('yuzuTsuyu')
+  .addEventListener(
+    'input',
+    calculateYuzu
+  );
+
+
+
+/* =====================================================
+   INITIAL CALCULATIONS
+===================================================== */
+
+calculateShio();
+
+calculateOrenji();
+
+calculateYuzu();
+
+</script>
+
+
+</body>
+</html>
