@@ -37,6 +37,7 @@ header{
   text-align:center;
   padding:35px 20px 25px;
   border-bottom:1px solid var(--border);
+  cursor:pointer;
 }
 
 .logo{
@@ -297,6 +298,51 @@ button.calculate:hover{
   margin-bottom:8px;
 }
 
+.ingredient-focus {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.focus-card {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.focus-card.ume {
+  border-left: 4px solid #e63946;
+}
+
+.focus-card.aojiso {
+  border-left: 4px solid #2a9d8f;
+}
+
+.focus-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.focus-card p {
+  color: #bbb;
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.focus-badge {
+  display: inline-block;
+  background: #2a2a2a;
+  color: var(--accent2);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
 .placeholder{
   text-align:center;
   padding:50px 20px;
@@ -337,44 +383,48 @@ footer{
     max-width:none;
   }
 
+  .ingredient-focus {
+    grid-template-columns: 1fr;
+  }
+
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<header onclick="showPage('home')">
   <div class="logo">🍜 SLURP NOODLES WITH ME</div>
   <div class="subtitle">RAMEN LAB — TARE • RECIPES • CALCULATORS</div>
 </header>
 
 <nav>
 
-  <button class="nav-btn active" onclick="showPage('home',this)">
+  <button id="btn-home" class="nav-btn active" onclick="showPage('home',this)">
     🏠 Start
   </button>
 
-  <button class="nav-btn" onclick="showPage('shio',this)">
+  <button id="btn-shio" class="nav-btn" onclick="showPage('shio',this)">
     🧂 Shio
   </button>
 
-  <button class="nav-btn" onclick="showPage('orenji',this)">
+  <button id="btn-orenji" class="nav-btn" onclick="showPage('orenji',this)">
     🍊 Shio Orenji
   </button>
 
-  <button class="nav-btn" onclick="showPage('yuzu',this)">
+  <button id="btn-yuzu" class="nav-btn" onclick="showPage('yuzu',this)">
     🍋 Yuzu Kosho
   </button>
 
-  <button class="nav-btn" onclick="showPage('shoyu',this)">
+  <button id="btn-shoyu" class="nav-btn" onclick="showPage('shoyu',this)">
     🍶 Shoyu
   </button>
 
-  <button class="nav-btn" onclick="showPage('miso',this)">
+  <button id="btn-miso" class="nav-btn" onclick="showPage('miso',this)">
     🥢 Miso
   </button>
 
-  <button class="nav-btn" onclick="showPage('recipes',this)">
+  <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes',this)">
     📚 Przepisy
   </button>
 
@@ -395,7 +445,7 @@ footer{
 
   <div class="grid">
 
-    <div class="card" onclick="showPage('shio')">
+    <div class="card" onclick="showPage('shio', document.getElementById('btn-shio'))">
       <div class="card-icon">🧂</div>
       <h3>Shio Calculator</h3>
       <p>
@@ -404,7 +454,7 @@ footer{
       </p>
     </div>
 
-    <div class="card" onclick="showPage('orenji')">
+    <div class="card" onclick="showPage('orenji', document.getElementById('btn-orenji'))">
       <div class="card-icon">🍊</div>
       <h3>Shio Orenji</h3>
       <p>
@@ -412,7 +462,7 @@ footer{
       </p>
     </div>
 
-    <div class="card" onclick="showPage('yuzu')">
+    <div class="card" onclick="showPage('yuzu', document.getElementById('btn-yuzu'))">
       <div class="card-icon">🍋</div>
       <h3>Yuzu Kosho</h3>
       <p>
@@ -421,7 +471,7 @@ footer{
       </p>
     </div>
 
-    <div class="card" onclick="showPage('shoyu')">
+    <div class="card" onclick="showPage('shoyu', document.getElementById('btn-shoyu'))">
       <div class="card-icon">🍶</div>
       <h3>Golden Shoyu Aojiso</h3>
       <p>
@@ -430,7 +480,7 @@ footer{
       </p>
     </div>
 
-    <div class="card" onclick="showPage('miso')">
+    <div class="card" onclick="showPage('miso', document.getElementById('btn-miso'))">
       <div class="card-icon">🥢</div>
       <h3>Miso</h3>
       <p>
@@ -438,7 +488,7 @@ footer{
       </p>
     </div>
 
-    <div class="card" onclick="showPage('recipes')">
+    <div class="card" onclick="showPage('recipes', document.getElementById('btn-recipes'))">
       <div class="card-icon">📚</div>
       <h3>Przepisy</h3>
       <p>
@@ -611,6 +661,28 @@ footer{
 
     <div id="shoyuTable"></div>
 
+    <div class="ingredient-focus">
+
+      <div class="focus-card ume">
+        <div class="focus-badge">UDZIAŁ: 7.9%</div>
+        <h4>🌸 Ume su Sunfood (Ocet Śliwkowy)</h4>
+        <p>
+          Wnosi kwasowość owocową z fermentacji umeboshi (pH ~2.8) oraz sól. 
+          Przełamuje tłuszcz w bulionie i balansuje słodycz wina Choya oraz cukru Muscovado.
+        </p>
+      </div>
+
+      <div class="focus-card aojiso">
+        <div class="focus-badge">UDZIAŁ: 8.8%</div>
+        <h4>🌿 Kousyo Aojiso (Sos z Pachnotki)</h4>
+        <p>
+          Odpowiada za świeży, ziołowo-cytrusowy profil pachnotki (shiso). 
+          Nadaje tare nowoczesny, orzeźwiający finisz i głębię aromatyczną.
+        </p>
+      </div>
+
+    </div>
+
     <div class="highlight">
 
       <div class="highlight-title">
@@ -755,6 +827,11 @@ function showPage(pageId, clickedButton){
 
   if(clickedButton){
     clickedButton.classList.add('active');
+  } else {
+    const defaultBtn = document.getElementById('btn-' + pageId);
+    if(defaultBtn){
+      defaultBtn.classList.add('active');
+    }
   }
 
   window.scrollTo({
@@ -776,11 +853,13 @@ function numberValue(id){
     return 0;
   }
 
-  return parseFloat(
+  const parsed = parseFloat(
     element.value
       .toString()
       .replace(',', '.')
-  ) || 0;
+  );
+
+  return isNaN(parsed) ? 0 : parsed;
 }
 
 
@@ -861,15 +940,23 @@ const orenjiRecipe = [
 ];
 
 
-function renderRecipeTable(containerId, recipe, baseAmount){
+function renderRecipeTable(containerId, recipe, baseAmount, showPercentage = false){
 
   const container =
     document.getElementById(containerId);
+
+  if(!container || !recipe || recipe.length === 0 || recipe[0].base <= 0){
+    return;
+  }
 
   const coefficient =
     baseAmount / recipe[0].base;
 
   let total = 0;
+
+  recipe.forEach(function(item){
+    total += (item.base * coefficient);
+  });
 
   let html = `
     <table class="recipe-table">
@@ -877,6 +964,7 @@ function renderRecipeTable(containerId, recipe, baseAmount){
       <thead>
         <tr>
           <th>Składnik</th>
+          ${showPercentage ? '<th>Udział %</th>' : ''}
           <th>Ilość</th>
         </tr>
       </thead>
@@ -886,14 +974,13 @@ function renderRecipeTable(containerId, recipe, baseAmount){
 
   recipe.forEach(function(item){
 
-    const amount =
-      item.base * coefficient;
-
-    total += amount;
+    const amount = item.base * coefficient;
+    const percentage = total > 0 ? ((amount / total) * 100).toFixed(1) : "0.0";
 
     html += `
       <tr>
         <td>${item.name}</td>
+        ${showPercentage ? `<td style="color:#888; font-size:13px;">${percentage}%</td>` : ''}
         <td>${amount.toFixed(1)} ${item.unit}</td>
       </tr>
     `;
@@ -906,7 +993,8 @@ function renderRecipeTable(containerId, recipe, baseAmount){
       <tfoot>
         <tr>
           <td class="recipe-total">Łącznie</td>
-          <td class="recipe-total">${total.toFixed(1)}</td>
+          ${showPercentage ? '<td></td>' : ''}
+          <td class="recipe-total">${total.toFixed(1)} g</td>
         </tr>
       </tfoot>
 
@@ -1021,13 +1109,13 @@ const shoyuRecipe = [
   },
 
   {
-    name:'Kousyo Aojiso',
+    name:'Kousyo Aojiso (Sos Shiso)',
     base:300,
     unit:'g'
   },
 
   {
-    name:'Ume su Sunfood',
+    name:'Ume su Sunfood (Ocet Śliwkowy)',
     base:270,
     unit:'g'
   },
@@ -1077,19 +1165,22 @@ function calculateShoyu(){
   renderRecipeTable(
     'shoyuTable',
     shoyuRecipe,
-    tamari
+    tamari,
+    true
   );
 }
 
 
 /* ================================
-   START
+   START INICJALIZACJA
 ================================ */
 
-calculateShio();
-calculateOrenji();
-calculateYuzu();
-calculateShoyu();
+window.addEventListener('DOMContentLoaded', function() {
+  calculateShio();
+  calculateOrenji();
+  calculateYuzu();
+  calculateShoyu();
+});
 
 </script>
 
