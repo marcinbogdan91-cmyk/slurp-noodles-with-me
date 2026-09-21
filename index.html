@@ -343,15 +343,6 @@ button.calculate:hover{
   margin-bottom: 8px;
 }
 
-.placeholder{
-  text-align:center;
-  padding:50px 20px;
-  background:var(--card);
-  border:1px dashed #444;
-  border-radius:16px;
-  color:var(--muted);
-}
-
 footer{
   text-align:center;
   border-top:1px solid var(--border);
@@ -445,7 +436,7 @@ footer{
 
   <div class="grid">
 
-    <div class="card" onclick="showPage('shio', document.getElementById('btn-shio'))">
+    <div class="card" onclick="showPage('shio')">
       <div class="card-icon">🧂</div>
       <h3>Shio Calculator</h3>
       <p>
@@ -454,7 +445,7 @@ footer{
       </p>
     </div>
 
-    <div class="card" onclick="showPage('orenji', document.getElementById('btn-orenji'))">
+    <div class="card" onclick="showPage('orenji')">
       <div class="card-icon">🍊</div>
       <h3>Shio Orenji</h3>
       <p>
@@ -462,7 +453,7 @@ footer{
       </p>
     </div>
 
-    <div class="card" onclick="showPage('yuzu', document.getElementById('btn-yuzu'))">
+    <div class="card" onclick="showPage('yuzu')">
       <div class="card-icon">🍋</div>
       <h3>Yuzu Kosho</h3>
       <p>
@@ -471,7 +462,7 @@ footer{
       </p>
     </div>
 
-    <div class="card" onclick="showPage('shoyu', document.getElementById('btn-shoyu'))">
+    <div class="card" onclick="showPage('shoyu')">
       <div class="card-icon">🍶</div>
       <h3>Golden Shoyu Aojiso</h3>
       <p>
@@ -480,7 +471,7 @@ footer{
       </p>
     </div>
 
-    <div class="card" onclick="showPage('miso', document.getElementById('btn-miso'))">
+    <div class="card" onclick="showPage('miso')">
       <div class="card-icon">🥢</div>
       <h3>Miso</h3>
       <p>
@@ -488,7 +479,7 @@ footer{
       </p>
     </div>
 
-    <div class="card" onclick="showPage('recipes', document.getElementById('btn-recipes'))">
+    <div class="card" onclick="showPage('recipes')">
       <div class="card-icon">📚</div>
       <h3>Przepisy</h3>
       <p>
@@ -877,9 +868,9 @@ function showPage(pageId, clickedButton){
   if(clickedButton){
     clickedButton.classList.add('active');
   } else {
-    const defaultBtn = document.getElementById('btn-' + pageId);
-    if(defaultBtn){
-      defaultBtn.classList.add('active');
+    const targetBtn = document.getElementById('btn-' + pageId);
+    if(targetBtn){
+      targetBtn.classList.add('active');
     }
   }
 
@@ -1147,4 +1138,40 @@ const shoyuRecipe = [
 
   {
     name:'Shiro Tamari',
-    base:1470
+    base:1470,
+    unit:'g'
+  },
+
+  {
+    name:'Yamasa Koikuchi',
+    base:500,
+    unit:'g'
+  },
+
+  {
+    name:'Kousyo Aojiso (Sos Shiso)',
+    base:300,
+    unit:'g'
+  },
+
+  {
+    name:'Ume su Sunfood (Ocet Śliwkowy)',
+    base:270,
+    unit:'g'
+  },
+
+  {
+    name:'Choya',
+    base:310,
+    unit:'g'
+  },
+
+  {
+    name:'Muscovado',
+    base:185,
+    unit:'g'
+  },
+
+  {
+    name:'MSG',
+    base:85
