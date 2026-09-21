@@ -37,7 +37,6 @@ header{
   text-align:center;
   padding:35px 20px 25px;
   border-bottom:1px solid var(--border);
-  cursor:pointer;
 }
 
 .logo{
@@ -298,49 +297,13 @@ button.calculate:hover{
   margin-bottom:8px;
 }
 
-.ingredient-focus {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.focus-card {
-  background: var(--card2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px;
-}
-
-.focus-card.ume {
-  border-left: 4px solid #e63946;
-}
-
-.focus-card.aojiso {
-  border-left: 4px solid #2a9d8f;
-}
-
-.focus-card h4 {
-  margin: 0 0 8px 0;
-  font-size: 16px;
-}
-
-.focus-card p {
-  color: #bbb;
-  font-size: 13px;
-  margin: 0;
-  line-height: 1.5;
-}
-
-.focus-badge {
-  display: inline-block;
-  background: #2a2a2a;
-  color: var(--accent2);
-  font-size: 12px;
-  font-weight: bold;
-  padding: 3px 8px;
-  border-radius: 6px;
-  margin-bottom: 8px;
+.placeholder{
+  text-align:center;
+  padding:50px 20px;
+  background:var(--card);
+  border:1px dashed #444;
+  border-radius:16px;
+  color:var(--muted);
 }
 
 footer{
@@ -374,48 +337,44 @@ footer{
     max-width:none;
   }
 
-  .ingredient-focus {
-    grid-template-columns: 1fr;
-  }
-
 }
 </style>
 </head>
 
 <body>
 
-<header onclick="showPage('home')">
+<header>
   <div class="logo">🍜 SLURP NOODLES WITH ME</div>
   <div class="subtitle">RAMEN LAB — TARE • RECIPES • CALCULATORS</div>
 </header>
 
 <nav>
 
-  <button id="btn-home" class="nav-btn active" onclick="showPage('home',this)">
+  <button class="nav-btn active" onclick="showPage('home',this)">
     🏠 Start
   </button>
 
-  <button id="btn-shio" class="nav-btn" onclick="showPage('shio',this)">
+  <button class="nav-btn" onclick="showPage('shio',this)">
     🧂 Shio
   </button>
 
-  <button id="btn-orenji" class="nav-btn" onclick="showPage('orenji',this)">
+  <button class="nav-btn" onclick="showPage('orenji',this)">
     🍊 Shio Orenji
   </button>
 
-  <button id="btn-yuzu" class="nav-btn" onclick="showPage('yuzu',this)">
+  <button class="nav-btn" onclick="showPage('yuzu',this)">
     🍋 Yuzu Kosho
   </button>
 
-  <button id="btn-shoyu" class="nav-btn" onclick="showPage('shoyu',this)">
+  <button class="nav-btn" onclick="showPage('shoyu',this)">
     🍶 Shoyu
   </button>
 
-  <button id="btn-miso" class="nav-btn" onclick="showPage('miso',this)">
+  <button class="nav-btn" onclick="showPage('miso',this)">
     🥢 Miso
   </button>
 
-  <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes',this)">
+  <button class="nav-btn" onclick="showPage('recipes',this)">
     📚 Przepisy
   </button>
 
@@ -475,7 +434,7 @@ footer{
       <div class="card-icon">🥢</div>
       <h3>Miso</h3>
       <p>
-        Kalkulator i receptury tare Miso.
+        Saikyo Pear & Black Garlic Miso Tare.
       </p>
     </div>
 
@@ -652,28 +611,6 @@ footer{
 
     <div id="shoyuTable"></div>
 
-    <div class="ingredient-focus">
-
-      <div class="focus-card ume">
-        <div class="focus-badge">UDZIAŁ: 7.9%</div>
-        <h4>🌸 Ume su Sunfood (Ocet Śliwkowy)</h4>
-        <p>
-          Wnosi kwasowość owocową z fermentacji umeboshi (pH ~2.8) oraz sól. 
-          Przełamuje tłuszcz w bulionie i balansuje słodycz wina Choya oraz cukru Muscovado.
-        </p>
-      </div>
-
-      <div class="focus-card aojiso">
-        <div class="focus-badge">UDZIAŁ: 8.8%</div>
-        <h4>🌿 Kousyo Aojiso (Sos z Pachnotki)</h4>
-        <p>
-          Odpowiada za świeży, ziołowo-cytrusowy profil pachnotki (shiso). 
-          Nadaje tare nowoczesny, orzeźwiający finisz i głębię aromatyczną.
-        </p>
-      </div>
-
-    </div>
-
     <div class="highlight">
 
       <div class="highlight-title">
@@ -745,8 +682,8 @@ footer{
     <div class="scale-box">
 
       <div class="field">
-        <label>Saikyo Miso (Baza) — g</label>
-        <input id="misoBaseInput" type="text" value="220">
+        <label>Saikyo Miso — g</label>
+        <input id="misoSaikyo" type="text" value="220">
       </div>
 
       <button class="calculate" onclick="calculateMiso()">
@@ -757,28 +694,6 @@ footer{
 
     <div id="misoTable"></div>
 
-    <div class="ingredient-focus">
-
-      <div class="focus-card ume">
-        <div class="focus-badge">SŁODKA BAZA: 22.0%</div>
-        <h4>🌾 Saikyo Miso + Pieczona Gruszka</h4>
-        <p>
-          Saikyo Miso (Kaiseki Ama Miso) nadaje aksamitną, maślaną słodycz ryżową, 
-          która w połączeniu z pieczoną gruszką tworzy gładki i owocowy finisz.
-        </p>
-      </div>
-
-      <div class="focus-card aojiso">
-        <div class="focus-badge">GŁĘBIA UMAMI</div>
-        <h4>🧄 Czarny Czosnek + Aka Miso</h4>
-        <p>
-          Kontrastowe zestawienie ciemnego miso i balsamicznego czarnego czosnku 
-          balansuje maślaną słodycz Saikyo Miso i zapobiega mdłemu smakowi wywaru.
-        </p>
-      </div>
-
-    </div>
-
     <div class="highlight">
 
       <div class="highlight-title">
@@ -787,6 +702,16 @@ footer{
 
       <strong>Dozowanie:</strong> 45 g – 52 g tare na 300–350 ml wywaru (Tori Paitan, Tonkotsu lub Paitan Dashi).<br>
       <strong>Technika:</strong> Rozetrzyj porcję tare z gorącym wywarem w chochli lub przesmaż chwilę na patelni z tłuszczem chiyu/smalcem.
+
+    </div>
+
+    <div class="info">
+
+      <strong>Profil Miso:</strong><br><br>
+
+      • <strong>Saikyo Miso + Pieczona Gruszka:</strong> Nadają aksamitną, maślaną słodycz ryżową i owocowy finisz.<br>
+      • <strong>Czarny Czosnek + Ciemne Miso (Aka/Hatcho):</strong> Wnoszą balsamiczne umami i równoważą słodycz.<br>
+      • <strong>Tsuyu + Muscovado:</strong> Głęboka baza dashi z katsuobushi i karmelowa nuta melasy.
 
     </div>
 
@@ -867,11 +792,6 @@ function showPage(pageId, clickedButton){
 
   if(clickedButton){
     clickedButton.classList.add('active');
-  } else {
-    const targetBtn = document.getElementById('btn-' + pageId);
-    if(targetBtn){
-      targetBtn.classList.add('active');
-    }
   }
 
   window.scrollTo({
@@ -893,13 +813,11 @@ function numberValue(id){
     return 0;
   }
 
-  const parsed = parseFloat(
+  return parseFloat(
     element.value
       .toString()
       .replace(',', '.')
-  );
-
-  return isNaN(parsed) ? 0 : parsed;
+  ) || 0;
 }
 
 
@@ -980,23 +898,15 @@ const orenjiRecipe = [
 ];
 
 
-function renderRecipeTable(containerId, recipe, baseAmount, showPercentage = false){
+function renderRecipeTable(containerId, recipe, baseAmount){
 
   const container =
     document.getElementById(containerId);
-
-  if(!container || !recipe || recipe.length === 0 || recipe[0].base <= 0){
-    return;
-  }
 
   const coefficient =
     baseAmount / recipe[0].base;
 
   let total = 0;
-
-  recipe.forEach(function(item){
-    total += (item.base * coefficient);
-  });
 
   let html = `
     <table class="recipe-table">
@@ -1004,7 +914,6 @@ function renderRecipeTable(containerId, recipe, baseAmount, showPercentage = fal
       <thead>
         <tr>
           <th>Składnik</th>
-          ${showPercentage ? '<th>Udział %</th>' : ''}
           <th>Ilość</th>
         </tr>
       </thead>
@@ -1014,13 +923,14 @@ function renderRecipeTable(containerId, recipe, baseAmount, showPercentage = fal
 
   recipe.forEach(function(item){
 
-    const amount = item.base * coefficient;
-    const percentage = total > 0 ? ((amount / total) * 100).toFixed(1) : "0.0";
+    const amount =
+      item.base * coefficient;
+
+    total += amount;
 
     html += `
       <tr>
         <td>${item.name}</td>
-        ${showPercentage ? `<td style="color:#888; font-size:13px;">${percentage}%</td>` : ''}
         <td>${amount.toFixed(1)} ${item.unit}</td>
       </tr>
     `;
@@ -1033,7 +943,6 @@ function renderRecipeTable(containerId, recipe, baseAmount, showPercentage = fal
       <tfoot>
         <tr>
           <td class="recipe-total">Łącznie</td>
-          ${showPercentage ? '<td></td>' : ''}
           <td class="recipe-total">${total.toFixed(1)} g</td>
         </tr>
       </tfoot>
@@ -1149,13 +1058,13 @@ const shoyuRecipe = [
   },
 
   {
-    name:'Kousyo Aojiso (Sos Shiso)',
+    name:'Kousyo Aojiso',
     base:300,
     unit:'g'
   },
 
   {
-    name:'Ume su Sunfood (Ocet Śliwkowy)',
+    name:'Ume su Sunfood',
     base:270,
     unit:'g'
   },
@@ -1174,4 +1083,151 @@ const shoyuRecipe = [
 
   {
     name:'MSG',
-    base:85
+    base:85,
+    unit:'g'
+  },
+
+  {
+    name:'Niboshi Dashi 10%',
+    base:280,
+    unit:'g'
+  },
+
+  {
+    name:'Sól dodatkowa',
+    base:3.88,
+    unit:'g'
+  }
+
+];
+
+
+function calculateShoyu(){
+
+  const tamari =
+    numberValue('shoyuTamari');
+
+  if(tamari <= 0){
+    return;
+  }
+
+  renderRecipeTable(
+    'shoyuTable',
+    shoyuRecipe,
+    tamari
+  );
+}
+
+
+/* ================================
+   MISO (Saikyo Pear & Black Garlic)
+================================ */
+
+const misoRecipe = [
+
+  {
+    name:'Saikyo Miso (Słodkie Ryżowe)',
+    base:220,
+    unit:'g'
+  },
+
+  {
+    name:'Shiro Miso (Standardowe Białe)',
+    base:180,
+    unit:'g'
+  },
+
+  {
+    name:'Ciemne Miso (Aka/Hatcho)',
+    base:120,
+    unit:'g'
+  },
+
+  {
+    name:'Pieczona Gruszka (Purée)',
+    base:130,
+    unit:'g'
+  },
+
+  {
+    name:'Sos Tsuyu',
+    base:110,
+    unit:'g'
+  },
+
+  {
+    name:'Pieczony Czosnek (Pasta)',
+    base:60,
+    unit:'g'
+  },
+
+  {
+    name:'Czarny Czosnek Fermentowany',
+    base:50,
+    unit:'g'
+  },
+
+  {
+    name:'Cukier Muscovado',
+    base:35,
+    unit:'g'
+  },
+
+  {
+    name:'Olej Sezamowy Prażony',
+    base:30,
+    unit:'g'
+  },
+
+  {
+    name:'MSG',
+    base:25,
+    unit:'g'
+  },
+
+  {
+    name:'Świeży Imbir (Ścierany)',
+    base:20,
+    unit:'g'
+  },
+
+  {
+    name:'Cukier Trzcinowy',
+    base:20,
+    unit:'g'
+  }
+
+];
+
+
+function calculateMiso(){
+
+  const saikyo =
+    numberValue('misoSaikyo');
+
+  if(saikyo <= 0){
+    return;
+  }
+
+  renderRecipeTable(
+    'misoTable',
+    misoRecipe,
+    saikyo
+  );
+}
+
+
+/* ================================
+   START
+================================ */
+
+calculateShio();
+calculateOrenji();
+calculateYuzu();
+calculateShoyu();
+calculateMiso();
+
+</script>
+
+</body>
+</html>
