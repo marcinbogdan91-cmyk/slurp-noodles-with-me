@@ -37,6 +37,7 @@ header{
   text-align:center;
   padding:35px 20px 25px;
   border-bottom:1px solid var(--border);
+  cursor:pointer;
 }
 
 .logo{
@@ -297,15 +298,6 @@ button.calculate:hover{
   margin-bottom:8px;
 }
 
-.placeholder{
-  text-align:center;
-  padding:50px 20px;
-  background:var(--card);
-  border:1px dashed #444;
-  border-radius:16px;
-  color:var(--muted);
-}
-
 footer{
   text-align:center;
   border-top:1px solid var(--border);
@@ -343,38 +335,38 @@ footer{
 
 <body>
 
-<header>
+<header onclick="showPage('home')">
   <div class="logo">🍜 SLURP NOODLES WITH ME</div>
   <div class="subtitle">RAMEN LAB — TARE • RECIPES • CALCULATORS</div>
 </header>
 
 <nav>
 
-  <button class="nav-btn active" onclick="showPage('home',this)">
+  <button id="btn-home" class="nav-btn active" onclick="showPage('home',this)">
     🏠 Start
   </button>
 
-  <button class="nav-btn" onclick="showPage('shio',this)">
+  <button id="btn-shio" class="nav-btn" onclick="showPage('shio',this)">
     🧂 Shio
   </button>
 
-  <button class="nav-btn" onclick="showPage('orenji',this)">
+  <button id="btn-orenji" class="nav-btn" onclick="showPage('orenji',this)">
     🍊 Shio Orenji
   </button>
 
-  <button class="nav-btn" onclick="showPage('yuzu',this)">
+  <button id="btn-yuzu" class="nav-btn" onclick="showPage('yuzu',this)">
     🍋 Yuzu Kosho
   </button>
 
-  <button class="nav-btn" onclick="showPage('shoyu',this)">
+  <button id="btn-shoyu" class="nav-btn" onclick="showPage('shoyu',this)">
     🍶 Shoyu
   </button>
 
-  <button class="nav-btn" onclick="showPage('miso',this)">
+  <button id="btn-miso" class="nav-btn" onclick="showPage('miso',this)">
     🥢 Miso
   </button>
 
-  <button class="nav-btn" onclick="showPage('recipes',this)">
+  <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes',this)">
     📚 Przepisy
   </button>
 
@@ -771,7 +763,7 @@ footer{
 <script>
 
 /* ================================
-   NAWIGACJA
+   NAWIGACJA (SPRAWNA)
 ================================ */
 
 function showPage(pageId, clickedButton){
@@ -780,10 +772,10 @@ function showPage(pageId, clickedButton){
     page.classList.remove('active');
   });
 
-  const page = document.getElementById(pageId);
+  const targetPage = document.getElementById(pageId);
 
-  if(page){
-    page.classList.add('active');
+  if(targetPage){
+    targetPage.classList.add('active');
   }
 
   document.querySelectorAll('.nav-btn').forEach(function(button){
@@ -792,6 +784,11 @@ function showPage(pageId, clickedButton){
 
   if(clickedButton){
     clickedButton.classList.add('active');
+  } else {
+    const targetNavBtn = document.getElementById('btn-' + pageId);
+    if(targetNavBtn){
+      targetNavBtn.classList.add('active');
+    }
   }
 
   window.scrollTo({
@@ -902,6 +899,10 @@ function renderRecipeTable(containerId, recipe, baseAmount){
 
   const container =
     document.getElementById(containerId);
+
+  if(!container){
+    return;
+  }
 
   const coefficient =
     baseAmount / recipe[0].base;
@@ -1218,14 +1219,16 @@ function calculateMiso(){
 
 
 /* ================================
-   START
+   START (INICJALIZACJA STRONY)
 ================================ */
 
-calculateShio();
-calculateOrenji();
-calculateYuzu();
-calculateShoyu();
-calculateMiso();
+window.addEventListener('DOMContentLoaded', function(){
+  calculateShio();
+  calculateOrenji();
+  calculateYuzu();
+  calculateShoyu();
+  calculateMiso();
+});
 
 </script>
 
