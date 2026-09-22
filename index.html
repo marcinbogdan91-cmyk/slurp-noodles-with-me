@@ -515,7 +515,7 @@ footer{
   <h1>🥢 Saikyo Pear & Black Garlic Miso</h1>
   <p class="intro">
     Zbalansowane tare miso na bazie Shiro, Saikyo i Ciemnego Miso, z czarnym czosnkiem,
-    pieczonym czosnkiem, purée z pieczonej gruszki, sosem Tsuyu, olejem sezamowym i cukrami.
+    pieczonym czosnkiem, purée z pieczonej gruszki, sosem Tsuyu, octem gruszkowym, sansho i dodatkami.
   </p>
 
   <div class="lab-card">
@@ -532,7 +532,7 @@ footer{
     <div class="highlight">
       <div class="highlight-title">🎯 Rekomendacja serwowania</div>
       <strong>Dozowanie:</strong> 45 g – 55 g tare na 300–350 ml wywaru.<br>
-      <strong>Aroma Oil:</strong> Doskonale komponuje się z dodatkowym tłuszczem w misce.
+      <strong>Aroma Oil:</strong> Idealnie komponuje się z tłuszczem w misce.
     </div>
   </div>
 </section>
@@ -727,20 +727,22 @@ function calculateShoyu(){
   renderRecipeTable('shoyuTable', shoyuRecipe, tamari);
 }
 
-/* MISO (NOWY BALANS 1000G) */
+/* MISO (NOWA RECEPTURA 1003G) */
 const misoRecipe = [
   { name:'Shiro Miso', base:220, unit:'g' },
   { name:'Saikyo Miso', base:180, unit:'g' },
-  { name:'Pieczona gruszka (Purée)', base:130, unit:'g' },
   { name:'Ciemne Miso (Aka)', base:120, unit:'g' },
+  { name:'Pieczona gruszka', base:110, unit:'g' },
   { name:'Sos Tsuyu', base:110, unit:'g' },
-  { name:'Pieczony czosnek (Pasta)', base:60, unit:'g' },
+  { name:'Pieczony czosnek', base:60, unit:'g' },
   { name:'Czarny czosnek', base:50, unit:'g' },
-  { name:'Cukier Muscovado', base:35, unit:'g' },
+  { name:'Muscovado', base:35, unit:'g' },
   { name:'Olej sezamowy', base:30, unit:'g' },
   { name:'MSG', base:25, unit:'g' },
-  { name:'Imbir (świeży)', base:20, unit:'g' },
-  { name:'Cukier trzcinowy', base:20, unit:'g' }
+  { name:'Imbir świeży', base:20, unit:'g' },
+  { name:'Cukier trzcinowy', base:20, unit:'g' },
+  { name:'Ocet gruszkowy', base:20, unit:'g' },
+  { name:'Sansho', base:3, unit:'g' }
 ];
 
 function calculateMiso(){
