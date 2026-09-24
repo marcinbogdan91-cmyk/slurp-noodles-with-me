@@ -485,7 +485,7 @@ footer{
     </div>
     <div id="shoyuTable"></div>
 
-    <div class="highlight">
+    <div class="highlight" id="shoyuBowlParams">
       <div class="highlight-title">🎯 Parametry jednej miski</div>
       <strong>354 ml bulionu + 40 ml tare</strong><br>
       Docelowe zasolenie: <strong>1,60%</strong><br>
@@ -683,6 +683,7 @@ function renderRecipeTable(containerId, recipe, baseAmount){
   `;
 
   container.innerHTML = html;
+  return total; // Zwracamy łączną masę do obliczeń miski jeśli potrzeba
 }
 
 function calculateOrenji(){
@@ -708,24 +709,84 @@ function calculateYuzu(){
   renderRecipeTable('yuzuTable', yuzuRecipe, tsuyu);
 }
 
-/* SHOYU (ZAKTUALIZOWANA) */
+/* SHOYU */
 const shoyuRecipe = [
-  { name:'Shiro Tamari', base:1470, unit:'g' },
-  { name:'Yamasa Koikuchi', base:500, unit:'g' },
-  { name:'Kousyo Aojiso', base:300, unit:'g' },
-  { name:'Ume su Sunfood', base:270, unit:'g' },
-  { name:'Choya', base:300, unit:'g' },
-  { name:'Sake', base:300, unit:'g' },
-  { name:'Muscovado', base:150, unit:'g' },
-  { name:'MSG', base:85, unit:'g' },
-  { name:'Niboshi Dashi 10%', base:280, unit:'g' },
-  { name:'Sól pomarańczowa', base:158, unit:'g' }
+  { name:'Shiro Tamari', base:1470, unit:'g', saltPct: 0.17 },
+  { name:'Yamasa Koikuchi', base:500, unit:'g', saltPct: 0.162 },
+  { name:'Kousyo Aojiso', base:300, unit:'g', saltPct: 0.0575 },
+  { name:'Ume su Sunfood', base:270, unit:'g', saltPct: 0.205 },
+  { name:'Choya', base:300, unit:'g', saltPct: 0 },
+  { name:'Sake', base:300, unit:'g', saltPct: 0 },
+  { name:'Muscovado', base:150, unit:'g', saltPct: 0 },
+  { name:'MSG', base:85, unit:'g', saltPct: 0 },
+  { name:'Niboshi Dashi 10%', base:280, unit:'g', saltPct: 0 },
+  { name:'Sól pomarańczowa', base:158, unit:'g', saltPct: 1.0 }
 ];
 
 function calculateShoyu(){
   const tamari = numberValue('shoyuTamari');
   if(tamari <= 0) return;
-  renderRecipeTable('shoyuTable', shoyuRecipe, tamari);
+  
+  const container = document.getElementById('shoyuTable');
+  const coefficient = tamari / shoyuRecipe[0].base;
+  let totalWeight = 0;
+  let totalSaltWeight = 0;
+
+  let html = `
+    <table class="recipe-table">
+      <thead>
+        <tr>
+          <th>Składnik</th>
+          <th>Ilość</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  shoyuRecipe.forEach(function(item){
+    const amount = item.base * coefficient;
+    totalWeight += amount;
+    totalSaltWeight += amount * item.saltPct;
+    html += `
+      <tr>
+        <td>${item.name}</td>
+        <td>${amount.toFixed(1)} ${item.unit}</td>
+      </tr>
+    `;
+  });
+
+  html += `
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="recipe-total">Łącznie</td>
+          <td class="recipe-total">${totalWeight.toFixed(1)} g</td>
+        </tr>
+      </tfoot>
+    </table>
+  `;
+
+  container.innerHTML = html;
+
+  // Obliczenie zasolenia samego tare w %
+  const tareSaltPct = (totalSaltWeight / totalWeight) * 100;
+
+  // Obliczenia dla miski: 354 ml bulionu + 40 ml tare
+  const brothMl = 354;
+  const tareMl = 40;
+  const saltInBowl = (tareMl * (tareSaltPct / 100));
+  const totalBowlWeight = brothMl + tareMl;
+  const finalBowlSaltPct = (saltInBowl / totalBowlWeight) * 100;
+
+  // Aktualizacja kafelka parametrów miski
+  const bowlParamsContainer = document.getElementById('shoyuBowlParams');
+  bowlParamsContainer.innerHTML = `
+    <div class="highlight-title">🎯 Parametry jednej miski</div>
+    <strong>${brothMl} ml bulionu + ${tareMl} ml tare</strong><br>
+    Docelowe zasolenie: <strong>${finalBowlSaltPct.toFixed(2)}%</strong><br>
+    Docelowa ilość soli: <strong>${saltInBowl.toFixed(3)} g</strong><br>
+    <span style="font-size: 13px; color: var(--muted);">Zasolenie samego tare: ${tareSaltPct.toFixed(2)}%</span>
+  `;
 }
 
 /* MISO */
