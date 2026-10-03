@@ -1136,6 +1136,252 @@ function calculateShoyu(){
 
   const tareSaltPct =
     (totalSaltWeight / totalWeight) * 100;
+  const bowlParamsContainer =
+    document.getElementById('shoyuBowlParams');
+
+  bowlParamsContainer.innerHTML = `
+
+    <div class="highlight-title">
+      🎯 Parametry jednej miski
+    </div>
+
+    <strong>
+      ${brothMl} ml bulionu + ${tareMl} ml tare
+    </strong><br>
+
+    Docelowe zasolenie:
+    <strong>${finalBowlSaltPct.toFixed(2)}%</strong><br>
+
+    Docelowa ilość soli:
+    <strong>${saltInBowl.toFixed(3)} g</strong><br>
+
+    <span style="font-size:13px;color:var(--muted);">
+      Zasolenie samego tare:
+      ${tareSaltPct.toFixed(2)}%
+    </span>
+
+  `;
+
+}
+
+
+/* ================================
+   SAKURA SHIRO SHOYU
+================================ */
+
+const sakuraRecipe = [
+
+  {
+    name:'Biały sos pszeniczny',
+    base:1128.7,
+    unit:'g'
+  },
+
+  {
+    name:'Zwykłe sake',
+    base:360,
+    unit:'g'
+  },
+
+  {
+    name:'Sakura-sake',
+    base:200,
+    unit:'g'
+  },
+
+  {
+    name:'Whisky Sakura',
+    base:40,
+    unit:'g'
+  },
+
+  {
+    name:'Cukier',
+    base:158,
+    unit:'g'
+  },
+
+  {
+    name:'Ocet wiśniowy',
+    base:56.4,
+    unit:'g'
+  },
+
+  {
+    name:'Sól z sakury',
+    base:35,
+    unit:'g'
+  },
+
+  {
+    name:'Zwykła sól',
+    base:44,
+    unit:'g'
+  },
+
+  {
+    name:'MSG',
+    base:13.5,
+    unit:'g'
+  }
+
+];
+
+
+function calculateSakura(){
+
+  const sakuraBase =
+    numberValue('sakuraBase');
+
+  if(sakuraBase <= 0){
+    return;
+  }
+
+  renderRecipeTable(
+    'sakuraTable',
+    sakuraRecipe,
+    sakuraBase
+  );
+}
+
+
+/* ================================
+   MISO
+================================ */
+
+const misoRecipe = [
+
+  {
+    name:'Shiro Miso',
+    base:220,
+    unit:'g'
+  },
+
+  {
+    name:'Saikyo Miso',
+    base:180,
+    unit:'g'
+  },
+
+  {
+    name:'Ciemne Miso (Aka)',
+    base:120,
+    unit:'g'
+  },
+
+  {
+    name:'Pieczona gruszka',
+    base:110,
+    unit:'g'
+  },
+
+  {
+    name:'Sos Tsuyu',
+    base:110,
+    unit:'g'
+  },
+
+  {
+    name:'Pieczony czosnek',
+    base:60,
+    unit:'g'
+  },
+
+  {
+    name:'Czarny czosnek',
+    base:50,
+    unit:'g'
+  },
+
+  {
+    name:'Muscovado',
+    base:35,
+    unit:'g'
+  },
+
+  {
+    name:'Olej sezamowy',
+    base:30,
+    unit:'g'
+  },
+
+  {
+    name:'MSG',
+    base:25,
+    unit:'g'
+  },
+
+  {
+    name:'Imbir świeży',
+    base:20,
+    unit:'g'
+  },
+
+  {
+    name:'Cukier trzcinowy',
+    base:20,
+    unit:'g'
+  },
+
+  {
+    name:'Ocet gruszkowy',
+    base:20,
+    unit:'g'
+  },
+
+  {
+    name:'Sansho',
+    base:3,
+    unit:'g'
+  }
+
+];
+
+
+function calculateMiso(){
+
+  const shiro =
+    numberValue('misoShiro');
+
+  if(shiro <= 0){
+    return;
+  }
+
+  renderRecipeTable(
+    'misoTable',
+    misoRecipe,
+    shiro
+  );
+}
+
+
+/* ================================
+   INICJALIZACJA
+================================ */
+
+window.addEventListener(
+  'DOMContentLoaded',
+  function(){
+
+    calculateShio();
+
+    calculateOrenji();
+
+    calculateYuzu();
+
+    calculateShoyu();
+
+    calculateSakura();
+
+    calculateMiso();
+
+  }
+);
+
+</script>
+
+</body>
+</html>
 
 
   const brothMl = 354;
