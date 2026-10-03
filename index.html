@@ -335,14 +335,14 @@ footer{
 </header>
 
 <nav>
-  <button id="btn-home" class="nav-btn active" onclick="showPage('home',this)">🏠 Start</button>
-  <button id="btn-shio" class="nav-btn" onclick="showPage('shio',this)">🧂 Shio</button>
-  <button id="btn-orenji" class="nav-btn" onclick="showPage('orenji',this)">🍊 Shio Orenji</button>
-  <button id="btn-yuzu" class="nav-btn" onclick="showPage('yuzu',this)">🍋 Yuzu Kosho</button>
-  <button id="btn-shoyu" class="nav-btn" onclick="showPage('shoyu',this)">🍶 Shoyu</button>
-  <button id="btn-sakura" class="nav-btn" onclick="showPage('sakura',this)">🌸 Sakura Shiro Shoyu</button>
-  <button id="btn-miso" class="nav-btn" onclick="showPage('miso',this)">🥢 Miso</button>
-  <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes',this)">📚 Przepisy</button>
+  <button id="btn-home" class="nav-btn active" onclick="showPage('home')">🏠 Start</button>
+  <button id="btn-shio" class="nav-btn" onclick="showPage('shio')">🧂 Shio</button>
+  <button id="btn-orenji" class="nav-btn" onclick="showPage('orenji')">🍊 Shio Orenji</button>
+  <button id="btn-yuzu" class="nav-btn" onclick="showPage('yuzu')">🍋 Yuzu Kosho</button>
+  <button id="btn-shoyu" class="nav-btn" onclick="showPage('shoyu')">🍶 Shoyu</button>
+  <button id="btn-sakura" class="nav-btn" onclick="showPage('sakura')">🌸 Sakura Shiro Shoyu</button>
+  <button id="btn-miso" class="nav-btn" onclick="showPage('miso')">🥢 Miso</button>
+  <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes')">📚 Przepisy</button>
 </nav>
 
 <main>
@@ -607,29 +607,30 @@ footer{
 
 <script>
 
-function showPage(pageId, clickedButton){
+function showPage(pageId){
+  // Ukryj wszystkie sekcje
   document.querySelectorAll('.page').forEach(function(page){
     page.classList.remove('active');
   });
 
+  // Pokaż wybraną stronę
   const targetPage = document.getElementById(pageId);
   if(targetPage){
     targetPage.classList.add('active');
   }
 
+  // Odznacz wszystkie przyciski w menu
   document.querySelectorAll('.nav-btn').forEach(function(button){
     button.classList.remove('active');
   });
 
-  if(clickedButton){
-    clickedButton.classList.add('active');
-  } else {
-    const targetNavBtn = document.getElementById('btn-' + pageId);
-    if(targetNavBtn){
-      targetNavBtn.classList.add('active');
-    }
+  // Podświetl odpowiedni przycisk w menu
+  const targetNavBtn = document.getElementById('btn-' + pageId);
+  if(targetNavBtn){
+    targetNavBtn.classList.add('active');
   }
 
+  // Przewiń na górę strony
   window.scrollTo({
     top:0,
     behavior:'smooth'
@@ -809,13 +810,15 @@ function calculateShoyu(){
   const finalBowlSaltPct = (saltInBowl / totalBowlWeight) * 100;
 
   const bowlParamsContainer = document.getElementById('shoyuBowlParams');
-  bowlParamsContainer.innerHTML = `
-    <div class="highlight-title">🎯 Parametry jednej miski</div>
-    <strong>${brothMl} ml bulionu + ${tareMl} ml tare</strong><br>
-    Docelowe zasolenie: <strong>${finalBowlSaltPct.toFixed(2)}%</strong><br>
-    Docelowa ilość soli: <strong>${saltInBowl.toFixed(3)} g</strong><br>
-    <span style="font-size: 13px; color: var(--muted);">Zasolenie samego tare: ${tareSaltPct.toFixed(2)}%</span>
-  `;
+  if(bowlParamsContainer){
+    bowlParamsContainer.innerHTML = `
+      <div class="highlight-title">🎯 Parametry jednej miski</div>
+      <strong>${brothMl} ml bulionu + ${tareMl} ml tare</strong><br>
+      Docelowe zasolenie: <strong>${finalBowlSaltPct.toFixed(2)}%</strong><br>
+      Docelowa ilość soli: <strong>${saltInBowl.toFixed(3)} g</strong><br>
+      <span style="font-size: 13px; color: var(--muted);">Zasolenie samego tare: ${tareSaltPct.toFixed(2)}%</span>
+    `;
+  }
 }
 
 /* SAKURA SHIRO SHOYU */
@@ -832,6 +835,4 @@ const sakuraRecipe = [
 ];
 
 function calculateSakura(){
-  const shoyu = numberValue('sakuraShoyu');
-  if(shoyu <= 0) return;
-  renderRec
+  const shoyu
