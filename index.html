@@ -619,18 +619,18 @@ function showPage(pageId){
     targetPage.classList.add('active');
   }
 
-  // Odznacz wszystkie przyciski w menu
+  // Odznacz wszystkie przyciski w nawigacji
   document.querySelectorAll('.nav-btn').forEach(function(button){
     button.classList.remove('active');
   });
 
-  // Podświetl odpowiedni przycisk w menu
+  // Zaznacz odpowiedni przycisk w nawigacji
   const targetNavBtn = document.getElementById('btn-' + pageId);
   if(targetNavBtn){
     targetNavBtn.classList.add('active');
   }
 
-  // Przewiń na górę strony
+  // Przewiń płynnie do góry
   window.scrollTo({
     top:0,
     behavior:'smooth'
@@ -654,29 +654,23 @@ function calculateShio(){
   const tareSalt = numberValue('tareSalt');
   const finalSalt = numberValue('finalSalt');
 
+  const resElem = document.getElementById('shioResult');
+  if(!resElem) return;
+
   if(broth <= 0 || tareSalt <= finalSalt){
-    document.getElementById('shioResult').textContent = 'Sprawdź wartości';
+    resElem.textContent = 'Sprawdź wartości';
     return;
   }
 
   const tare = broth * (finalSalt - brothSalt) / (tareSalt - finalSalt);
-  document.getElementById('shioResult').textContent = tare.toFixed(1) + ' g';
+  resElem.textContent = tare.toFixed(1) + ' g';
 }
 
-/* ORENJI */
-const orenjiRecipe = [
-  { name:'Katsoubushi dashi', base:3500, unit:'ml' },
-  { name:'Cukier', base:297.6, unit:'g' },
-  { name:'Yuzu ponzu', base:116.5, unit:'ml' },
-  { name:'Shiro shoyu', base:232.2, unit:'ml' },
-  { name:'Sól pomarańczowa', base:561.8, unit:'g' },
-  { name:'MSG', base:70.1, unit:'g' }
-];
-
+/* RECEPTURY GENEROWANIE TABEL */
 function renderRecipeTable(containerId, recipe, baseAmount){
   const container = document.getElementById(containerId);
   if(!container){
-    return;
+    return 0;
   }
 
   const coefficient = baseAmount / recipe[0].base;
@@ -718,6 +712,16 @@ function renderRecipeTable(containerId, recipe, baseAmount){
   container.innerHTML = html;
   return total;
 }
+
+/* ORENJI */
+const orenjiRecipe = [
+  { name:'Katsoubushi dashi', base:3500, unit:'ml' },
+  { name:'Cukier', base:297.6, unit:'g' },
+  { name:'Yuzu ponzu', base:116.5, unit:'ml' },
+  { name:'Shiro shoyu', base:232.2, unit:'ml' },
+  { name:'Sól pomarańczowa', base:561.8, unit:'g' },
+  { name:'MSG', base:70.1, unit:'g' }
+];
 
 function calculateOrenji(){
   const dashi = numberValue('orenjiDashi');
@@ -761,6 +765,8 @@ function calculateShoyu(){
   if(tamari <= 0) return;
   
   const container = document.getElementById('shoyuTable');
+  if(!container) return;
+
   const coefficient = tamari / shoyuRecipe[0].base;
   let totalWeight = 0;
   let totalSaltWeight = 0;
@@ -802,7 +808,6 @@ function calculateShoyu(){
   container.innerHTML = html;
 
   const tareSaltPct = (totalSaltWeight / totalWeight) * 100;
-
   const brothMl = 354;
   const tareMl = 40;
   const saltInBowl = (tareMl * (tareSaltPct / 100));
@@ -830,9 +835,4 @@ const sakuraRecipe = [
   { name:'Ocet wiśniowy', base:56.4, unit:'g' },
   { name:'Whisky Sakura', base:40, unit:'g' },
   { name:'Sól z sakury (ok. 30–40 g)', base:35, unit:'g' },
-  { name:'Zwykła sól (ok. 39–49 g)', base:44, unit:'g' },
-  { name:'MSG', base:13.5, unit:'g' }
-];
-
-function calculateSakura(){
-  const shoyu
+  { name:'Zwykła sól (ok. 39–49 g)', base:44, unit
