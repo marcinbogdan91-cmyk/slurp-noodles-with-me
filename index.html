@@ -1170,66 +1170,68 @@ function calculateShoyu(){
 ================================ */
 
 const sakuraRecipe = [
-
-  {
-    name:'Biały sos pszeniczny',
-    base:1128.7,
-    unit:'g'
-  },
-
-  {
-    name:'Zwykłe sake',
-    base:360,
-    unit:'g'
-  },
-
-  {
-    name:'Sakura-sake',
-    base:200,
-    unit:'g'
-  },
-
-  {
-    name:'Whisky Sakura',
-    base:40,
-    unit:'g'
-  },
-
-  {
-    name:'Cukier',
-    base:158,
-    unit:'g'
-  },
-
-  {
-    name:'Ocet wiśniowy',
-    base:56.4,
-    unit:'g'
-  },
-
-  {
-    name:'Sól z sakury',
-    base:35,
-    unit:'g'
-  },
-
-  {
-    name:'Zwykła sól',
-    base:44,
-    unit:'g'
-  },
-
-  {
-    name:'MSG',
-    base:13.5,
-    unit:'g'
-  }
-
+  ['Biały sos pszeniczny', 1128.7],
+  ['Zwykłe sake', 360],
+  ['Sakura-sake', 200],
+  ['Whisky Sakura', 40],
+  ['Cukier', 158],
+  ['Ocet wiśniowy', 56.4],
+  ['Sól z sakury', 35],
+  ['Zwykła sól', 44],
+  ['MSG', 13.5]
 ];
-
 
 function calculateSakura(){
 
+  const base = numberValue('sakuraBase');
+
+  if(base <= 0){
+    return;
+  }
+
+  const scale = base / 1128.7;
+
+  let total = 0;
+
+  let html = `
+    <table class="recipe-table">
+      <thead>
+        <tr>
+          <th>Składnik</th>
+          <th>Ilość</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  sakuraRecipe.forEach(function(item){
+
+    const amount = item[1] * scale;
+
+    total += amount;
+
+    html += `
+      <tr>
+        <td>${item[0]}</td>
+        <td>${amount.toFixed(1)} g</td>
+      </tr>
+    `;
+
+  });
+
+  html += `
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="recipe-total">Łącznie</td>
+          <td class="recipe-total">${total.toFixed(1)} g</td>
+        </tr>
+      </tfoot>
+    </table>
+  `;
+
+  document.getElementById('sakuraTable').innerHTML = html;
+}
   const sakuraBase =
     numberValue('sakuraBase');
 
