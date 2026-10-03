@@ -608,29 +608,24 @@ footer{
 <script>
 
 function showPage(pageId){
-  // Ukryj wszystkie sekcje
   document.querySelectorAll('.page').forEach(function(page){
     page.classList.remove('active');
   });
 
-  // Pokaż wybraną stronę
   const targetPage = document.getElementById(pageId);
   if(targetPage){
     targetPage.classList.add('active');
   }
 
-  // Odznacz wszystkie przyciski w nawigacji
   document.querySelectorAll('.nav-btn').forEach(function(button){
     button.classList.remove('active');
   });
 
-  // Zaznacz odpowiedni przycisk w nawigacji
   const targetNavBtn = document.getElementById('btn-' + pageId);
   if(targetNavBtn){
     targetNavBtn.classList.add('active');
   }
 
-  // Przewiń płynnie do góry
   window.scrollTo({
     top:0,
     behavior:'smooth'
@@ -834,5 +829,16 @@ const sakuraRecipe = [
   { name:'Cukier', base:158, unit:'g' },
   { name:'Ocet wiśniowy', base:56.4, unit:'g' },
   { name:'Whisky Sakura', base:40, unit:'g' },
-  { name:'Sól z sakury (ok. 30–40 g)', base:35, unit:'g' },
-  { name:'Zwykła sól (ok. 39–49 g)', base:44, unit
+  { name:'Sól z sakury', base:35, unit:'g' },
+  { name:'Zwykła sól', base:44, unit:'g' }
+];
+
+function calculateSakura(){
+  const shoyu = numberValue('sakuraShoyu');
+  if(shoyu <= 0) return;
+  renderRecipeTable('sakuraTable', sakuraRecipe, shoyu);
+}
+
+/* MISO */
+const misoRecipe = [
+ 
