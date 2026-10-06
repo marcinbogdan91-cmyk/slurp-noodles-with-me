@@ -310,16 +310,20 @@ footer{
   .logo{
     font-size:25px;
   }
+
   .calculator{
     grid-template-columns:1fr;
   }
+
   .full{
     grid-column:auto;
   }
+
   .scale-box{
     flex-direction:column;
     align-items:stretch;
   }
+
   .scale-box .field{
     max-width:none;
   }
@@ -335,21 +339,65 @@ footer{
 </header>
 
 <nav>
-  <button id="btn-home" class="nav-btn active" onclick="showPage('home',this)">🏠 Start</button>
-  <button id="btn-shio" class="nav-btn" onclick="showPage('shio',this)">🧂 Shio</button>
-  <button id="btn-orenji" class="nav-btn" onclick="showPage('orenji',this)">🍊 Shio Orenji</button>
-  <button id="btn-yuzu" class="nav-btn" onclick="showPage('yuzu',this)">🍋 Yuzu Kosho</button>
-  <button id="btn-shoyu" class="nav-btn" onclick="showPage('shoyu',this)">🍶 Shoyu</button>
-  <button id="btn-sakura" class="nav-btn" onclick="showPage('sakura',this)">🌸 Sakura Shiro Shoyu</button>
-  <button id="btn-miso" class="nav-btn" onclick="showPage('miso',this)">🥢 Miso</button>
-  <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes',this)">📚 Przepisy</button>
+
+  <button id="btn-home"
+          class="nav-btn active"
+          onclick="showPage('home',this)">
+    🏠 Start
+  </button>
+
+  <button id="btn-shio"
+          class="nav-btn"
+          onclick="showPage('shio',this)">
+    🧂 Shio
+  </button>
+
+  <button id="btn-orenji"
+          class="nav-btn"
+          onclick="showPage('orenji',this)">
+    🍊 Shio Orenji
+  </button>
+
+  <button id="btn-yuzu"
+          class="nav-btn"
+          onclick="showPage('yuzu',this)">
+    🍋 Yuzu Kosho
+  </button>
+
+  <button id="btn-shoyu"
+          class="nav-btn"
+          onclick="showPage('shoyu',this)">
+    🍶 Shoyu
+  </button>
+
+  <button id="btn-sakura"
+          class="nav-btn"
+          onclick="showPage('sakura',this)">
+    🌸 Sakura Shiro Shoyu
+  </button>
+
+  <button id="btn-miso"
+          class="nav-btn"
+          onclick="showPage('miso',this)">
+    🥢 Miso
+  </button>
+
+  <button id="btn-recipes"
+          class="nav-btn"
+          onclick="showPage('recipes',this)">
+    📚 Przepisy
+  </button>
+
 </nav>
 
 <main>
 
 <!-- START -->
+
 <section id="home" class="page active">
+
   <h1>Ramen Lab</h1>
+
   <p class="intro">
     Moje miejsce do pracy nad ramenem.
     Kalkulatory tare, receptury i narzędzia do skalowania.
@@ -360,56 +408,81 @@ footer{
     <div class="card" onclick="showPage('shio')">
       <div class="card-icon">🧂</div>
       <h3>Shio Calculator</h3>
-      <p>Oblicz ilość tare potrzebną do osiągnięcia określonego poziomu soli w misce.</p>
+      <p>
+        Oblicz ilość tare potrzebną do osiągnięcia
+        określonego poziomu soli w misce.
+      </p>
     </div>
 
     <div class="card" onclick="showPage('orenji')">
       <div class="card-icon">🍊</div>
       <h3>Shio Orenji</h3>
-      <p>Tare Shio Orenji — przelicznik receptury.</p>
+      <p>
+        Tare Shio Orenji — przelicznik receptury.
+      </p>
     </div>
 
     <div class="card" onclick="showPage('yuzu')">
       <div class="card-icon">🍋</div>
       <h3>Yuzu Kosho</h3>
-      <p>Yuzu Kosho Tare — pełna receptura z możliwością skalowania.</p>
+      <p>
+        Yuzu Kosho Tare — pełna receptura
+        z możliwością skalowania.
+      </p>
     </div>
 
     <div class="card" onclick="showPage('shoyu')">
       <div class="card-icon">🍶</div>
       <h3>Golden Shoyu Aojiso</h3>
-      <p>Shoyu Tare na Shiro Tamari, Yamasa Koikuchi, Choya, Sake, Ume su, Muscovado i Kousyo Aojiso.</p>
+      <p>
+        Shoyu Tare na Shiro Tamari, Yamasa Koikuchi,
+        Choya, Sake, Ume su, Muscovado i Kousyo Aojiso.
+      </p>
     </div>
 
-    <!-- SAKURA CARD -->
     <div class="card" onclick="showPage('sakura')">
       <div class="card-icon">🌸</div>
       <h3>Sakura Shiro Shoyu</h3>
-      <p>Biały sos pszeniczny z sake, sakura sake, whisky Sakura, octem wiśniowym i solą z sakury.</p>
+      <p>
+        Biały sos pszeniczny z sake, Sakura sake,
+        whisky Sakura, octem wiśniowym i solą z sakury.
+      </p>
     </div>
 
     <div class="card" onclick="showPage('miso')">
       <div class="card-icon">🥢</div>
       <h3>Miso</h3>
-      <p>Saikyo Pear & Black Garlic Miso Tare.</p>
+      <p>
+        Saikyo Pear & Black Garlic Miso Tare.
+      </p>
     </div>
 
     <div class="card" onclick="showPage('recipes')">
       <div class="card-icon">📚</div>
       <h3>Przepisy</h3>
-      <p>Ramen, tare, oleje i inne elementy Ramen Lab.</p>
+      <p>
+        Ramen, tare, oleje i inne elementy Ramen Lab.
+      </p>
     </div>
 
   </div>
+
 </section>
 
 
 <!-- SHIO -->
+
 <section id="shio" class="page">
+
   <h1>🧂 Shio Tare Calculator</h1>
-  <p class="intro">Oblicz ilość tare potrzebną do osiągnięcia wybranego poziomu soli w gotowej misce ramen.</p>
+
+  <p class="intro">
+    Oblicz ilość tare potrzebną do osiągnięcia
+    wybranego poziomu soli w gotowej misce ramen.
+  </p>
 
   <div class="lab-card">
+
     <div class="calculator">
 
       <div class="field">
@@ -433,28 +506,42 @@ footer{
       </div>
 
       <div class="full">
-        <button class="calculate" onclick="calculateShio()">CALCULATE TARE</button>
+        <button class="calculate"
+                onclick="calculateShio()">
+          CALCULATE TARE
+        </button>
       </div>
 
     </div>
 
     <div class="result">
       <div class="result-label">Required tare</div>
-      <div id="shioResult" class="result-value">0 g</div>
+      <div id="shioResult" class="result-value">
+        0 g
+      </div>
     </div>
+
   </div>
 
   <div class="info">
     <strong>Wzór:</strong><br>
-    Tare = broth × (final salt − broth salt) ÷ (tare salt − final salt)
+    Tare = broth × (final salt − broth salt)
+    ÷ (tare salt − final salt)
   </div>
+
 </section>
 
 
 <!-- ORENJI -->
+
 <section id="orenji" class="page">
+
   <h1>🍊 Shio Orenji</h1>
-  <p class="intro">Tare Shio Orenji 2.0. Receptura bazowa oparta na 3500 ml Katsoubushi dashi.</p>
+
+  <p class="intro">
+    Tare Shio Orenji 2.0.
+    Receptura bazowa oparta na 3500 ml Katsoubushi dashi.
+  </p>
 
   <div class="lab-card">
 
@@ -464,23 +551,34 @@ footer{
 
       <div class="field">
         <label>Katsoubushi dashi — ml</label>
-        <input id="orenjiDashi" type="text" value="3500">
+        <input id="orenjiDashi"
+               type="text"
+               value="3500">
       </div>
 
-      <button class="calculate" onclick="calculateOrenji()">PRZELICZ</button>
+      <button class="calculate"
+              onclick="calculateOrenji()">
+        PRZELICZ
+      </button>
 
     </div>
 
     <div id="orenjiTable"></div>
 
   </div>
+
 </section>
 
 
 <!-- YUZU -->
+
 <section id="yuzu" class="page">
+
   <h1>🍋 Yuzu Kosho Tare</h1>
-  <p class="intro">Tare Yuzu Kosho — skalowanie według ilości Tsuyu.</p>
+
+  <p class="intro">
+    Tare Yuzu Kosho — skalowanie według ilości Tsuyu.
+  </p>
 
   <div class="lab-card">
 
@@ -490,27 +588,36 @@ footer{
 
       <div class="field">
         <label>Tsuyu — g</label>
-        <input id="yuzuTsuyu" type="text" value="508">
+        <input id="yuzuTsuyu"
+               type="text"
+               value="508">
       </div>
 
-      <button class="calculate" onclick="calculateYuzu()">PRZELICZ</button>
+      <button class="calculate"
+              onclick="calculateYuzu()">
+        PRZELICZ
+      </button>
 
     </div>
 
     <div id="yuzuTable"></div>
 
   </div>
+
 </section>
 
 
 <!-- SHOYU -->
+
 <section id="shoyu" class="page">
+
   <h1>🍶 Golden Shoyu Aojiso</h1>
 
   <p class="intro">
-    Golden Shoyu Tare z Shiro Tamari, Yamasa Koikuchi, Kousyo Aojiso,
-    Ume su, Choya, Sake, Muscovado, MSG, Niboshi Dashi 10%
-    i solą pomarańczową.
+    Golden Shoyu Tare z Shiro Tamari,
+    Yamasa Koikuchi, Kousyo Aojiso, Ume su,
+    Choya, Sake, Muscovado, MSG,
+    Niboshi Dashi 10% i solą pomarańczową.
   </p>
 
   <div class="lab-card">
@@ -521,22 +628,36 @@ footer{
 
       <div class="field">
         <label>Shiro Tamari — g</label>
-        <input id="shoyuTamari" type="text" value="1470">
+        <input id="shoyuTamari"
+               type="text"
+               value="1470">
       </div>
 
-      <button class="calculate" onclick="calculateShoyu()">PRZELICZ</button>
+      <button class="calculate"
+              onclick="calculateShoyu()">
+        PRZELICZ
+      </button>
 
     </div>
 
     <div id="shoyuTable"></div>
 
-    <div class="highlight" id="shoyuBowlParams">
+    <div class="highlight"
+         id="shoyuBowlParams">
 
-      <div class="highlight-title">🎯 Parametry jednej miski</div>
+      <div class="highlight-title">
+        🎯 Parametry jednej miski
+      </div>
 
-      <strong>354 ml bulionu + 40 ml tare</strong><br>
-      Docelowe zasolenie: <strong>1,60%</strong><br>
-      Docelowa ilość soli: <strong>6,304 g</strong>
+      <strong>
+        354 ml bulionu + 40 ml tare
+      </strong><br>
+
+      Docelowe zasolenie:
+      <strong>1,60%</strong><br>
+
+      Docelowa ilość soli:
+      <strong>6,304 g</strong>
 
     </div>
 
@@ -544,11 +665,14 @@ footer{
 
       <strong>Niboshi Dashi 10%</strong><br><br>
 
-      Bazowa ilość: <strong>280 ml/g dashi</strong><br><br>
+      Bazowa ilość:
+      <strong>280 ml/g dashi</strong><br><br>
 
-      Do przygotowania: <strong>28 g niboshi + 280 ml wody</strong><br><br>
+      Do przygotowania:
+      <strong>28 g niboshi + 280 ml wody</strong><br><br>
 
-      Czyli: <strong>100 g niboshi / 1 litr wody</strong>.
+      Czyli:
+      <strong>100 g niboshi / 1 litr wody</strong>.
 
     </div>
 
@@ -561,24 +685,28 @@ footer{
       Ume su Sunfood — 20,5%<br>
       Kousyo Aojiso — 5,75%<br><br>
 
-      Przy tym układzie i dozowaniu 40 ml tare do bazy
-      dodano <strong>158,0 g</strong> soli pomarańczowej,
-      co daje docelowo <strong>15,75%</strong> zasolenia samego tare.
+      Przy tym układzie i dozowaniu 40 ml tare
+      do bazy dodano <strong>158,0 g</strong>
+      soli pomarańczowej, co daje docelowo
+      <strong>15,75%</strong> zasolenia samego tare.
 
     </div>
 
   </div>
+
 </section>
 
 
-<!-- SAKURA SHIRO SHOYU -->
+<!-- SAKURA -->
+
 <section id="sakura" class="page">
 
   <h1>🌸 Sakura Shiro Shoyu</h1>
 
   <p class="intro">
-    Sakura Shiro Shoyu — biały sos pszeniczny połączony ze zwykłym sake,
-    Sakura sake, whisky Sakura, cukrem, octem wiśniowym,
+    Sakura Shiro Shoyu — biały sos pszeniczny
+    połączony ze zwykłym sake, Sakura sake,
+    whisky Sakura, cukrem, octem wiśniowym,
     solą z sakury, zwykłą solą i MSG.
   </p>
 
@@ -590,10 +718,15 @@ footer{
 
       <div class="field">
         <label>Biały sos pszeniczny — g</label>
-        <input id="sakuraBase" type="text" value="1128,7">
+
+        <input id="sakuraBase"
+               type="text"
+               value="1128,7">
+
       </div>
 
-      <button class="calculate" onclick="calculateSakura()">
+      <button class="calculate"
+              onclick="calculateSakura()">
         PRZELICZ
       </button>
 
@@ -632,13 +765,15 @@ footer{
 
 
 <!-- MISO -->
+
 <section id="miso" class="page">
 
   <h1>🥢 Saikyo Pear & Black Garlic Miso</h1>
 
   <p class="intro">
-    Zbalansowane tare miso na bazie Shiro, Saikyo i Ciemnego Miso,
-    z czarnym czosnkiem, pieczonym czosnkiem, purée z pieczonej gruszki,
+    Zbalansowane tare miso na bazie Shiro,
+    Saikyo i Ciemnego Miso, z czarnym czosnkiem,
+    pieczonym czosnkiem, purée z pieczonej gruszki,
     sosem Tsuyu, octem gruszkowym, sansho i dodatkami.
   </p>
 
@@ -649,11 +784,21 @@ footer{
     <div class="scale-box">
 
       <div class="field">
-        <label>Shiro Miso — g (Baza bazowa)</label>
-        <input id="misoShiro" type="text" value="220">
+
+        <label>
+          Shiro Miso — g (Baza bazowa)
+        </label>
+
+        <input id="misoShiro"
+               type="text"
+               value="220">
+
       </div>
 
-      <button class="calculate" onclick="calculateMiso()">PRZELICZ</button>
+      <button class="calculate"
+              onclick="calculateMiso()">
+        PRZELICZ
+      </button>
 
     </div>
 
@@ -661,7 +806,9 @@ footer{
 
     <div class="highlight">
 
-      <div class="highlight-title">🎯 Rekomendacja serwowania</div>
+      <div class="highlight-title">
+        🎯 Rekomendacja serwowania
+      </div>
 
       <strong>Dozowanie:</strong>
       45 g – 55 g tare na 300–350 ml wywaru.<br>
@@ -672,10 +819,12 @@ footer{
     </div>
 
   </div>
+
 </section>
 
 
 <!-- RECIPES -->
+
 <section id="recipes" class="page">
 
   <h1>📚 Przepisy</h1>
@@ -689,25 +838,34 @@ footer{
     <div class="card">
       <div class="card-icon">🍜</div>
       <h3>Ramen</h3>
-      <p>Kolejne receptury ramen będą dodawane tutaj.</p>
+      <p>
+        Kolejne receptury ramen będą dodawane tutaj.
+      </p>
     </div>
 
     <div class="card">
       <div class="card-icon">🧂</div>
       <h3>Tare</h3>
-      <p>Shio, Shoyu, Miso oraz specjalne tare.</p>
+      <p>
+        Shio, Shoyu, Miso oraz specjalne tare.
+      </p>
     </div>
 
     <div class="card">
       <div class="card-icon">🛢️</div>
       <h3>Aroma Oil</h3>
-      <p>Mayu, rayu, oleje aromatyczne i inne.</p>
+      <p>
+        Mayu, rayu, oleje aromatyczne i inne.
+      </p>
     </div>
 
     <div class="card">
       <div class="card-icon">🍜</div>
       <h3>Noodles</h3>
-      <p>Makaron ramen, alkaliczność, kansui i parametry ciasta.</p>
+      <p>
+        Makaron ramen, alkaliczność,
+        kansui i parametry ciasta.
+      </p>
     </div>
 
   </div>
@@ -716,12 +874,10 @@ footer{
 
 </main>
 
-
 <footer>
   SLURP NOODLES WITH ME — RAMEN LAB<br>
   © 2026 Marcin Bogdan
 </footer>
-
 
 <script>
 
@@ -747,7 +903,8 @@ function showPage(pageId, clickedButton){
 
   }else{
 
-    const targetNavBtn = document.getElementById('btn-' + pageId);
+    const targetNavBtn =
+      document.getElementById('btn-' + pageId);
 
     if(targetNavBtn){
       targetNavBtn.classList.add('active');
@@ -759,37 +916,50 @@ function showPage(pageId, clickedButton){
     top:0,
     behavior:'smooth'
   });
+
 }
 
 
 function numberValue(id){
 
-  const element = document.getElementById(id);
+  const element =
+    document.getElementById(id);
 
   if(!element){
     return 0;
   }
 
   return parseFloat(
-    element.value.toString().replace(',', '.')
+    element.value.toString().replace(',','.')
   ) || 0;
+
 }
 
 
-/* ================================
-   SHIO
-================================ */
+/* SHIO */
 
 function calculateShio(){
 
-  const broth = numberValue('broth');
-  const brothSalt = numberValue('brothSalt');
-  const tareSalt = numberValue('tareSalt');
-  const finalSalt = numberValue('finalSalt');
+  const broth =
+    numberValue('broth');
 
-  if(broth <= 0 || tareSalt <= finalSalt){
+  const brothSalt =
+    numberValue('brothSalt');
 
-    document.getElementById('shioResult').textContent =
+  const tareSalt =
+    numberValue('tareSalt');
+
+  const finalSalt =
+    numberValue('finalSalt');
+
+  if(
+    broth <= 0 ||
+    tareSalt <= finalSalt
+  ){
+
+    document.getElementById(
+      'shioResult'
+    ).textContent =
       'Sprawdź wartości';
 
     return;
@@ -800,35 +970,65 @@ function calculateShio(){
     (finalSalt - brothSalt) /
     (tareSalt - finalSalt);
 
-  document.getElementById('shioResult').textContent =
+  document.getElementById(
+    'shioResult'
+  ).textContent =
     tare.toFixed(1) + ' g';
+
 }
 
 
-/* ================================
-   ORENJI
-================================ */
+/* ORENJI */
 
 const orenjiRecipe = [
 
-  { name:'Katsoubushi dashi', base:3500, unit:'ml' },
+  {
+    name:'Katsoubushi dashi',
+    base:3500,
+    unit:'ml'
+  },
 
-  { name:'Cukier', base:297.6, unit:'g' },
+  {
+    name:'Cukier',
+    base:297.6,
+    unit:'g'
+  },
 
-  { name:'Yuzu ponzu', base:116.5, unit:'ml' },
+  {
+    name:'Yuzu ponzu',
+    base:116.5,
+    unit:'ml'
+  },
 
-  { name:'Shiro shoyu', base:232.2, unit:'ml' },
+  {
+    name:'Shiro shoyu',
+    base:232.2,
+    unit:'ml'
+  },
 
-  { name:'Sól pomarańczowa', base:561.8, unit:'g' },
+  {
+    name:'Sól pomarańczowa',
+    base:561.8,
+    unit:'g'
+  },
 
-  { name:'MSG', base:70.1, unit:'g' }
+  {
+    name:'MSG',
+    base:70.1,
+    unit:'g'
+  }
 
 ];
 
 
-function renderRecipeTable(containerId, recipe, baseAmount){
+function renderRecipeTable(
+  containerId,
+  recipe,
+  baseAmount
+){
 
-  const container = document.getElementById(containerId);
+  const container =
+    document.getElementById(containerId);
 
   if(!container){
     return;
@@ -840,7 +1040,6 @@ function renderRecipeTable(containerId, recipe, baseAmount){
   let total = 0;
 
   let html = `
-
     <table class="recipe-table">
 
       <thead>
@@ -853,7 +1052,6 @@ function renderRecipeTable(containerId, recipe, baseAmount){
       </thead>
 
       <tbody>
-
   `;
 
   recipe.forEach(function(item){
@@ -864,23 +1062,23 @@ function renderRecipeTable(containerId, recipe, baseAmount){
     total += amount;
 
     html += `
-
       <tr>
 
-        <td>${item.name}</td>
+        <td>
+          ${item.name}
+        </td>
 
         <td>
-          ${amount.toFixed(1)} ${item.unit}
+          ${amount.toFixed(1)}
+          ${item.unit}
         </td>
 
       </tr>
-
     `;
 
   });
 
   html += `
-
       </tbody>
 
       <tfoot>
@@ -900,12 +1098,12 @@ function renderRecipeTable(containerId, recipe, baseAmount){
       </tfoot>
 
     </table>
-
   `;
 
   container.innerHTML = html;
 
   return total;
+
 }
 
 
@@ -923,28 +1121,55 @@ function calculateOrenji(){
     orenjiRecipe,
     dashi
   );
+
 }
 
 
-/* ================================
-   YUZU KOSHO
-================================ */
+/* YUZU KOSHO */
 
 const yuzuRecipe = [
 
-  { name:'Tsuyu', base:508, unit:'g' },
+  {
+    name:'Tsuyu',
+    base:508,
+    unit:'g'
+  },
 
-  { name:'Shoyu', base:1525, unit:'g' },
+  {
+    name:'Shoyu',
+    base:1525,
+    unit:'g'
+  },
 
-  { name:'Ponzu Yuzu', base:508, unit:'g' },
+  {
+    name:'Ponzu Yuzu',
+    base:508,
+    unit:'g'
+  },
 
-  { name:'Cukier', base:254, unit:'g' },
+  {
+    name:'Cukier',
+    base:254,
+    unit:'g'
+  },
 
-  { name:'Ocet czarny', base:81, unit:'g' },
+  {
+    name:'Ocet czarny',
+    base:81,
+    unit:'g'
+  },
 
-  { name:'Yuzu Kosho', base:71, unit:'g' },
+  {
+    name:'Yuzu Kosho',
+    base:71,
+    unit:'g'
+  },
 
-  { name:'MSG', base:51, unit:'g' }
+  {
+    name:'MSG',
+    base:51,
+    unit:'g'
+  }
 
 ];
 
@@ -963,12 +1188,11 @@ function calculateYuzu(){
     yuzuRecipe,
     tsuyu
   );
+
 }
 
 
-/* ================================
-   SHOYU
-================================ */
+/* SHOYU */
 
 const shoyuRecipe = [
 
@@ -1065,6 +1289,94 @@ function calculateShoyu(){
   let totalSaltWeight = 0;
 
   let html = `
+    <table class="recipe-table">
+
+      <thead>
+
+        <tr>
+          <th>Składnik</th>
+          <th>Ilość</th>
+        </tr>
+
+      </thead>
+
+  
+/* SAKURA SHIRO SHOYU */
+
+const sakuraRecipe = [
+
+  {
+    name:'Biały sos pszeniczny',
+    base:1128.7,
+    unit:'g'
+  },
+
+  {
+    name:'Zwykłe sake',
+    base:360,
+    unit:'g'
+  },
+
+  {
+    name:'Sakura-sake',
+    base:200,
+    unit:'g'
+  },
+
+  {
+    name:'Whisky Sakura',
+    base:40,
+    unit:'g'
+  },
+
+  {
+    name:'Cukier',
+    base:158,
+    unit:'g'
+  },
+
+  {
+    name:'Ocet wiśniowy',
+    base:56.4,
+    unit:'g'
+  },
+
+  {
+    name:'Sól z sakury',
+    base:35,
+    unit:'g'
+  },
+
+  {
+    name:'Zwykła sól',
+    base:44,
+    unit:'g'
+  },
+
+  {
+    name:'MSG',
+    base:13.5,
+    unit:'g'
+  }
+
+];
+
+
+function calculateSakura(){
+
+  const base =
+    numberValue('sakuraBase');
+
+  if(base <= 0){
+    return;
+  }
+
+  const scale =
+    base / 1128.7;
+
+  let total = 0;
+
+  let html = `
 
     <table class="recipe-table">
 
@@ -1081,24 +1393,24 @@ function calculateShoyu(){
 
   `;
 
-  shoyuRecipe.forEach(function(item){
+  sakuraRecipe.forEach(function(item){
 
     const amount =
-      item.base * coefficient;
+      item.base * scale;
 
-    totalWeight += amount;
-
-    totalSaltWeight +=
-      amount * item.saltPct;
+    total += amount;
 
     html += `
 
       <tr>
 
-        <td>${item.name}</td>
+        <td>
+          ${item.name}
+        </td>
 
         <td>
-          ${amount.toFixed(1)} ${item.unit}
+          ${amount.toFixed(1)}
+          ${item.unit}
         </td>
 
       </tr>
@@ -1120,7 +1432,7 @@ function calculateShoyu(){
           </td>
 
           <td class="recipe-total">
-            ${totalWeight.toFixed(1)} g
+            ${total.toFixed(1)} g
           </td>
 
         </tr>
@@ -1131,125 +1443,14 @@ function calculateShoyu(){
 
   `;
 
-  container.innerHTML = html;
-
-
-  const tareSaltPct =
-    (totalSaltWeight / totalWeight) * 100;
-  const bowlParamsContainer =
-    document.getElementById('shoyuBowlParams');
-
-  bowlParamsContainer.innerHTML = `
-
-    <div class="highlight-title">
-      🎯 Parametry jednej miski
-    </div>
-
-    <strong>
-      ${brothMl} ml bulionu + ${tareMl} ml tare
-    </strong><br>
-
-    Docelowe zasolenie:
-    <strong>${finalBowlSaltPct.toFixed(2)}%</strong><br>
-
-    Docelowa ilość soli:
-    <strong>${saltInBowl.toFixed(3)} g</strong><br>
-
-    <span style="font-size:13px;color:var(--muted);">
-      Zasolenie samego tare:
-      ${tareSaltPct.toFixed(2)}%
-    </span>
-
-  `;
+  document.getElementById(
+    'sakuraTable'
+  ).innerHTML = html;
 
 }
 
 
-/* ================================
-   SAKURA SHIRO SHOYU
-================================ */
-
-const sakuraRecipe = [
-  ['Biały sos pszeniczny', 1128.7],
-  ['Zwykłe sake', 360],
-  ['Sakura-sake', 200],
-  ['Whisky Sakura', 40],
-  ['Cukier', 158],
-  ['Ocet wiśniowy', 56.4],
-  ['Sól z sakury', 35],
-  ['Zwykła sól', 44],
-  ['MSG', 13.5]
-];
-
-function calculateSakura(){
-
-  const base = numberValue('sakuraBase');
-
-  if(base <= 0){
-    return;
-  }
-
-  const scale = base / 1128.7;
-
-  let total = 0;
-
-  let html = `
-    <table class="recipe-table">
-      <thead>
-        <tr>
-          <th>Składnik</th>
-          <th>Ilość</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-
-  sakuraRecipe.forEach(function(item){
-
-    const amount = item[1] * scale;
-
-    total += amount;
-
-    html += `
-      <tr>
-        <td>${item[0]}</td>
-        <td>${amount.toFixed(1)} g</td>
-      </tr>
-    `;
-
-  });
-
-  html += `
-      </tbody>
-      <tfoot>
-        <tr>
-          <td class="recipe-total">Łącznie</td>
-          <td class="recipe-total">${total.toFixed(1)} g</td>
-        </tr>
-      </tfoot>
-    </table>
-  `;
-
-  document.getElementById('sakuraTable').innerHTML = html;
-}
-  const sakuraBase =
-    numberValue('sakuraBase');
-
-  if(sakuraBase <= 0){
-    return;
-  }
-
-  renderRecipeTable(
-    'sakuraTable',
-    sakuraRecipe,
-    sakuraBase
-  );
-}
-
-
-/* ================================
-   MISO
-================================ */
+/* MISO */
 
 const misoRecipe = [
 
@@ -1349,17 +1550,86 @@ function calculateMiso(){
     return;
   }
 
-  renderRecipeTable(
-    'misoTable',
-    misoRecipe,
-    shiro
-  );
+  const scale =
+    shiro / 220;
+
+  let total = 0;
+
+  let html = `
+
+    <table class="recipe-table">
+
+      <thead>
+
+        <tr>
+          <th>Składnik</th>
+          <th>Ilość</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+  `;
+
+  misoRecipe.forEach(function(item){
+
+    const amount =
+      item.base * scale;
+
+    total += amount;
+
+    html += `
+
+      <tr>
+
+        <td>
+          ${item.name}
+        </td>
+
+        <td>
+          ${amount.toFixed(1)}
+          ${item.unit}
+        </td>
+
+      </tr>
+
+    `;
+
+  });
+
+  html += `
+
+      </tbody>
+
+      <tfoot>
+
+        <tr>
+
+          <td class="recipe-total">
+            Łącznie
+          </td>
+
+          <td class="recipe-total">
+            ${total.toFixed(1)} g
+          </td>
+
+        </tr>
+
+      </tfoot>
+
+    </table>
+
+  `;
+
+  document.getElementById(
+    'misoTable'
+  ).innerHTML = html;
+
 }
 
 
-/* ================================
-   INICJALIZACJA
-================================ */
+/* STARTOWE OBLICZENIA */
 
 window.addEventListener(
   'DOMContentLoaded',
@@ -1384,20 +1654,3 @@ window.addEventListener(
 
 </body>
 </html>
-
-
-  const brothMl = 354;
-
-  const tareMl = 40;
-
-  const saltInBowl =
-    tareMl * (tareSaltPct / 100);
-
-  const totalBowlWeight =
-    brothMl + tareMl;
-
-  const finalBowlSaltPct =
-    (saltInBowl / totalBowlWeight) * 100;
-
-
-  
