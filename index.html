@@ -340,8 +340,8 @@ footer{
   <button id="btn-orenji" class="nav-btn" onclick="showPage('orenji',this)">🍊 Shio Orenji</button>
   <button id="btn-yuzu" class="nav-btn" onclick="showPage('yuzu',this)">🍋 Yuzu Kosho</button>
   <button id="btn-shoyu" class="nav-btn" onclick="showPage('shoyu',this)">🍶 Shoyu</button>
+  <button id="btn-sakura" class="nav-btn" onclick="showPage('sakura',this)">🌸 Sakura Shoyu</button>
   <button id="btn-miso" class="nav-btn" onclick="showPage('miso',this)">🥢 Miso</button>
-  <button id="btn-sakura" class="nav-btn" onclick="showPage('sakura',this)">🌸 Sakura</button>
   <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes',this)">📚 Przepisy</button>
 </nav>
 
@@ -380,16 +380,16 @@ footer{
       <p>Shoyu Tare na Shiro Tamari, Yamasa Koikuchi, Choya, Sake, Ume su, Muscovado i Kousyo Aojiso.</p>
     </div>
 
+    <div class="card" onclick="showPage('sakura')">
+      <div class="card-icon">🌸</div>
+      <h3>Sakura Shiro Shoyu</h3>
+      <p>Delikatna, jasna tare z aromatem kwiatów sakury, sake i whisky Sakura Cask.</p>
+    </div>
+
     <div class="card" onclick="showPage('miso')">
       <div class="card-icon">🥢</div>
       <h3>Miso</h3>
       <p>Saikyo Pear & Black Garlic Miso Tare.</p>
-    </div>
-
-    <div class="card" onclick="showPage('sakura')">
-      <div class="card-icon">🌸</div>
-      <h3>Sakura Shiro Shoyu</h3>
-      <p>Delikatna, jasna tare oparta na shiro shoyu z aromatem kwiatów sakury i whisky.</p>
     </div>
 
     <div class="card" onclick="showPage('recipes')">
@@ -517,6 +517,41 @@ footer{
   </div>
 </section>
 
+<!-- SAKURA SHIRO SHOYU -->
+<section id="sakura" class="page">
+  <h1>🌸 Sakura Shiro Shoyu Tare</h1>
+  <p class="intro">
+    Delikatna, jasna tare oparta na shiro shoyu, wzbogacona aromatem marynowanych kwiatów sakury, 
+    sake infuzowanego ich kwiatowym aromatem oraz subtelną nutą japońskiej whisky Sakura. 
+    Całość zamyka ocet wiśniowy, który wnosi elegancką kwasowość i delikatny owocowy charakter.
+  </p>
+
+  <div class="lab-card">
+    <h2>Skalowanie receptury</h2>
+    <div class="scale-box">
+      <div class="field">
+        <label>Sakura Shiro Shoyu — g (Baza)</label>
+        <input id="sakuraTamari" type="text" value="1128,7">
+      </div>
+      <button class="calculate" onclick="calculateSakura()">PRZELICZ</button>
+    </div>
+    <div id="sakuraTable"></div>
+
+    <div class="info">
+      <strong>Profil smakowy:</strong><br>
+      Jasny, kwiatowy, lekko słodki, słony i umamiczny, z subtelną wiśniową kwasowością. 
+      Sakura nie powinna dominować — pojawia się w tle razem z aromatem wiśni i delikatną nutą whisky.<br>
+      Stworzone do jasnego drobiowego chintanu.
+    </div>
+
+    <div class="info">
+      <strong>O whisky:</strong><br>
+      Whisky The Daisen Sakura Cask dojrzewa przez 3 lata w beczkach z białego dębu, 
+      a następnie finiszuje przez 3 miesiące w beczkach z sakury (destylarnia Kurayoshi).
+    </div>
+  </div>
+</section>
+
 <!-- MISO -->
 <section id="miso" class="page">
   <h1>🥢 Saikyo Pear & Black Garlic Miso</h1>
@@ -541,27 +576,6 @@ footer{
       <strong>Dozowanie:</strong> 45 g – 55 g tare na 300–350 ml wywaru.<br>
       <strong>Aroma Oil:</strong> Idealnie komponuje się z tłuszczem w misce.
     </div>
-  </div>
-</section>
-
-<!-- SAKURA SHIRO SHOYU -->
-<section id="sakura" class="page">
-  <h1>🌸 Sakura Shiro Shoyu Tare</h1>
-  <p class="intro">
-    Delikatna, jasna tare oparta na shiro shoyu, wzbogacona aromatem marynowanych kwiatów sakury, 
-    sake infuzowanego ich kwiatowym aromatem oraz subtelną nutą japońskiej whisky Sakura.
-  </p>
-
-  <div class="lab-card">
-    <h2>Skalowanie receptury</h2>
-    <div class="scale-box">
-      <div class="field">
-        <label>Sakura Shiro Shoyu — g</label>
-        <input id="sakuraTamari" type="text" value="1128.7">
-      </div>
-      <button class="calculate" onclick="calculateSakura()">PRZELICZ</button>
-    </div>
-    <div id="sakuraTable"></div>
   </div>
 </section>
 
@@ -736,7 +750,7 @@ function calculateYuzu(){
   renderRecipeTable('yuzuTable', yuzuRecipe, tsuyu);
 }
 
-/* SHOYU (DYNAMICZNA) */
+/* SHOYU */
 const shoyuRecipe = [
   { name:'Shiro Tamari', base:1470, unit:'g', saltPct: 0.17 },
   { name:'Yamasa Koikuchi', base:500, unit:'g', saltPct: 0.162 },
@@ -753,7 +767,7 @@ const shoyuRecipe = [
 function calculateShoyu(){
   const tamari = numberValue('shoyuTamari');
   if(tamari <= 0) return;
-
+  
   const container = document.getElementById('shoyuTable');
   const coefficient = tamari / shoyuRecipe[0].base;
   let totalWeight = 0;
@@ -812,31 +826,11 @@ function calculateShoyu(){
   `;
 }
 
-/* MISO */
-const misoRecipe = [
-  { name:'Shiro Miso', base:220, unit:'g' },
-  { name:'Saikyo Miso', base:180, unit:'g' },
-  { name:'Ciemne Miso (Aka)', base:120, unit:'g' },
-  { name:'Pieczona gruszka', base:110, unit:'g' },
-  { name:'Sos Tsuyu', base:110, unit:'g' },
-  { name:'Pieczony czosnek', base:60, unit:'g' },
-  { name:'Czarny czosnek', base:50, unit:'g' },
-  { name:'Muscovado', base:35, unit:'g' },
-  { name:'Olej sezamowy', base:30, unit:'g' },
-  { name:'MSG', base:25, unit:'g' },
-  { name:'Imbir świeży', base:20, unit:'g' },
-  { name:'Cukier trzcinowy', base:20, unit:'g' },
-  { name:'Ocet gruszkowy', base:20, unit:'g' },
-  { name:'Sansho', base:3, unit:'g' }
-];
-
-function calculateMiso(){
-  const shiro = numberValue('misoShiro');
-  if(shiro <= 0) return;
-  renderRecipeTable('misoTable', misoRecipe, shiro);
-}
-
 /* SAKURA SHIRO SHOYU */
 const sakuraRecipe = [
   { name:'Sakura Shiro Shoyu', base:1128.7, unit:'g' },
-  { name:'Zwykłe sake', base:360, unit:'
+  { name:'Zwykłe sake', base:360, unit:'g' },
+  { name:'Sakura-sake (sake po wiśniach)', base:200, unit:'g' },
+  { name:'Whisky Sakura', base:40, unit:'g' },
+  { name:'Cukier', base:158, unit:'g' },
+  { n
