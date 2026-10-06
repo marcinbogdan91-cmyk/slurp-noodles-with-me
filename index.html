@@ -340,6 +340,7 @@ footer{
   <button id="btn-orenji" class="nav-btn" onclick="showPage('orenji',this)">🍊 Shio Orenji</button>
   <button id="btn-yuzu" class="nav-btn" onclick="showPage('yuzu',this)">🍋 Yuzu Kosho</button>
   <button id="btn-shoyu" class="nav-btn" onclick="showPage('shoyu',this)">🍶 Shoyu</button>
+  <button id="btn-sakura" class="nav-btn" onclick="showPage('sakura',this)">🌸 Sakura Shoyu</button>
   <button id="btn-miso" class="nav-btn" onclick="showPage('miso',this)">🥢 Miso</button>
   <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes',this)">📚 Przepisy</button>
 </nav>
@@ -377,6 +378,12 @@ footer{
       <div class="card-icon">🍶</div>
       <h3>Golden Shoyu Aojiso</h3>
       <p>Shoyu Tare na Shiro Tamari, Yamasa Koikuchi, Choya, Sake, Ume su, Muscovado i Kousyo Aojiso.</p>
+    </div>
+
+    <div class="card" onclick="showPage('sakura')">
+      <div class="card-icon">🌸</div>
+      <h3>Sakura Shiro Shoyu</h3>
+      <p>Delikatna, jasna tare z aromatem kwiatów sakury, sake i whisky Sakura Cask.</p>
     </div>
 
     <div class="card" onclick="showPage('miso')">
@@ -507,6 +514,24 @@ footer{
       Kousyo Aojiso — 5,75%<br><br>
       Przy tym układzie i dozowaniu 40 ml tare do bazy dodano <strong>158,0 g</strong> soli pomarańczowej, co daje docelowo <strong>15,75%</strong> zasolenia samego tare.
     </div>
+  </div>
+</section>
+
+<!-- SAKURA SHIRO SHOYU -->
+<section id="sakura" class="page">
+  <h1>🌸 Sakura Shiro Shoyu Tare</h1>
+  <p class="intro">Delikatna, jasna tare z bazą Sakura Shiro Shoyu, sake, whisky Sakura Cask, octem wiśniowym i solą z sakury.</p>
+
+  <div class="lab-card">
+    <h2>Skalowanie receptury</h2>
+    <div class="scale-box">
+      <div class="field">
+        <label>Sakura Shiro Shoyu — g</label>
+        <input id="sakuraTamari" type="text" value="1128,7">
+      </div>
+      <button class="calculate" onclick="calculateSakura()">PRZELICZ</button>
+    </div>
+    <div id="sakuraTable"></div>
   </div>
 </section>
 
@@ -784,6 +809,25 @@ function calculateShoyu(){
   `;
 }
 
+/* SAKURA SHIRO SHOYU */
+const sakuraRecipe = [
+  { name:'Sakura Shiro Shoyu', base:1128.7, unit:'g' },
+  { name:'Zwykłe sake', base:360, unit:'g' },
+  { name:'Sakura-sake (sake po wiśniach)', base:200, unit:'g' },
+  { name:'Whisky Sakura', base:40, unit:'g' },
+  { name:'Cukier', base:158, unit:'g' },
+  { name:'Ocet wiśniowy', base:56.4, unit:'g' },
+  { name:'Sól z sakury', base:35, unit:'g' },
+  { name:'Zwykła sól', base:44, unit:'g' },
+  { name:'MSG', base:13.5, unit:'g' }
+];
+
+function calculateSakura(){
+  const baseVal = numberValue('sakuraTamari');
+  if(baseVal <= 0) return;
+  renderRecipeTable('sakuraTable', sakuraRecipe, baseVal);
+}
+
 /* MISO */
 const misoRecipe = [
   { name:'Shiro Miso', base:220, unit:'g' },
@@ -793,7 +837,7 @@ const misoRecipe = [
   { name:'Sos Tsuyu', base:110, unit:'g' },
   { name:'Pieczony czosnek', base:60, unit:'g' },
   { name:'Czarny czosnek', base:50, unit:'g' },
-  { name:'Muscovado', base:35, unit:'g' },
+    { name:'Muscovado', base:35, unit:'g' },
   { name:'Olej sezamowy', base:30, unit:'g' },
   { name:'MSG', base:25, unit:'g' },
   { name:'Imbir świeży', base:20, unit:'g' },
@@ -814,6 +858,7 @@ window.addEventListener('DOMContentLoaded', function(){
   calculateOrenji();
   calculateYuzu();
   calculateShoyu();
+  calculateSakura();
   calculateMiso();
 });
 
