@@ -821,3 +821,56 @@ window.addEventListener('DOMContentLoaded', function(){
 
 </body>
 </html>
+
+/* SAKURA SHIRO SHOYU */
+const sakuraRecipe = [
+  { name:'Sakura Shiro Shoyu', base:1128.7, unit:'g' },
+  { name:'Zwykłe sake', base:360, unit:'g' },
+  { name:'Sakura-sake (sake po wiśniach)', base:200, unit:'g' },
+  { name:'Whisky Sakura', base:40, unit:'g' },
+  { name:'Cukier', base:158, unit:'g' },
+  { name:'Ocet wiśniowy', base:56.4, unit:'g' },
+  { name:'Sól z sakury', base:35, unit:'g' },
+  { name:'Zwykła sól', base:44, unit:'g' },
+  { name:'MSG', base:13.5, unit:'g' }
+];
+
+function calculateSakura(){
+  const baseVal = numberValue('sakuraTamari');
+  if(baseVal <= 0) return;
+  renderRecipeTable('sakuraTable', sakuraRecipe, baseVal);
+}
+<!-- SAKURA SHIRO SHOYU -->
+<section id="sakura" class="page">
+  <h1>🌸 Sakura Shiro Shoyu Tare</h1>
+  <p class="intro">
+    Delikatna, jasna tare oparta na shiro shoyu, wzbogacona aromatem marynowanych kwiatów sakury, 
+    sake infuzowanego ich kwiatowym aromatem oraz subtelną nutą japońskiej whisky Sakura. 
+    Całość zamyka ocet wiśniowy, który wnosi elegancką kwasowość i delikatny owocowy charakter.
+  </p>
+
+  <div class="lab-card">
+    <h2>Skalowanie receptury</h2>
+    <div class="scale-box">
+      <div class="field">
+        <label>Sakura Shiro Shoyu — g (Baza bazowa)</label>
+        <input id="sakuraTamari" type="text" value="1128,7">
+      </div>
+      <button class="calculate" onclick="calculateSakura()">PRZELICZ</button>
+    </div>
+    <div id="sakuraTable"></div>
+
+    <div class="info">
+      <strong>Charakterystyka:</strong><br>
+      Profil smakowy jest jasny, kwiatowy, lekko słodki, słony i umamiczny, z subtelną wiśniową kwasowością.<br>
+      Stworzone do jasnego drobiowego chintanu.
+    </div>
+
+    <div class="info">
+      <strong>Notatka o whisky:</strong><br>
+      Whisky The Daisen Sakura Cask dojrzewa 3 lata w beczkach z białego dębu i 3 miesiące w beczkach z sakury (destylarnia Kurayoshi).
+    </div>
+  </div>
+</section>
+calculateSakura();
+
